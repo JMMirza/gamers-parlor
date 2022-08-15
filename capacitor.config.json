@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "tournament-app",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
