@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,58 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-content {
+    --background: var(--ion-color-primary);
+}
+
+// ion-content {
+//     --background: repeating-linear-gradient(-45deg, #772dd2, #772dd2 5px, #222222 10px, #222222 20px);
+// }
+
+ion-item {
+    --background: var(--ion-color-primary);
+}
+
+.form-group {
+    margin-bottom: 10px;
+    ion-input {
+        --color: var(--ion-color-light) !important;
+        --padding: 10px !important;
+        border: 2px solid #000;
+        &:focus {
+            border-color: var(--ion-color-success) !important;
+        }
+    }
+}
+
+.error-message {
+    color: #ff0000 !important;
+    margin-top: 5px;
+}
+
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+}
+ion-header {
+    border-bottom: 2px solid var(--ion-color-success);
+}
+
+ion-menu-button {
+    color: var(--ion-color-success);
+}
+
+ion-title {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.site-logo {
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
+    height: 150px;
+    overflow: hidden;
+    margin: 20px auto;
+}
