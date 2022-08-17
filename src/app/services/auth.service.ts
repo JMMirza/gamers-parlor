@@ -16,6 +16,10 @@ export class AuthService {
     return this.httpService.post('login', params);
   };
 
+  public getUser() {
+    return this.httpService.get('user');
+  }
+
   public async isAuthenticated(): Promise<boolean> {
     return await Preferences.get({ key: 'token' }).then(({ value }) => {
       if (value) {
@@ -34,9 +38,9 @@ export class AuthService {
     });
   };
 
-  getToken = async () => {
+  async getToken(): Promise<string> {
     const { value } = await Preferences.get({ key: 'token' });
-    console.log(value);
+    // console.log(value);
     return value;
-  };
+  }
 }
