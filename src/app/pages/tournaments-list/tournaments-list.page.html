@@ -14,34 +14,101 @@
 
       <ion-col *ngFor="let item of response" size="12">
         <div class="tournament-card">
-          <div class="tournament-title">
-            <h1>{{ item.name }}</h1>
-            <a href="http://">
-              tournament rules
-            </a>
-          </div>
-          <div class="card-body">
-            <p class="register-players">
-              <span>registered teams:</span> {{ item.number_of_request }}
-            </p>
-            <p class="team-players">
-              <span>registration fee:</span> {{ item.registration_fee }}
-            </p>
-        
-            <p class="tournament-price">
-              <span>start date:</span> {{ item.start_date }}
-            </p>
+          <div class="tournament-card-content">
+            <div class="game-img">
+              <ion-img src="../../../assets/tekken-7.jpg" class="img-fluid"></ion-img>
+            </div>
+            <div class="card-body">
+              <div class="game-info">
+                <h1 class="game-title">tekken 7</h1>
+                <a href="http://">
+                   rules
+                </a>
+              </div>
+              <p class="register-players">
+                <span>
+                  <ion-icon name="people-circle-sharp"></ion-icon>:
+                </span> 13/64
+              </p>
+              <p class="team-players">
+                <span>
+                  <ion-icon name="person-sharp"></ion-icon>:
+                </span> 4
+              </p>
 
-            <p class="tournament-price">
-              <span>start date:</span> {{ item.end_date }}
-            </p>
-
-            <p class="tournament-prize">
-              <span>tournament prize:</span> 120$
-            </p>
+            
+              <div class="card-footer">
+                <p class="tournament-price">
+                  <span>
+                    <ion-icon name="card"></ion-icon>:
+                  </span> 50$
+                </p>
+                <p class="tournament-prize">
+                  <span>
+                    <ion-icon name="trophy-sharp"></ion-icon>:
+                  </span> 120$
+                </p>
+                <p class="vip-member">
+                  <span>
+                    <ion-icon name="person-circle-sharp"></ion-icon>:
+                  </span> 2 vip players
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </ion-col>
+
+      <ion-col size="12">
+        <div class="tournament-card">
+          <div class="tournament-card-content">
+            <div class="game-img">
+              <ion-img src="../../../assets/fifa.jpg" class="img-fluid"></ion-img>
+            </div>
+            <div class="card-body">
+              <div class="game-info">
+                <h1 class="game-title">fifa 2020</h1>
+                <a href="http://">
+                   rules
+                </a>
+              </div>
+              <p class="register-players">
+                <span>
+                  <ion-icon name="people-circle-sharp"></ion-icon>:
+                </span> 13/64
+              </p>
+              <p class="team-players">
+                <span>
+                  <ion-icon name="person-sharp"></ion-icon>:
+                </span> 4
+              </p>
+
+            
+              <div class="card-footer">
+                <p class="tournament-price">
+                  <span>
+                    <ion-icon name="card"></ion-icon>:
+                  </span> 50$
+                </p>
+                <p class="tournament-prize">
+                  <span>
+                    <ion-icon name="trophy-sharp"></ion-icon>:
+                  </span> 120$
+                </p>
+                <p class="vip-member">
+                  <span>
+                    <ion-icon name="person-circle-sharp"></ion-icon>:
+                  </span> 2 vip players
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+
+    
+
+
 
 
     </ion-row>
@@ -54,7 +121,7 @@
     <div class="game-icon-top">
       <ion-icon name="locate-outline"></ion-icon>
     </div>
-  
+
     <div class="game-icon">
       <ion-icon name="logo-firefox"></ion-icon>
     </div>
