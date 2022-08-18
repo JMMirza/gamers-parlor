@@ -113,6 +113,19 @@ ion-title {
     }
 }
 
+.game-icon-top {
+    ion-icon {
+        font-size: 100px;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        color: #ffffff6b;
+        z-index: -1;
+        // transform: rotate(45deg);
+    }
+}
+
+
 .login-page {
     --overflow: hidden;
 }
@@ -128,16 +141,8 @@ ion-title {
     }
 }
 
-.game-icon-top {
-    ion-icon {
-        font-size: 100px;
-        position: absolute;
-        top: -5px;
-        left: -5px;
-        color: #ffffff6b;
-        z-index: -1;
-        // transform: rotate(45deg);
-    }
+.content-inner-body{
+    position: relative;
 }
 
 .tournament-card {
