@@ -7,13 +7,14 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'login',
     loadChildren: () =>
       import('./pages/login/login.module').then((m) => m.LoginPageModule),
-  },  {
+  },
+  {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
