@@ -26,26 +26,29 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 ion-content {
-    --background: var(--ion-color-primary);
+    --background: var(--ion-color-primary-tint);
 }
 
-// ion-content {
-//     --background: repeating-linear-gradient(-45deg, #772dd2, #772dd2 5px, #222222 10px, #222222 20px);
+// .gradient-background {
+//     --background: linear-gradient(to right, rgb(105, 154, 5), #696a6b) !important;
 // }
 
 ion-item {
     --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
 }
 
+.site-form {
+    padding: 50px;
+    background: rgba(104, 104, 104, 0.46);
+    border-radius: 10px;
+}
 .form-group {
     margin-bottom: 10px;
     ion-input {
         --color: var(--ion-color-light) !important;
-        --padding: 10px !important;
-        border: 2px solid #000;
-        &:focus {
-            border-color: var(--ion-color-success) !important;
-        }
+        padding: 0px !important;
+        border-bottom: 2px solid var(--ion-color-light);
     }
 }
 
@@ -58,12 +61,13 @@ ion-toolbar {
     --background: var(--ion-color-primary);
     --color: var(--ion-color-light);
 }
+
 ion-header {
-    border-bottom: 2px solid var(--ion-color-success);
+    border-bottom: 2px solid var(--ion-color-light);
 }
 
 ion-menu-button {
-    color: var(--ion-color-success);
+    color: var(--ion-color-tertiary);
 }
 
 ion-title {
@@ -78,4 +82,56 @@ ion-title {
     height: 150px;
     overflow: hidden;
     margin: 20px auto;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    color: var(--ion-color-medium);
+    flex-wrap: wrap;
+    span {
+        color: var(--ion-color-light);
+        margin-right: 8px;
+    }
+}
+
+.game-icon {
+    ion-icon {
+        font-size: 280px;
+        position: absolute;
+        bottom: -46px;
+        right: -30px;
+        color: #ffffff6b;
+        z-index: -1;
+        transform: rotate(62deg);
+    }
+}
+
+.login-page {
+    --overflow: hidden;
+}
+
+.login-page-text {
+    text-align: center;
+    p {
+        margin-bottom: 0;
+    }
+    a {
+        color: var(--ion-color-light);
+        text-transform: capitalize;
+    }
+}
+
+.game-icon-top {
+    ion-icon {
+        font-size: 100px;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        color: #ffffff6b;
+        z-index: -1;
+        // transform: rotate(45deg);
+    }
 }
