@@ -151,7 +151,6 @@ ion-title {
     }
 }
 
-
 .tournament-card {
     border-radius: 10px;
     box-shadow: 0px 0px 6px 0px rgba(69, 69, 69, 0.75);
@@ -162,7 +161,6 @@ ion-title {
     background-color: var(--ion-color-medium-shade);
     color: var(--ion-color-light);
     padding: 0px 10px 0 0px;
-
 
     .tournament-card-content {
         display: flex;
@@ -221,6 +219,13 @@ ion-title {
                     margin-right: 5px;
                     font-size: 20px;
                     color: var(--ion-color-tertiary-tint);
+                    max-width: 22px;
+                    min-width: 22px;
+                    width: 100%;
+                    height: 22px;
+                    padding: 2px;
+                    background: transparent;
+                    // border-radius: 50%;
                 }
             }
 
@@ -236,4 +241,3 @@ ion-title {
         }
     }
 }
-
