@@ -12,7 +12,7 @@
   <main class="content-inner-body ion-padding">
     <ion-row>
 
-      <ion-col size="12">
+      <ion-col *ngFor="let item of response" size="12">
         <div class="tournament-card">
           <div class="tournament-card-content">
             <div class="game-img">

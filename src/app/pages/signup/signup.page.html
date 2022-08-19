@@ -8,14 +8,17 @@
     </h1>
 
 
-    <form [formGroup]="loginForm"  novalidate class="site-form">
+    <form [formGroup]="signupForm"  (ngSubmit)="doSignup()"  novalidate class="site-form">
 
-
+        <div class="form-group">
+            <ion-input type="text" formControlName="name" name="name" placeholder="Enter Complete Name"
+                class="ion-no-padding ion-padding-vertical" required>
+            </ion-input>
+        </div>
         <div class="form-group">
             <ion-input type="email" formControlName="email" name="email" placeholder="Enter email"
                 class="ion-no-padding ion-padding-vertical" required>
             </ion-input>
-
         </div>
         <div class="form-group">
             <ion-input type="password" formControlName="password" name="password" placeholder="Password"
@@ -23,7 +26,7 @@
             </ion-input>
         </div>
         <div class="form-group">
-            <ion-input type="password"  name="confirmpassword"
+            <ion-input type="password" name="password_confirmation" formControlName="password_confirmation"
                 placeholder="Confirm Password" class="ion-no-padding ion-padding-vertical" required>
             </ion-input>
         </div>

@@ -16,6 +16,10 @@ export class AuthService {
     return this.httpService.post('login', params);
   };
 
+  public signup = (params) => {
+    return this.httpService.post('register', params);
+  };
+
   public getUser() {
     return this.httpService.get('user');
   }
