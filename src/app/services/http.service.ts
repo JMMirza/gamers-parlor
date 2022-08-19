@@ -19,7 +19,7 @@ export class HttpService {
 
   get(endpoint: string, data?: any) {
     const headers = new HttpHeaders({});
-    const options = { headers: headers, withCredintials: true };
+    const options = { headers: headers, withCredintials: true, params: data };
     const url = environment.apiUrl + endpoint;
     return this.http.get(url, options);
   }

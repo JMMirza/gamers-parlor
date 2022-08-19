@@ -7,6 +7,6 @@ export class TournamentService {
   constructor(private httpService: HttpService) {}
 
   listTournament(params?) {
-    return this.httpService.get('list-tournaments');
+    return this.httpService.get('list-tournaments', params);
   }
 }
