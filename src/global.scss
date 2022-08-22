@@ -276,4 +276,7 @@ ion-title {
             }
         }
     }
+    .item-native {
+        --border: none !important;
+    }
 }
