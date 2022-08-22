@@ -1,35 +1,59 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding login-page">
+  <div class="site-logo">
+    <ion-img src="../../../assets/logoo.png" class="img-fluid"></ion-img>
+  </div>
 
-<ion-content class="ion-padding">
-  <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate>
+  <h1 class="page-title">
+    <span> welcome </span> to Tournament app
+  </h1>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email" name="email" required></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.email">
-        <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
+
+  <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate class="site-form">
+
+    <div class="form-group">
+      <ion-input type="email" formControlName="email" name="email" placeholder="Enter your email"
+        class="ion-no-padding ion-padding-vertical" required>
+      </ion-input>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message"
+            *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
     </div>
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlName="password" name="password" required></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.password">
-        <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
+    <div class="form-group">
+      <ion-input type="password" formControlName="password" name="password" placeholder="Enter your password"
+        class="ion-no-padding ion-padding-vertical" required>
+      </ion-input>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message"
+            *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
     </div>
-    <ion-button [disabled]="!loginForm.valid" type="submit" color="success" expand="block">Submit</ion-button>
+    <ion-button [disabled]="!loginForm.valid" type="submit" color="primary" class="ion-margin-top">
+      login
+    </ion-button>
 
   </form>
+
+  <div class="login-page-text">
+    <ion-text color="medium">
+      <p>Don't have an accout !</p>
+    </ion-text>
+    <a href="">sign up</a>
+  </div>
+  <div class="game-icon-top">
+    <ion-icon name="locate-outline"></ion-icon>
+  </div>
+
+  <div class="game-icon">
+    <ion-icon name="logo-firefox"></ion-icon>
+  </div>
 </ion-content>

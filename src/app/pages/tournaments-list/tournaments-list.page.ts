@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { TournamentService } from '../../services/tournament.service';
 import { LoadingController } from '@ionic/angular';
 
 @Component({
@@ -8,8 +8,9 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./tournaments-list.page.scss'],
 })
 export class TournamentsListPage implements OnInit {
+  response: any;
   constructor(
-    private authService: AuthService,
+    private tournamentService: TournamentService,
     private loadingCtrl: LoadingController
   ) {}
 
@@ -25,9 +26,10 @@ export class TournamentsListPage implements OnInit {
 
     loading.present();
 
-    await this.authService.getUser().subscribe(
+    await this.tournamentService.listTournament().subscribe(
       (data: any) => {
         console.log(data);
+        this.response = data;
         loading.dismiss();
       },
       (error) => {
