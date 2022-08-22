@@ -18,7 +18,15 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () =>
       import('./pages/signup/signup.module').then((m) => m.SignupPageModule),
+  },  {
+    path: 'my-tournaments',
+    loadChildren: () => import('./pages/my-tournaments/my-tournaments.module').then( m => m.MyTournamentsPageModule)
   },
+  {
+    path: 'my-teams',
+    loadChildren: () => import('./pages/my-teams/my-teams.module').then( m => m.MyTeamsPageModule)
+  },
+
 ];
 
 @NgModule({
