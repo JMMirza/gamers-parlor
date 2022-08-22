@@ -147,7 +147,7 @@ ion-title {
 
 .content-inner-body {
     position: relative;
-    height: -webkit-fill-available;
+    // height: -webkit-fill-available;
 
     .game-icon ion-icon {
         transform: unset !important;
@@ -249,3 +249,16 @@ ion-title {
     --background: var(--ion-color-light-shade);
 }
 
+.side-menu-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    ion-note {
+        margin-bottom: 0 !important;
+    }
+}
+
+#inbox-list {
+    padding: 0 !important;
+}
