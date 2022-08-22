@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TournamentService } from '../../services/tournament.service';
 import { LoadingController } from '@ionic/angular';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-tournaments-list',
@@ -8,6 +9,9 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./tournaments-list.page.scss'],
 })
 export class TournamentsListPage implements OnInit {
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
+  pageNo = 1;
   response: any;
   constructor(
     private tournamentService: TournamentService,
@@ -26,16 +30,56 @@ export class TournamentsListPage implements OnInit {
 
     loading.present();
 
-    await this.tournamentService.listTournament().subscribe(
-      (data: any) => {
-        console.log(data);
-        this.response = data;
-        loading.dismiss();
-      },
-      (error) => {
-        console.log(error);
-        loading.dismiss();
-      }
-    );
+    await this.tournamentService
+      .listTournament({ pageNo: this.pageNo })
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.response = data;
+          loading.dismiss();
+        },
+        (error) => {
+          console.log(error);
+          loading.dismiss();
+        }
+      );
+  }
+
+  async loadMore(event) {
+    this.pageNo++;
+    await this.tournamentService
+      .listTournament({ page_no: this.pageNo })
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+
+          for (var item of data) {
+            this.response.push(item);
+          }
+
+          event.target.complete();
+        },
+        (error) => {
+          console.log(error);
+          event.target.complete();
+        }
+      );
+  }
+
+  public async doRefresh(event) {
+    this.pageNo = 1;
+    await this.tournamentService
+      .listTournament({ page_no: this.pageNo })
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.response = data;
+          event.target.complete();
+        },
+        (error) => {
+          console.log(error);
+          event.target.complete();
+        }
+      );
   }
 }
