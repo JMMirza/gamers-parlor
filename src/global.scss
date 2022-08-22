@@ -262,3 +262,18 @@ ion-title {
 #inbox-list {
     padding: 0 !important;
 }
+
+.myTournament {
+    ion-item {
+        align-items: flex-start !important;
+        padding: 10px 0px;
+        ion-avatar {
+            margin-top: 0px !important;
+        }
+        ion-label {
+            h2 {
+                margin-top: 0px !important;
+            }
+        }
+    }
+}
