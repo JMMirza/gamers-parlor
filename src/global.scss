@@ -37,10 +37,10 @@ ion-content {
 //     --background: linear-gradient(to right, rgb(105, 154, 5), #696a6b) !important;
 // }
 
-ion-item {
-    --background: var(--ion-color-primary);
-    --color: var(--ion-color-light);
-}
+// ion-item {
+//     --background: var(--ion-color-primary);
+//     --color: var(--ion-color-light);
+// }
 
 .site-form {
     padding: 50px;
@@ -147,7 +147,7 @@ ion-title {
 
 .content-inner-body {
     position: relative;
-    height: -webkit-fill-available;
+    // height: -webkit-fill-available;
 
     .game-icon ion-icon {
         transform: unset !important;
@@ -245,7 +245,38 @@ ion-title {
     }
 }
 
-
-.navigation-menu{
+.navigation-menu {
     --background: var(--ion-color-light-shade);
+}
+
+.side-menu-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    ion-note {
+        margin-bottom: 0 !important;
+    }
+}
+
+#inbox-list {
+    padding: 0 !important;
+}
+
+.myTournament {
+    ion-item {
+        align-items: flex-start !important;
+        padding: 10px 0px;
+        ion-avatar {
+            margin-top: 0px !important;
+        }
+        ion-label {
+            h2 {
+                margin-top: 0px !important;
+            }
+        }
+    }
+    .item-native {
+        --border: none !important;
+    }
 }
