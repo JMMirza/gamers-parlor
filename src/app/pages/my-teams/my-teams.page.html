@@ -7,23 +7,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+  <main class="content-inner-body ion-padding">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-  <ion-list lines="none" class="ion-padding">
-    <!-- <ion-list-header> Recent Conversations </ion-list-header> -->
-    <ion-card>
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="../../../assets/fifa.jpg" />
-        </ion-avatar>
-        <ion-label>
-          <h2>Team BT</h2>
-          <p>Created At: 22 Jun, 2022</p>
-        </ion-label>
-        <ion-badge slot="end">22</ion-badge>
+    <ion-virtual-scroll [items]="response" approxItemHeight="170px">
+      
 
-      </ion-item>
-    </ion-card>
-  </ion-list>
+        <ion-row *virtualItem="let item; let itemBounds = bounds;">
+          <ion-col *ngFor="let item of response" size="12">
+            <ion-card>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img src="../../../assets/fifa.jpg" />
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{item.role}}</h2>
+                  <p>Created At: 22 Jun, 2022</p>
+                </ion-label>
+                <ion-badge slot="end">22</ion-badge>
+        
+              </ion-item>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+    
 
+      
+    </ion-virtual-scroll>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    
+    <div class="game-icon-top">
+      <ion-icon name="locate-outline"></ion-icon>
+    </div>
+
+    <div class="game-icon">
+      <ion-icon name="logo-firefox"></ion-icon>
+    </div>
+
+  </main>
 </ion-content>

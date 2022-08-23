@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MyTeamsService } from '../../services/my-teams.service';
+import { LoadingController } from '@ionic/angular';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-teams',
@@ -6,10 +9,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-teams.page.scss'],
 })
 export class MyTeamsPage implements OnInit {
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  pageNo = 1;
+  response: any;
 
-  constructor() { }
+  constructor(
+    private myTeamsService: MyTeamsService,
+    private loadingCtrl: LoadingController
+  ) {}
 
   ngOnInit() {
+    this.listMyTeams();
   }
 
+  async listMyTeams() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading..',
+      // duration: 3000,
+    });
+
+    loading.present();
+
+    await this.myTeamsService.listMyTeams().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.response = data;
+        loading.dismiss();
+      },
+      (error) => {
+        console.log(error);
+        loading.dismiss();
+      }
+    );
+  }
 }
