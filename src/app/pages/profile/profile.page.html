@@ -18,7 +18,7 @@
         <div class="profile-card">
           <div class="pic-holder">
             <!-- uploaded pic shown here -->
-            <img id="profilePic" class="pic" src="https://source.unsplash.com/random/150x150?person">
+            <img id="profilePic" class="pic" src="{{response.avatar}}">
 
             <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto" accept="image/*"
               style="opacity: 0;" />
@@ -35,24 +35,24 @@
           </div>
 
           <form class="ion-margin-top">
-           
+
             <ion-item lines="full">
               <ion-label position="floating">Name</ion-label>
-              <ion-input type="text" required></ion-input>
+              <ion-input type="text" value="{{response.name}}" required></ion-input>
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Email</ion-label>
-              <ion-input type="email" required></ion-input>
+              <ion-input type="email" value="{{response.email}}" required></ion-input>
             </ion-item>
             <ion-item lines="full">
-              <ion-input type="date" required></ion-input>
+              <ion-input type="date" value="{{reponse.date_of_birth}}" required></ion-input>
             </ion-item>
-            <ion-item lines="full">
+            <!-- <ion-item lines="full">
               <ion-label position="floating">Mobile</ion-label>
               <ion-input type="text" required></ion-input>
-            </ion-item>
+            </ion-item> -->
             <!-- Radio buttons -->
-            <ion-radio-group lines="full">
+            <!-- <ion-radio-group lines="full">
               <ion-list-header color="primary">
                 <ion-label>Gender</ion-label>
               </ion-list-header>
@@ -70,7 +70,7 @@
                 <ion-label>Science</ion-label>
                 <ion-checkbox></ion-checkbox>
               </ion-item>
-            </ion-list>
+            </ion-list> -->
             <ion-row>
               <ion-col>
                 <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
