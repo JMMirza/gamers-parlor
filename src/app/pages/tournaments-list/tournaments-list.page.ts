@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TournamentService } from '../../services/tournament.service';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { SwiperComponent } from 'swiper/angular';
+
 
 @Component({
   selector: 'app-tournaments-list',
@@ -10,6 +12,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 })
 export class TournamentsListPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild('swiper') swiper: SwiperComponent;
 
   pageNo = 1;
   response: any;

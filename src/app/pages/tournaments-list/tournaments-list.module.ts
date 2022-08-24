@@ -8,13 +8,18 @@ import { TournamentsListPageRoutingModule } from './tournaments-list-routing.mod
 
 import { TournamentsListPage } from './tournaments-list.page';
 
+import { SwiperModule } from 'swiper/angular';
+
+import { VipTournamentCardComponent } from '../../components/vip-tournament-card/vip-tournament-card.component';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TournamentsListPageRoutingModule
+    TournamentsListPageRoutingModule,
+    SwiperModule
   ],
-  declarations: [TournamentsListPage]
+  declarations: [TournamentsListPage, VipTournamentCardComponent]
 })
 export class TournamentsListPageModule {}

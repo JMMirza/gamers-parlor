@@ -9,6 +9,45 @@
 
 
 <ion-content >
+
+
+  <main class="content-inner-body ion-padding-horizontal">
+    <ion-segment>
+      <ion-segment-button value="nemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (1).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="friends" class="game-filters">
+        <ion-img src="../../../assets/gamee (2).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="eemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (3).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="enemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (4).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="eneme" class="game-filters">
+        <ion-img src="../../../assets/gamee (5).png"></ion-img>
+      </ion-segment-button>
+    </ion-segment>
+
+
+    <div class="tournaments-slider-section">
+      <h1 class="main-heading">
+        <span>vip</span> Tournaments
+      </h1>
+
+      <swiper class="slider-cover" [initialSlide]="1" [slidesPerView]="1.25" [spaceBetween]="20" [centeredSlides]="true" #swiper>
+        <ng-template swiperSlide>
+          <app-vip-tournament-card></app-vip-tournament-card>
+        </ng-template>
+        <ng-template swiperSlide>
+          <app-vip-tournament-card></app-vip-tournament-card>
+        </ng-template>
+      </swiper>
+
+    </div>
+  </main>
+
   <main class="content-inner-body ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
       <ion-refresher-content></ion-refresher-content>
@@ -79,14 +118,7 @@
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 
-    
-    <div class="game-icon-top">
-      <ion-icon name="locate-outline"></ion-icon>
-    </div>
-
-    <div class="game-icon">
-      <ion-icon name="logo-firefox"></ion-icon>
-    </div>
+   
 
   </main>
 </ion-content>
