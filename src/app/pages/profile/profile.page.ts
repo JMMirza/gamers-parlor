@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,8 @@ import { IonInfiniteScroll } from '@ionic/angular';
 export class ProfilePage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   pageNo = 1;
-  response: any;
+  response: User = new User();
+
   constructor(
     private userProfile: UserProfileService,
     private loadingCtrl: LoadingController

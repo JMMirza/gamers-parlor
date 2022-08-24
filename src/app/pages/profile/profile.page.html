@@ -18,10 +18,7 @@
         <div class="profile-card">
           <div class="pic-holder">
             <!-- uploaded pic shown here -->
-            <img id="profilePic" class="pic" src="{{response.avatar}}">
-
-            <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto" accept="image/*"
-              style="opacity: 0;" />
+            <img id="profilePic" class="pic" [src]="response.avatar_url">
             <label for="newProfilePhoto" class="upload-file-block">
               <div class="text-center">
                 <div class="mb-2">
@@ -38,14 +35,14 @@
 
             <ion-item lines="full">
               <ion-label position="floating">Name</ion-label>
-              <ion-input type="text" value="{{response.name}}" required></ion-input>
+              <ion-input type="text" name="name" [(ngModel)]="response.name" required></ion-input>
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Email</ion-label>
-              <ion-input type="email" value="{{response.email}}" required></ion-input>
+              <ion-input type="email" name="email" [(ngModel)]="response.email" required></ion-input>
             </ion-item>
             <ion-item lines="full">
-              <ion-input type="date" value="{{reponse.date_of_birth}}" required></ion-input>
+              <ion-input type="date" name="date" [(ngModel)]="response.date_of_birth" required></ion-input>
             </ion-item>
             <!-- <ion-item lines="full">
               <ion-label position="floating">Mobile</ion-label>
