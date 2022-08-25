@@ -1,14 +1,4 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
@@ -25,18 +15,31 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
 @import "swiper/scss";
 @import "swiper/scss/navigation";
 @import "swiper/scss/pagination";
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif !important;
 }
 
-ion-content {
-    --background: var(--ion-color-content-bg);
-    --position: relative;
+ion-content.content-inner-body {
+    // --background: url("../src/assets/ccbg.png") no-repeat center;
+    // background-size: cover;
+    // background-position: center center;
+    --background: rgb(59, 52, 52);
+    width: 100%;
+    height: -webkit-fill-available;
+    main {
+        margin-top: 100px;
+    }
+}
+
+.login-cover {
+    // --background: url("../src/assets/ezgif.com-gif-maker.jpg") no-repeat center !important;
+    --background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../src/assets/ezgif.com-gif-maker.jpg") no-repeat center !important;
+    height: 100% !important;
 }
 
 ion-img,
@@ -52,19 +55,18 @@ ion-img,
 }
 
 .site-form {
-    padding: 50px;
-    background: rgba(104, 104, 104, 0.46);
-    border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
     margin: 0 auto;
 }
 .form-group {
     margin-bottom: 10px;
     ion-input {
-        --color: var(--ion-color-light) !important;
-        padding: 0px !important;
-        border-bottom: 2px solid var(--ion-color-light);
+        --color: var(--ion-color-secondary-contrast);
+        --padding: 0px !important;
+        --border-bottom: 2px solid var(--ion-color-light);
+        --background: #f00 !important;
+    }
+    .item-native {
+        background: #000 !important;
     }
 }
 
@@ -101,16 +103,19 @@ ion-title {
 }
 
 .page-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-transform: capitalize;
-    color: var(--ion-color-primary);
-    flex-wrap: wrap;
-    font-weight: 600;
+    color: var(--ion-color-secondary-contrast);
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 17px;
+    display: flex;
+    flex-direction: column;
     span {
-        color: var(--ion-color-light);
-        margin-right: 8px;
+        color: var(--ion-color-secondary-contrast);
+        font-weight: 400;
+        font-size: 9px;
+        line-height: 17px;
+        margin-top: 20px;
     }
 }
 
@@ -121,25 +126,33 @@ ion-title {
 .login-page-text {
     text-align: center;
     p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 17px;
         margin-bottom: 0;
-        color: var(--ion-color-primary);
+        color: var(--ion-color-secondary-contrast);
     }
     a {
-        color: var(--ion-color-light);
+        color: var(--ion-color-secondary-contrast);
         text-transform: capitalize;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        text-decoration: none;
     }
 }
 
 .tournament-card {
-    border-radius: 10px;
-    box-shadow: 0px 0px 6px 0px rgba(69, 69, 69, 0.75);
+    border-radius: 13px;
+    border: 1px solid var(--ion-color-primary);
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: var(--ion-color-medium-shade);
-    color: var(--ion-color-light);
-    padding: 0px 10px 0 0px;
+    background-color: #263341;
+    padding: 15px 20px 15px 6px;
+    // height: 109px;
+    overflow: hidden;
 
     .tournament-card-content {
         display: flex;
@@ -147,16 +160,15 @@ ion-title {
         gap: 10px;
         width: 100%;
         .game-img {
-            max-width: 100px;
+            max-width: 66px;
             width: 100%;
             overflow: hidden;
-            border-radius: 5px 0px 0px 10px;
-            height: 150px;
+            border-radius: 10px;
+            height: 75px;
             display: flex;
             justify-self: center;
             align-items: center;
             overflow: hidden;
-            background-color: var(--ion-color-light);
         }
         .game-info {
             display: flex;
@@ -164,7 +176,7 @@ ion-title {
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
             h1,
             a {
                 margin: 0;
@@ -172,57 +184,103 @@ ion-title {
             }
 
             a {
-                font-size: 14px;
+                font-size: 7px;
+                line-height: 10px;
+                display: flex;
+                flex-direction: column;
+                // align-items: center;
+                text-decoration: none !important;
+                span {
+                    font-size: 10px;
+                    line-height: 16px;
+                    color: var(--ion-color-869BAF);
+                }
             }
 
             .game-title {
-                color: var(--ion-color-light);
-                font-size: 20px;
-                font-weight: 600;
+                color: var(--ion-color-secondary-contrast);
+                font-size: 15px;
+                line-break: 23px;
+                font-weight: 500;
+                text-transform: uppercase;
             }
         }
         .card-body {
             width: 100%;
             p {
-                margin: 4px 0;
+                margin: 2px 0;
                 display: flex;
                 align-items: center;
-                color: var(--ion-color-light);
+                color: var(--ion-color-secondary-contrast);
                 text-transform: capitalize;
-                font-weight: 500;
-                font-size: 14px;
+                font-weight: 600;
+                font-size: 9px;
+                line-height: 13px;
                 span {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    margin-right: 5px;
-                    font-size: 20px;
-                    color: var(--ion-color-tertiary-tint);
-                    max-width: 22px;
-                    min-width: 22px;
+                    margin-right: 1px;
+                    font-size: 14px;
+                    color: var(--ion-color-secondary-contrast);
+                    max-width: 14px;
+                    min-width: 14px;
                     width: 100%;
-                    height: 22px;
-                    padding: 2px;
+                    height: 14px;
+                    padding: 1px;
                     background: transparent;
                     // border-radius: 50%;
                 }
             }
 
+            .tournament-timing {
+                color: var(--ion-color-primary);
+                font-size: 9px;
+                line-height: 13px;
+                text-transform: capitalize;
+                font-weight: 500;
+                ion-icon {
+                    font-size: 14px !important;
+                    color: var(--ion-color-primary) !important;
+                }
+            }
+
+            .t-pricing {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
             .card-footer {
                 display: flex;
                 align-items: center;
-                column-gap: 10px;
+                justify-content: flex-end;
+                column-gap: 20px;
                 row-gap: 5px;
-                border-top: 1px solid var(--ion-color-light);
-                padding-top: 5px;
-                margin-top: 5px;
+                border-top: 1px solid var(--ion-color-primary);
+                padding-top: 3px;
+                margin-top: 3px;
+                p {
+                    font-size: 9px;
+                    line-height: 13px;
+                    text-transform: capitalize;
+                    color: var(--ion-color-869BAF);
+                    gap: 5px;
+                    span {
+                        color: var(--ion-color-869BAF);
+                    }
+                }
             }
         }
     }
 }
 
 .navigation-menu {
-    --background: var(--ion-color-light-shade);
+    --background: var(--ion-color-secondary);
+    ion-label {
+        color: var(--ion-color-secondary-contrast);
+    }
 }
 
 .side-menu-header {
@@ -393,53 +451,70 @@ ion-title {
 }
 
 .game-filters {
-    max-width: 61px;
-    min-width: 61px;
+    max-width: 62px;
+    min-width: 62px;
     width: 100%;
-    height: 63px;
+    height: 62px;
     background-color: var(--ion-color-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
+    padding: 5px;
 }
 
-.game-icon {
-    position: absolute;
-    bottom: -46px;
-    right: -30px;
-    // z-index: -1;
-}
+// .game-icon {
+//     position: absolute;
+//     bottom: -46px;
+//     right: -30px;
+//     // z-index: -1;
+// }
 
 .game-icon-top {
     position: absolute;
-    top: 0;
-    left: -5px;
+    top: -125px;
+    left: -45px;
+    z-index: -1;
 }
+
 ion-segment {
     gap: 5px;
     align-items: center;
 }
 ion-segment-button.segment-button-checked {
-    background: var(--ion-color-primary);
+    background: rgb(121, 176, 30);
+    background: -moz-linear-gradient(
+        315deg,
+        rgba(121, 176, 30, 1) 0%,
+        rgba(121, 176, 30, 1) 50%,
+        rgba(139, 196, 59, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+        315deg,
+        rgba(121, 176, 30, 1) 0%,
+        rgba(121, 176, 30, 1) 50%,
+        rgba(139, 196, 59, 1) 100%
+    );
+    background: linear-gradient(
+        315deg,
+        rgba(121, 176, 30, 1) 0%,
+        rgba(121, 176, 30, 1) 50%,
+        rgba(139, 196, 59, 1) 100%
+    );
     border: none;
-    height: 65px;
-}
-
-.content-inner-body {
-    margin-top: 100px;
 }
 
 .vip-card {
     background: var(--ion-color-card-bg);
-    padding: 7px 7px 15px;
+    padding: 7px 7px 0px;
     border-radius: 20px;
     margin: 0;
     ion-card-content {
-        padding: 0 20px;
+        padding: 0 10px;
         p {
             margin-top: 10px;
-            font-size: 16px;
+            font-size: 10px;
+            line-height: 16px;
             font-weight: 500;
             color: var(--ion-color-869BAF);
         }
@@ -453,14 +528,14 @@ ion-segment-button.segment-button-checked {
                 display: flex;
                 align-items: center;
                 // justify-content: center;
-                width: 34px;
-                height: 34px;
+                width: 17px;
+                height: 17px;
                 overflow: hidden;
             }
             h1 {
-                font-size: 22px;
+                font-size: 12px;
                 font-weight: 500;
-                line-height: 22px;
+                line-height: 18px;
                 text-transform: uppercase;
                 color: var(--ion-color-secondary-contrast);
             }
@@ -471,8 +546,10 @@ ion-segment-button.segment-button-checked {
             justify-content: space-between;
             align-items: center;
             margin-top: 10px;
+            flex-wrap: wrap;
             h2 {
-                font-size: 20px;
+                font-size: 14px;
+                line-height: 21px;
                 font-weight: 500;
                 color: var(--ion-color-869BAF);
                 &::first-letter {
@@ -480,8 +557,9 @@ ion-segment-button.segment-button-checked {
                 }
             }
             p {
-                font-size: 15px;
-                font-weight: 400;
+                font-size: 11px;
+                line-height: 17px;
+                font-weight: 600;
                 color: var(--ion-color-secondary-contrast);
                 margin: 0;
                 display: flex;
@@ -494,10 +572,13 @@ ion-segment-button.segment-button-checked {
                 display: flex;
                 align-items: center;
                 gap: 5px;
+                font-size: 10px;
+                line-height: 16px;
+                font-weight: 600;
             }
             .icon-img {
-                width: 17px;
-                height: 17px;
+                width: 13px;
+                height: 13px;
                 overflow: hidden;
             }
         }
@@ -507,16 +588,18 @@ ion-segment-button.segment-button-checked {
             justify-content: space-between;
             gap: 10px;
             margin-top: 15px;
+            background: var(--ion-color-222e3a);
+            padding: 5px 0px 10px;
             .match-player-imgs {
                 display: flex;
                 align-items: center;
                 .player-dp {
                     border-radius: 50%;
-                    min-width: 50px;
-                    max-width: 50px;
-                    height: 50px;
+                    min-width: 31px;
+                    max-width: 31px;
+                    height: 31px;
                     overflow: hidden;
-                    border: 5px solid var(--ion-color-card-bg);
+                    border: 3px solid var(--ion-color-card-bg);
                     box-sizing: border-box;
                     margin-left: -14px;
                     &:first-child {
@@ -527,17 +610,21 @@ ion-segment-button.segment-button-checked {
                     img {
                         display: none;
                     }
-                    font-size: 14px;
-                    font-weight: 700;
+
                     background: rgb(121, 176, 30);
                     background: -moz-linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
                     background: -webkit-linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
                     background: linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
-                    color: var(--ion-color-secondary-contrast);
+                    h5 {
+                        color: var(--ion-color-secondary-contrast);
+                        font-size: 10px;
+                        font-weight: 600;
+                    }
                 }
             }
             .player-no-count {
-                font-size: 20px;
+                font-size: 12px;
+                line-height: 18px;
                 font-weight: 500;
                 color: var(--ion-color-869BAF);
                 text-transform: capitalize;
@@ -547,8 +634,9 @@ ion-segment-button.segment-button-checked {
 }
 
 .main-heading {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
+    line-height: 23px;
     color: var(--ion-color-secondary-contrast);
     text-transform: capitalize;
     span {
@@ -560,7 +648,64 @@ ion-segment-button.segment-button-checked {
     margin-top: 20px;
 }
 
-
-.tournaments-slider-section{
+.tournaments-slider-section {
     margin-top: 25px;
+}
+
+.primary-btn {
+    // max-width: 90px;
+    // width: 100%;
+    // height: 19px;
+    background-color: var(--ion-color-card-bg);
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 3px;
+    font-size: 9px;
+    text-decoration: none;
+    transition: 0.3s;
+    padding: 2.5px 12px;
+    ion-icon {
+        font-size: 12px;
+    }
+    &:hover {
+        background: var(--ion-color-primary);
+        color: var(--ion-color-secondary-contrast);
+        ion-icon {
+            color: var(--ion-color-secondary-contrast);
+        }
+    }
+}
+
+.secondary-btn {
+    font-family: 'Roboto', sans-serif !important;
+    background-color: var(--ion-color-primary);
+    color: var(--ion-color-secondary-contrast);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 9px;
+    text-decoration: none;
+    transition: 0.3s;
+    padding: 2.5px 12px;
+    text-transform: capitalize;
+    font-size: 16px;
+    line-height: 17px;
+    height: 59px;
+    width: 100%;
+    font-weight: 700;
+    ion-icon {
+        font-size: 12px;
+    }
+    &:hover {
+        background: rgba(0, 0, 0, 0.2);
+        color: var(--ion-color-primary);
+        border-color: var(--ion-color-primary);
+    }
+
+    .button-native {
+        box-shadow: none !important;
+    }
+    button.button-native {
+        background: none;
+        border: none;
+        box-shadow: none !important;
+    }
 }

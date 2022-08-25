@@ -1,53 +1,53 @@
-<ion-content class="ion-padding login-page">
-  <div class="site-logo">
-    <ion-img src="../../../assets/logoo.png" class="img-fluid"></ion-img>
-  </div>
+<ion-content class="content-inner-body login-cover">
+  <main class="ion-padding-horizontal">
+    <h1 class="page-title">
+      sign up
+      <span>
+        this app for gamers
+      </span>
+    </h1>
 
-  <h1 class="page-title">
-    <span> welcome </span> to Tournament app
-  </h1>
 
-
-  <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate class="site-form">
-
-    <div class="form-group">
-      <ion-input type="email" formControlName="email" name="email" placeholder="Enter your email"
-        class="ion-no-padding ion-padding-vertical" required>
-      </ion-input>
-      <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.email">
-          <div class="error-message"
-            *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate class="site-form">
+      <div class="form-group">
+        <ion-item>
+          <ion-label position="floating">Floating Label</ion-label>
+          <ion-input inputmode="email" formControlName="email" name="email" autocomplete="off"
+            class="ion-no-padding ion-padding-vertical" required></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.email">
+            <div class="error-message"
+              *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <ion-input type="password" formControlName="password" name="password" placeholder="Enter your password"
-        class="ion-no-padding ion-padding-vertical" required>
-      </ion-input>
-
-      <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.password">
-          <div class="error-message"
-            *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
+      <div class="form-group">
+        <ion-item>
+          <ion-label position="floating">Floating Label</ion-label>
+          <ion-input inputmode="password" formControlName="password" name="password"
+            class="ion-no-padding ion-padding-vertical" required></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.password">
+            <div class="error-message"
+              *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
+      <button [disabled]="!loginForm.valid" type="submit" class="secondary-btn ion-margin-top">
+        log in
+      </button>
+
+    </form>
+
+    <div class="login-page-text">
+      <p>You don't have an account?</p>
+      <a href="">signup</a>
     </div>
-    <ion-button [disabled]="!loginForm.valid" type="submit" color="primary" class="ion-margin-top">
-      login
-    </ion-button>
-
-  </form>
-
-  <div class="login-page-text">
-    <ion-text color="medium">
-      <p>Don't have an accout !</p>
-    </ion-text>
-    <a href="">sign up</a>
-  </div>
-
+  </main>
 </ion-content>
