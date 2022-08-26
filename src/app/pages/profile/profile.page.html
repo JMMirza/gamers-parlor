@@ -1,12 +1,11 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar class="ion-no-padding">
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title class="ion-text-start ion-no-padding ion-padding-start">profile</ion-title>
   </ion-toolbar>
-</ion-header>
-
+</ion-header> -->
 
 
 <ion-content class="content-inner-body">
@@ -15,72 +14,56 @@
 
     <ion-row>
       <ion-col size="12">
-        <div class="profile-card">
-          <div class="pic-holder">
-            <!-- uploaded pic shown here -->
-            <img id="profilePic" class="pic" [src]="response.avatar_url">
-            <label for="newProfilePhoto" class="upload-file-block">
-              <div class="text-center">
-                <div class="mb-2">
-                  <i class="fa fa-camera fa-2x"></i>
-                </div>
-                <div class="text-uppercase">
-                  Update <br /> Profile Photo
-                </div>
-              </div>
-            </label>
+        <div class="user-profile">
+          <div class="user-info-card">
+            <div class="profile-img get-center">
+              <img src="../../../assets/card-img-match.png" class="img-fluid" alt="">
+            </div>
+            <div class="card-body">
+              
+            </div>
           </div>
-
-          <form class="ion-margin-top">
-
-            <ion-item lines="full">
-              <ion-label position="floating">Name</ion-label>
-              <ion-input type="text" name="name" [(ngModel)]="response.name" required></ion-input>
-            </ion-item>
-            <ion-item lines="full">
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="email" name="email" [(ngModel)]="response.email" required></ion-input>
-            </ion-item>
-            <ion-item lines="full">
-              <ion-input type="date" name="date" [(ngModel)]="response.date_of_birth" required></ion-input>
-            </ion-item>
-            <!-- <ion-item lines="full">
-              <ion-label position="floating">Mobile</ion-label>
-              <ion-input type="text" required></ion-input>
-            </ion-item> -->
-            <!-- Radio buttons -->
-            <!-- <ion-radio-group lines="full">
-              <ion-list-header color="primary">
-                <ion-label>Gender</ion-label>
-              </ion-list-header>
-              <ion-item>
-                <ion-label>Male</ion-label>
-                <ion-radio slot="start" value="male" checked></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>Female</ion-label>
-                <ion-radio slot="start" value="female"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-            <ion-list lines="full">
-              <ion-item>
-                <ion-label>Science</ion-label>
-                <ion-checkbox></ion-checkbox>
-              </ion-item>
-            </ion-list> -->
-            <ion-row>
-              <ion-col>
-                <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
-              </ion-col>
-            </ion-row>
-          </form>
         </div>
       </ion-col>
     </ion-row>
-
-
-
-
-
   </main>
 </ion-content>
+
+
+
+<!-- 
+<div class="profile-card">
+  <div class="pic-holder">
+    <img id="profilePic" class="pic" [src]="response.avatar_url">
+    <label for="newProfilePhoto" class="upload-file-block">
+      <div class="text-center">
+        <div class="mb-2">
+          <i class="fa fa-camera fa-2x"></i>
+        </div>
+        <div class="text-uppercase">
+          Update <br /> Profile Photo
+        </div>
+      </div>
+    </label>
+  </div>
+
+  <form class="ion-margin-top">
+
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="response.name" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" name="email" [(ngModel)]="response.email" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-input type="date" name="date" [(ngModel)]="response.date_of_birth" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</div> -->

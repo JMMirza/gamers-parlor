@@ -1,20 +1,96 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar class="ion-padding-horizontal">
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title class="ion-text-start ion-no-padding">wagers</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 
-<ion-content>
-  <ion-segment>
-    <ion-segment-button value="friends">
-      <ion-label>Friends</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="enemies">
-      <ion-label>Enemies</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+
+
+<ion-content class="content-inner-body">
+  <main class="ion-padding-horizontal">
+
+    <ion-segment class="game-platform-filters">
+      <ion-segment-button value="nemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (1).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="friends" class="game-filters">
+        <ion-img src="../../../assets/gamee (2).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="eemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (3).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="enemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (4).png"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="eneme" class="game-filters">
+        <ion-img src="../../../assets/gamee (5).png"></ion-img>
+      </ion-segment-button>
+    </ion-segment>
+
+
+    <ion-segment class="match-filter">
+      <ion-segment-button value="friends">
+        <ion-label>requests</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="enemies">
+        <ion-label>matches</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  
+    <section class="tournament-list-section">
+   
+        <ion-row >
+          <ion-col size="12">
+            <div class="tournament-card">
+              <div class="tournament-card-content">
+                <div class="game-img">
+                  <ion-img src="../../../assets/t-card-(4).png" class="img-fluid"></ion-img>
+                </div>
+                <div class="card-body">
+                  <div class="game-info">
+                    <h1 class="game-title">item.name</h1>
+                    <a href="http://">
+                      <span>rules</span>
+                      view all
+                    </a>
+                  </div>
+
+                  <p class="tournament-timing">
+                    <span>
+                      <ion-icon name="time-sharp"></ion-icon>
+                    </span> mon at 2:00PM
+                  </p>
+
+
+                  <div class="t-pricing">
+                    <p class="tournament-price">
+                      <span>
+                        <ion-icon name="card"></ion-icon>
+                      </span> 50$
+                    </p>
+                    <p class="tournament-prize">
+                      <span>
+                        <ion-icon name="trophy-sharp"></ion-icon>
+                      </span> 120$
+                    </p>
+                  
+
+                    <a href="http://" target="_blank" class="primary-btn get-center">
+                      PARTICIPATE
+                      <span class="get-center">
+                        <ion-icon name="caret-forward"></ion-icon>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+    </section>
+  </main>
 </ion-content>

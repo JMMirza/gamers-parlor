@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap");
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
@@ -24,10 +24,11 @@ body {
 }
 
 ion-content.content-inner-body {
-    // --background: url("../src/assets/ccbg.png") no-repeat center;
-    // background-size: cover;
-    // background-position: center center;
-    --background: rgb(59, 52, 52);
+    --background: url("../src/assets/ccbg.png") no-repeat cover center;
+    background: url("../src/assets/ccbg.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover !important;
     width: 100%;
     height: -webkit-fill-available;
     main {
@@ -36,10 +37,12 @@ ion-content.content-inner-body {
 }
 
 .login-cover {
-    // --background: url("../src/assets/ezgif.com-gif-maker.jpg") no-repeat center !important;
-    --background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    // --background: url("../src/assets/ezgif.com-gif-maker.jpg") no-repeat cover center !important;
+    // background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    //     url("../src/assets/ezgif.com-gif-maker.jpg") no-repeat !important;
+
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url("../src/assets/ezgif.com-gif-maker.jpg") no-repeat center !important;
-    height: 100% !important;
 }
 
 ion-img,
@@ -59,15 +62,26 @@ ion-img,
 }
 .form-group {
     margin-bottom: 10px;
-    ion-input {
-        --color: var(--ion-color-secondary-contrast);
-        --padding: 0px !important;
-        --border-bottom: 2px solid var(--ion-color-light);
-        --background: #f00 !important;
+    .form-control {
+        height: 59px;
+        border-radius: 6px;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 10px 30px !important;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--ion-color-secondary-contrast);
+        input.native-input.sc-ion-input-md {
+            padding: 0;
+        }
     }
-    .item-native {
-        background: #000 !important;
+    .form-control::-webkit-input-placeholder {
+        --color: white !important;
+        opacity: 1;
     }
+    // ion-input {
+    //     --color: var(--ion-color-secondary-contrast);
+    //     --padding: 0px !important;
+    // }
 }
 
 .error-message {
@@ -129,7 +143,6 @@ ion-title {
         font-weight: 400;
         font-size: 12px;
         line-height: 17px;
-        margin-bottom: 0;
         color: var(--ion-color-secondary-contrast);
     }
     a {
@@ -150,7 +163,7 @@ ion-title {
     flex-direction: column;
     flex-wrap: wrap;
     background-color: #263341;
-    padding: 15px 20px 15px 6px;
+    padding: 16px;
     // height: 109px;
     overflow: hidden;
 
@@ -481,27 +494,35 @@ ion-segment {
     gap: 5px;
     align-items: center;
 }
+
 ion-segment-button.segment-button-checked {
-    background: rgb(121, 176, 30);
-    background: -moz-linear-gradient(
-        315deg,
-        rgba(121, 176, 30, 1) 0%,
-        rgba(121, 176, 30, 1) 50%,
-        rgba(139, 196, 59, 1) 100%
-    );
-    background: -webkit-linear-gradient(
-        315deg,
-        rgba(121, 176, 30, 1) 0%,
-        rgba(121, 176, 30, 1) 50%,
-        rgba(139, 196, 59, 1) 100%
-    );
-    background: linear-gradient(
-        315deg,
-        rgba(121, 176, 30, 1) 0%,
-        rgba(121, 176, 30, 1) 50%,
-        rgba(139, 196, 59, 1) 100%
-    );
-    border: none;
+    background: var(--ion-color-primary);
+    color: var(--ion-color-secondary-contrast);
+}
+
+.match-filter {
+    border-radius: 10px;
+    border: 1px solid var(--ion-color-primary);
+    padding: 0;
+    margin: 30px auto;
+    gap: 0;
+    height: 34px;
+    overflow: hidden;
+    max-width: 255px;
+    width: 100%;
+    ion-segment-button.segment-button-checked {
+        background: var(--ion-color-primary);
+        color: var(--ion-color-secondary-contrast);
+    }
+    ion-segment-button {
+        background: transparent;
+        color: var(--ion-color-primary);
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: capitalize;
+        outline: none;
+        height: 34px;
+    }
 }
 
 .vip-card {
@@ -676,12 +697,11 @@ ion-segment-button.segment-button-checked {
 }
 
 .secondary-btn {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: "Roboto", sans-serif !important;
     background-color: var(--ion-color-primary);
     color: var(--ion-color-secondary-contrast);
     border: 1px solid transparent;
     border-radius: 3px;
-    font-size: 9px;
     text-decoration: none;
     transition: 0.3s;
     padding: 2.5px 12px;
@@ -691,6 +711,7 @@ ion-segment-button.segment-button-checked {
     height: 59px;
     width: 100%;
     font-weight: 700;
+    margin-top: 30px;
     ion-icon {
         font-size: 12px;
     }
@@ -707,5 +728,37 @@ ion-segment-button.segment-button-checked {
         background: none;
         border: none;
         box-shadow: none !important;
+    }
+}
+
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 0 !important;
+}
+
+.user-info-card {
+    max-width: 366px;
+    width: 100%;
+    height: 290px;
+    border-radius: 20px;
+    border: 1px solid var(--ion-color-primary);
+    background: var(--ion-color-232D39);
+    margin: 0 auto;
+    position: relative;
+    .profile-img {
+        width: 123px;
+        height: 123px;
+        border: 5px solid var(--ion-color-primary);
+        overflow: hidden;
+        box-sizing: border-box;
+        border-radius: 50%;
+        position: absolute;
+        top: -62px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--ion-color-secondary-contrast);
     }
 }

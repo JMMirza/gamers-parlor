@@ -1,46 +1,48 @@
-<ion-content class="ion-padding login-page">
-    <div class="site-logo">
-        <ion-img src="../../../assets/logoo.png" class="img-fluid"></ion-img>
-    </div>
+<ion-content class="content-inner-body login-cover">
+    <main class="ion-padding-horizontal login-wrapper ion-no-margin">
+        <h1 class="page-title">
+            sign up
+            <span>
+                this app for gamers
+            </span>
+        </h1>
 
-    <h1 class="page-title">
-        <span> signup </span>  for Tournament
-    </h1>
+        <form [formGroup]="signupForm" (ngSubmit)="doSignup()" novalidate class="site-form" style="margin:0">
 
+            <div class="form-group">
+                <ion-input type="text" formControlName="name" name="name" placeholder="Full Name" class="form-control"
+                    required>
+                </ion-input>
+            </div>
+            <div class="form-group">
+                <ion-input type="tel" placeholder="Mobile no" class="form-control" required>
+                </ion-input>
+            </div>
+            <div class="form-group">
+                <ion-input type="email" formControlName="email" name="email" placeholder="Email Address"
+                    class="form-control" required>
+                </ion-input>
+            </div>
+            <div class="form-group">
+                <ion-input type="password" formControlName="password" name="password" placeholder="Password"
+                    class="form-control" required>
+                </ion-input>
+            </div>
+            <div class="form-group">
+                <ion-input type="password" name="password_confirmation" formControlName="password_confirmation"
+                    placeholder="Confirm Password" class="form-control" required>
+                </ion-input>
+            </div>
 
-    <form [formGroup]="signupForm"  (ngSubmit)="doSignup()"  novalidate class="site-form">
+            <button type="submit" class="secondary-btn">
+                sign up
+            </button>
 
-        <div class="form-group">
-            <ion-input type="text" formControlName="name" name="name" placeholder="Enter Complete Name"
-                class="ion-no-padding ion-padding-vertical" required>
-            </ion-input>
+        </form>
+
+        <div class="login-page-text">
+            <p>have you an accout ?</p>
+            <a href="">log in</a>
         </div>
-        <div class="form-group">
-            <ion-input type="email" formControlName="email" name="email" placeholder="Enter email"
-                class="ion-no-padding ion-padding-vertical" required>
-            </ion-input>
-        </div>
-        <div class="form-group">
-            <ion-input type="password" formControlName="password" name="password" placeholder="Password"
-                class="ion-no-padding ion-padding-vertical" required>
-            </ion-input>
-        </div>
-        <div class="form-group">
-            <ion-input type="password" name="password_confirmation" formControlName="password_confirmation"
-                placeholder="Confirm Password" class="ion-no-padding ion-padding-vertical" required>
-            </ion-input>
-        </div>
-        <ion-button type="submit" color="primary" class="ion-margin-top">
-            signup
-        </ion-button>
-
-    </form>
-
-    <div class="login-page-text">
-        <ion-text color="medium">
-            <p>Already have an accout</p>
-        </ion-text>
-        <a href="">login</a>
-    </div>
-   
+    </main>
 </ion-content>

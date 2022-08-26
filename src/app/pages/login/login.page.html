@@ -1,20 +1,18 @@
 <ion-content class="content-inner-body login-cover">
-  <main class="ion-padding-horizontal">
+  <main class="ion-padding-horizontal login-wrapper ion-no-margin">
     <h1 class="page-title">
-      sign up
+      log in
       <span>
         this app for gamers
       </span>
     </h1>
 
 
-    <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate class="site-form">
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate class="site-form" style="margin:0">
+
       <div class="form-group">
-        <ion-item>
-          <ion-label position="floating">Floating Label</ion-label>
-          <ion-input inputmode="email" formControlName="email" name="email" autocomplete="off"
-            class="ion-no-padding ion-padding-vertical" required></ion-input>
-        </ion-item>
+        <ion-input inputmode="email" formControlName="email" name="email" autocomplete="off" placeholder="Email Address"
+          class="form-control" required></ion-input>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.email">
             <div class="error-message"
@@ -25,11 +23,8 @@
         </div>
       </div>
       <div class="form-group">
-        <ion-item>
-          <ion-label position="floating">Floating Label</ion-label>
-          <ion-input inputmode="password" formControlName="password" name="password"
-            class="ion-no-padding ion-padding-vertical" required></ion-input>
-        </ion-item>
+        <ion-input inputmode="password" formControlName="password" name="password" placeholder="Password"
+          class="form-control" required></ion-input>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.password">
             <div class="error-message"
@@ -39,7 +34,7 @@
           </ng-container>
         </div>
       </div>
-      <button [disabled]="!loginForm.valid" type="submit" class="secondary-btn ion-margin-top">
+      <button [disabled]="!loginForm.valid" type="submit" class="secondary-btn">
         log in
       </button>
 
