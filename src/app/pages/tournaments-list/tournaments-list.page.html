@@ -27,23 +27,25 @@
       </ion-segment-button>
     </ion-segment>
     <section class="tournaments-slider-section">
-      <h1 class="main-heading">
-        <span>vip</span> Tournaments
-      </h1>
-      <swiper class="slider-cover" [initialSlide]="1" [slidesPerView]="1.25" [spaceBetween]="20" [centeredSlides]="true"
-        #swiper>
-        <ng-template swiperSlide>
+      <h1 class="main-heading"><span>vip</span> Tournaments</h1>
+      <swiper
+        class="slider-cover"
+        [initialSlide]="1"
+        [slidesPerView]="1.25"
+        [spaceBetween]="20"
+        [centeredSlides]="true"
+        #swiper
+      >
+        <!-- <ng-template swiperSlide>
           <app-vip-tournament-card></app-vip-tournament-card>
-        </ng-template>
-        <ng-template swiperSlide>
-          <app-vip-tournament-card></app-vip-tournament-card>
+        </ng-template> -->
+        <ng-template *ngFor="let item of response_vip" swiperSlide>
+          <app-vip-tournament-card [game]="item"></app-vip-tournament-card>
         </ng-template>
       </swiper>
     </section>
     <section class="tournament-list-section">
-      <h1 class="main-heading">
-        Tournaments
-      </h1>
+      <h1 class="main-heading">Tournaments</h1>
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
@@ -53,12 +55,15 @@
             <div class="tournament-card">
               <div class="tournament-card-content">
                 <div class="game-img">
-                  <ion-img src="../../../assets/t-card-(4).png" class="img-fluid"></ion-img>
+                  <ion-img
+                    src="{{item.game.logo_url}}"
+                    class="img-fluid"
+                  ></ion-img>
                 </div>
                 <div class="card-body">
                   <div class="game-info">
                     <h1 class="game-title">{{item.name}}</h1>
-                    <a href="http://">
+                    <a (click)="showGameRules(item)">
                       <span>rules</span>
                       view all
                     </a>
@@ -67,42 +72,37 @@
                   <p class="tournament-timing">
                     <span>
                       <ion-icon name="time-sharp"></ion-icon>
-                    </span> mon at 2:00PM
+                    </span>
+                    mon at 2:00PM
                   </p>
-
 
                   <div class="t-pricing">
                     <p class="tournament-price">
                       <span>
                         <ion-icon name="card"></ion-icon>
-                      </span> 50$
+                      </span>
+                      50$
                     </p>
                     <p class="tournament-prize">
                       <span>
                         <ion-icon name="trophy-sharp"></ion-icon>
-                      </span> 120$
+                      </span>
+                      120$
                     </p>
-                    <p class="vip-member">
-                      <span>
-                        <ion-icon name="person-circle"></ion-icon>
-                      </span> 2 VIP
-                    </p>
-
-                   
                   </div>
 
-
                   <div class="card-footer">
-
                     <p class="tournament-prize">
                       <span>
                         <ion-icon name="people"></ion-icon>
-                      </span> 4
+                      </span>
+                      4
                     </p>
                     <p class="vip-member">
                       <span>
                         <ion-icon name="person-circle-sharp"></ion-icon>
-                      </span> 43/56
+                      </span>
+                      {{item.enrollments.length}} /{{item.number_of_request}}
                     </p>
                   </div>
                 </div>

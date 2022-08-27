@@ -3,7 +3,7 @@ import { TournamentService } from '../../services/tournament.service';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { SwiperComponent } from 'swiper/angular';
-
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-tournaments-list',
@@ -16,13 +16,16 @@ export class TournamentsListPage implements OnInit {
 
   pageNo = 1;
   response: any;
+  response_vip: any;
   constructor(
     private tournamentService: TournamentService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {
     this.listTournaments();
+    this.listVipTournaments();
   }
 
   async listTournaments() {
@@ -39,6 +42,29 @@ export class TournamentsListPage implements OnInit {
         (data: any) => {
           console.log(data);
           this.response = data;
+          loading.dismiss();
+        },
+        (error) => {
+          console.log(error);
+          loading.dismiss();
+        }
+      );
+  }
+
+  async listVipTournaments() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading..',
+      // duration: 3000,
+    });
+
+    loading.present();
+
+    await this.tournamentService
+      .listVipTournament({ pageNo: this.pageNo })
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.response_vip = data;
           loading.dismiss();
         },
         (error) => {
@@ -84,5 +110,10 @@ export class TournamentsListPage implements OnInit {
           event.target.complete();
         }
       );
+  }
+
+  showGameRules(game) {
+    // console.log(game);
+    this.toastService.presentAlert(game.terms_and_condition);
   }
 }

@@ -9,4 +9,8 @@ export class TournamentService {
   listTournament(params?) {
     return this.httpService.get('list-tournaments', params);
   }
+
+  listVipTournament(params?) {
+    return this.httpService.get('list-vip-tournaments', params);
+  }
 }
