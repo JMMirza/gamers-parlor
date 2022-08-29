@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MyTeamsService } from '../../services/my-teams.service';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { CreateTeamPage } from '../../modals/create-team/create-team.page';
 
 @Component({
   selector: 'app-my-teams',
@@ -15,7 +17,8 @@ export class MyTeamsPage implements OnInit {
 
   constructor(
     private myTeamsService: MyTeamsService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -41,5 +44,20 @@ export class MyTeamsPage implements OnInit {
         loading.dismiss();
       }
     );
+  }
+
+  async openModal() {
+   
+    const modal = await this.modalCtrl.create({
+      component: CreateTeamPage,
+    });
+    
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      // this.message = `Hello, ${data}!`;
+    }
   }
 }

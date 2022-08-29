@@ -13,6 +13,7 @@ export class WagerListPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   pageNo = 1;
   response: any;
+  segment = 'requests';
 
   constructor(
     private wagerService: WagersService,
@@ -48,5 +49,10 @@ export class WagerListPage implements OnInit {
   showGameRules(game) {
     // console.log(game);
     this.toastService.presentAlert(game.terms_and_condition);
+  }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+    this.segment = ev.detail.value;
   }
 }

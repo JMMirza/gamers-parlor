@@ -1,5 +1,7 @@
 <ion-card class="vip-card">
-  <ion-img src="{{gameData.game.logo_url}}"></ion-img>
+  <div class="vip-card-img">
+    <ion-img src="{{gameData.game.logo_url}}" class="img-fluid"></ion-img>
+  </div>
   <ion-card-content>
     <p>
       SEP 02 . STARTING AT 06:00 PM
@@ -49,7 +51,7 @@
 
       </div>
       <div class="player-no-count">
-       {{gameData.enrollments.length}} /{{gameData.number_of_request}} players
+        {{gameData.enrollments.length}} /{{gameData.number_of_request}} players
       </div>
     </div>
   </ion-card-content>

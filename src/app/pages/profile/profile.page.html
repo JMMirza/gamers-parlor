@@ -9,19 +9,92 @@
 
 
 <ion-content class="content-inner-body">
-  <main class="ion-padding-horizontal">
-
+  <main class="mt-0">
+    <div class="profile-banner">
+      <button class="edit-btn get-center">
+        edit
+        <span>
+          <ion-icon name="pencil-outline"></ion-icon>
+        </span>
+      </button>
+    </div>
 
     <ion-row>
       <ion-col size="12">
         <div class="user-profile">
           <div class="user-info-card">
             <div class="profile-img get-center">
-              <img src="../../../assets/card-img-match.png" class="img-fluid" alt="">
+              <img src="{{response.avatar_url}}" class="img-fluid" alt="">
             </div>
             <div class="card-body">
-              
+              <h4 class="user-name">
+                {{response.name}}
+              </h4>
+              <p class="user-email">
+                {{response.email}}
+              </p>
+              <p class="user-dob">
+                - 19-Sep-1992 -
+              </p>
+              <div class="user-achivement">
+                <div class="user-rank">
+                  <h4>rank</h4>
+                  <p>8</p>
+                </div>
+                <div class="user-winning">
+                  <h4>winning</h4>
+                  <p>$100</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="tags-cover">
+            <div class="user-tags get-center">
+              pubg
+            </div>
+            <div class="user-tags get-center">
+              Asphalt 9
+            </div>
+            <div class="user-tags get-center">
+              pubg
+            </div>
+            <div class="user-tags get-center">
+              Kraken
+            </div>
+            <div class="user-tags get-center">
+              Bender
+            </div>
+            <div class="user-tags get-center">
+              Big Papa
+            </div>
+            <div class="user-tags get-center">
+              Lynch
+            </div>
+            <div class="user-tags get-center">
+              Mad Dog
+            </div>
+            <div class="user-tags get-center">
+              Lynch
+            </div>
+            <div class="user-tags get-center">
+              O'Doyle
+            </div>
+          </div>
+        </div>
+        <div class="user-social-links">
+          <p>
+            Social Links
+          </p>
+          <div class="social-icons-cover">
+            <span class="social-icon get-center">
+              <img src="../../../assets/proimg1.png" class="img-fluid" alt="">
+            </span>
+            <span class="social-icon get-center">
+              <img src="../../../assets/proimg2.png" class="img-fluid" alt="">
+            </span>
+            <span class="social-icon get-center">
+              <img src="../../../assets/proimg3.png" class="img-fluid" alt="">
+            </span>
           </div>
         </div>
       </ion-col>

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Welcome</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="content-inner-body">
+  <main class="ion-padding-horizontal">
+
+    <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="segment">
+      <ion-segment-button value="createTeam">
+        <ion-label>Create team</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="addPlayer">
+        <ion-label>Add Players</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <section class="" *ngIf="segment === 'createTeam'">
+      <form novalidate class="site-form" style="margin:0">
+
+        <div class="form-group">
+          <ion-input inputmode="email" formControlName="email" name="email" autocomplete="off"
+            placeholder="Email Address" class="form-control" required></ion-input>
+
+        </div>
+        <div class="form-group">
+          <ion-input inputmode="password" formControlName="password" name="password" placeholder="Password"
+            class="form-control" required></ion-input>
+
+        </div>
+        <button type="submit" class="secondary-btn">
+          log in
+        </button>
+
+      </form>
+    </section>
+
+    <section class="" *ngIf="segment === 'addPlayer'">
+      <input type="text" name="" placeholder="PLayer name" id="">
+    </section>
+  </main>
+</ion-content>
