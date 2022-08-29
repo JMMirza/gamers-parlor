@@ -7,12 +7,8 @@
   </ion-toolbar>
 </ion-header> -->
 
-
-
-
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-
     <ion-segment class="game-platform-filters">
       <ion-segment-button value="nemie" class="game-filters">
         <ion-img src="../../../assets/gamee (1).png"></ion-img>
@@ -31,7 +27,6 @@
       </ion-segment-button>
     </ion-segment>
 
-
     <ion-segment class="match-filter">
       <ion-segment-button value="friends">
         <ion-label>requests</ion-label>
@@ -40,20 +35,26 @@
         <ion-label>matches</ion-label>
       </ion-segment-button>
     </ion-segment>
-  
+
     <section class="tournament-list-section">
-   
-        <ion-row >
-          <ion-col size="12">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <ion-virtual-scroll [items]="response" approxItemHeight="170px">
+        <ion-row *virtualItem="let item; let itemBounds = bounds;">
+          <ion-col *ngFor="let item of response" size="12">
             <div class="tournament-card">
               <div class="tournament-card-content">
                 <div class="game-img">
-                  <ion-img src="../../../assets/t-card-(4).png" class="img-fluid"></ion-img>
+                  <ion-img
+                    src="{{item.game.logo_url}}"
+                    class="img-fluid"
+                  ></ion-img>
                 </div>
                 <div class="card-body">
                   <div class="game-info">
-                    <h1 class="game-title">item.name</h1>
-                    <a href="http://">
+                    <h1 class="game-title">{{item.game.title}}</h1>
+                    <a (click)="showGameRules(item)">
                       <span>rules</span>
                       view all
                     </a>
@@ -62,24 +63,29 @@
                   <p class="tournament-timing">
                     <span>
                       <ion-icon name="time-sharp"></ion-icon>
-                    </span> mon at 2:00PM
+                    </span>
+                    mon at 2:00PM
                   </p>
-
 
                   <div class="t-pricing">
                     <p class="tournament-price">
                       <span>
                         <ion-icon name="card"></ion-icon>
-                      </span> 50$
+                      </span>
+                      50$
                     </p>
                     <p class="tournament-prize">
                       <span>
                         <ion-icon name="trophy-sharp"></ion-icon>
-                      </span> 120$
+                      </span>
+                      120$
                     </p>
-                  
 
-                    <a href="http://" target="_blank" class="primary-btn get-center">
+                    <a
+                      href="http://"
+                      target="_blank"
+                      class="primary-btn get-center"
+                    >
                       PARTICIPATE
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
@@ -91,6 +97,10 @@
             </div>
           </ion-col>
         </ion-row>
+      </ion-virtual-scroll>
+      <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     </section>
   </main>
 </ion-content>
