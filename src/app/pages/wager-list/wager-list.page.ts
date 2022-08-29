@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { WagersService } from '../../services/wagers.service';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-wager-list',
@@ -15,7 +16,8 @@ export class WagerListPage implements OnInit {
 
   constructor(
     private wagerService: WagersService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {
@@ -41,5 +43,10 @@ export class WagerListPage implements OnInit {
         loading.dismiss();
       }
     );
+  }
+
+  showGameRules(game) {
+    // console.log(game);
+    this.toastService.presentAlert(game.terms_and_condition);
   }
 }
