@@ -10,7 +10,7 @@
 <ion-content class="content-inner-body">
   <main class="mt-0">
     <div class="profile-banner">
-      <button class="edit-btn get-center">
+      <button type="button" class="edit-btn get-center" (click)="openModal()">
         edit
         <span>
           <ion-icon name="pencil-outline"></ion-icon>
@@ -19,7 +19,7 @@
     </div>
 
     <ion-row>
-      <ion-col size="12">
+      <ion-col size="12" class="pt-0">
         <div class="user-profile">
           <div class="user-info-card">
             <div class="profile-img get-center">

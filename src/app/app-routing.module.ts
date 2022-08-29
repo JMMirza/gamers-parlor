@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'create-wagers',
     loadChildren: () => import('./modals/create-wagers/create-wagers.module').then( m => m.CreateWagersPageModule)
   },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./modals/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
 
 ];
 

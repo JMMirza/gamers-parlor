@@ -1,0 +1,57 @@
+<ion-content class="content-inner-body">
+  <main class="ion-padding-horizontal">
+    <form class="site-form" style="margin:0">
+      <div class="form-group">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-select placeholder="Select Game">
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="oranges">Oranges</ion-select-option>
+              <ion-select-option value="bananas">Bananas</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div class="form-group">
+        <ion-list lines="none">
+          <ion-item lines="none">
+            <ion-select placeholder="Gamme Platform">
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="oranges">Oranges</ion-select-option>
+              <ion-select-option value="bananas">Bananas</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div class="form-group">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+
+      </div>
+      <div class="form-group">
+        <ion-input type="" name="fee" placeholder="Reg. Fee" class="form-control">
+        </ion-input>
+      </div>
+      <button type="submit" class="secondary-btn">
+        Add player
+      </button>
+    </form>
+  </main>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

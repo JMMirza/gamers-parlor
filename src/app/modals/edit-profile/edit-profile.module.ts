@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { CreateWagersPageRoutingModule } from './create-wagers-routing.module';
-import { CreateWagersPage } from './create-wagers.page';
+import { EditProfilePageRoutingModule } from './edit-profile-routing.module';
+import { EditProfilePage } from './edit-profile.page';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateWagersPageRoutingModule
+    EditProfilePageRoutingModule
   ],
-  declarations: [CreateWagersPage]
+  declarations: [EditProfilePage]
 })
-export class CreateWagersPageModule {}
+export class EditProfilePageModule {}
