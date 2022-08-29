@@ -1,34 +1,5 @@
-
-
-
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="segment">
-      <ion-segment-button value="createTeam">
-        <ion-label>Create team</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="addPlayer">
-        <ion-label>Add Players</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-
-    <section class="" *ngIf="segment === 'createTeam'">
-      <form class="site-form" style="margin:0">
-        <div class="form-group">
-          <ion-input type="text" name="fullName" placeholder="Enter Name" class="form-control">
-          </ion-input>
-        </div>
-        <div class="form-group">
-          <ion-input type="number" name="noMember" placeholder="Number of Members" class="form-control">
-          </ion-input>
-        </div>
-        <button type="submit" class="secondary-btn">
-          create
-        </button>
-      </form>
-    </section>
-
-    <section class="" *ngIf="segment === 'addPlayer'">
       <form class="site-form" style="margin:0">
         <!-- <div class="form-group">
           <ion-input type="text" name="fullName" placeholder="Full Name" class="form-control">
@@ -77,7 +48,6 @@
           Add player
         </button>
       </form>
-    </section>
   </main>
 </ion-content>
 

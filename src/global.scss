@@ -82,6 +82,20 @@ ion-img,
     //     --color: var(--ion-color-secondary-contrast);
     //     --padding: 0px !important;
     // }
+
+    ion-list,
+    .list-md {
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 6px 16px !important;
+        height: 59px;
+        ion-item {
+            --background: rgba(255, 255, 255, 0);
+            --font-size: 16px;
+            --font-weight: 400;
+            --color: var(--ion-color-secondary-contrast);
+        }
+    }
 }
 
 .error-message {
@@ -91,7 +105,7 @@ ion-img,
 
 ion-toolbar {
     --background: var(--ion-color-primary);
-    --color: var(--ion-color-light);
+    --color: var(--ion-color-danger-contrast);
 }
 
 ion-header {
@@ -910,28 +924,25 @@ ion-segment-button.segment-button-checked {
     }
 }
 
-
-
-.profile-banner{
+.profile-banner {
     background-image: url("../src/assets/profile-bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     align-items: flex-start;
-    justify-content:end;
+    justify-content: end;
     min-height: 299px;
     width: 100%;
 }
 
-.mt-0{
+.mt-0 {
     margin-top: 0 !important;
 }
 
-
-.edit-btn{
+.edit-btn {
     background: var(--ion-color-primary);
-    color: #FFF9F9;
+    color: #fff9f9;
     font-size: 14px;
     line-height: 21px;
     padding: 12px 25px;
@@ -939,7 +950,7 @@ ion-segment-button.segment-button-checked {
     text-transform: capitalize;
     margin-top: 20px;
     margin-right: 30px;
-    span{
+    span {
         margin-left: 10px;
     }
 }

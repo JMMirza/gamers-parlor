@@ -47,17 +47,11 @@ export class MyTeamsPage implements OnInit {
   }
 
   async openModal() {
-   
     const modal = await this.modalCtrl.create({
       component: CreateTeamPage,
     });
-    
     modal.present();
 
     const { data, role } = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      // this.message = `Hello, ${data}!`;
-    }
   }
 }

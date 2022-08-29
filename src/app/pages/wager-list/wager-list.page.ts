@@ -3,6 +3,8 @@ import { WagersService } from '../../services/wagers.service';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
+import { ModalController } from '@ionic/angular';
+import { CreateWagersPage } from '../../modals/create-wagers/create-wagers.page';
 
 @Component({
   selector: 'app-wager-list',
@@ -18,7 +20,8 @@ export class WagerListPage implements OnInit {
   constructor(
     private wagerService: WagersService,
     private loadingCtrl: LoadingController,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -51,8 +54,13 @@ export class WagerListPage implements OnInit {
     this.toastService.presentAlert(game.terms_and_condition);
   }
 
-  segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
-    this.segment = ev.detail.value;
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: CreateWagersPage,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
   }
 }

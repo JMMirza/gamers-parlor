@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'create-team',
     loadChildren: () => import('./modals/create-team/create-team.module').then( m => m.CreateTeamPageModule)
   },
+  {
+    path: 'create-wagers',
+    loadChildren: () => import('./modals/create-wagers/create-wagers.module').then( m => m.CreateWagersPageModule)
+  },
 
 ];
 

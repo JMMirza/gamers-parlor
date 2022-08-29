@@ -46,10 +46,7 @@
             <div class="tournament-card">
               <div class="tournament-card-content">
                 <div class="game-img">
-                  <ion-img
-                    src="{{item.game.logo_url}}"
-                    class="img-fluid"
-                  ></ion-img>
+                  <ion-img src="{{item.game.logo_url}}" class="img-fluid"></ion-img>
                 </div>
                 <div class="card-body">
                   <div class="game-info">
@@ -82,11 +79,7 @@
                       120$
                     </p>
 
-                    <a
-                      href="http://"
-                      target="_blank"
-                      class="primary-btn get-center"
-                    >
+                    <a href="http://" target="_blank" class="primary-btn get-center">
                       PARTICIPATE
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
@@ -114,10 +107,7 @@
             <div class="tournament-card">
               <div class="tournament-card-content">
                 <div class="game-img">
-                  <ion-img
-                    src="{{item.game.logo_url}}"
-                    class="img-fluid"
-                  ></ion-img>
+                  <ion-img src="{{item.game.logo_url}}" class="img-fluid"></ion-img>
                 </div>
                 <div class="card-body">
                   <div class="game-info">
@@ -150,11 +140,7 @@
                       120$
                     </p>
 
-                    <a
-                      href="http://"
-                      target="_blank"
-                      class="primary-btn get-center"
-                    >
+                    <a href="http://" target="_blank" class="primary-btn get-center">
                       PARTICIPATE
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
@@ -173,4 +159,12 @@
     </section>
 
   </main>
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
