@@ -9,23 +9,24 @@
 
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <ion-segment class="game-platform-filters">
-      <ion-segment-button value="nemie" class="game-filters">
+    <div class="game-platform-filters">
+      <div value="nemie" class="game-filters">
         <ion-img src="../../../assets/gamee (1).png"></ion-img>
-      </ion-segment-button>
-      <ion-segment-button value="friends" class="game-filters">
+      </div>
+      <div value="friends" class="game-filters">
         <ion-img src="../../../assets/gamee (2).png"></ion-img>
-      </ion-segment-button>
-      <ion-segment-button value="eemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (3).png"></ion-img>
-      </ion-segment-button>
-      <ion-segment-button value="enemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (4).png"></ion-img>
-      </ion-segment-button>
-      <ion-segment-button value="eneme" class="game-filters">
+      </div>
+      <div class="game-filters active">
         <ion-img src="../../../assets/gamee (5).png"></ion-img>
-      </ion-segment-button>
-    </ion-segment>
+      </div>
+      <div value="eemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (3).png"></ion-img>
+      </div>
+      <div value="enemie" class="game-filters">
+        <ion-img src="../../../assets/gamee (4).png"></ion-img>
+      </div>
+     
+    </div>
 
     <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="segment">
       <ion-segment-button value="requests">
