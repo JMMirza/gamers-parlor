@@ -10,101 +10,27 @@
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
     <div class="game-platform-filters">
-      <div value="nemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (1).png"></ion-img>
+      <div value="nemie" class="game-filters" *ngFor="let platform of platforms">
+        <ion-img src="{{platform.logo_url}}" (click)="onFilter(platform.id)"></ion-img>
       </div>
-      <div value="friends" class="game-filters">
-        <ion-img src="../../../assets/gamee (2).png"></ion-img>
-      </div>
-      <div class="game-filters active">
-        <ion-img src="../../../assets/gamee (5).png"></ion-img>
-      </div>
-      <div value="eemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (3).png"></ion-img>
-      </div>
-      <div value="enemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (4).png"></ion-img>
-      </div>
-     
     </div>
 
-    <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="segment">
+    <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="filters.type">
       <ion-segment-button value="requests">
         <ion-label>requests</ion-label>
       </ion-segment-button>
       <ion-segment-button value="matches">
-        <ion-label>matches</ion-label>
+        <ion-label (click)="listMatches()">matches</ion-label>
       </ion-segment-button>
     </ion-segment>
 
-    <section class="tournament-list-section" *ngIf="segment === 'matches'">
+    <section class="tournament-list-section">
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
       <ion-virtual-scroll [items]="response" approxItemHeight="170px">
         <ion-row *virtualItem="let item; let itemBounds = bounds;">
-          <ion-col *ngFor="let item of response" size="12">
-            <div class="tournament-card">
-              <div class="tournament-card-content">
-                <div class="game-img">
-                  <ion-img src="{{item.game.logo_url}}" class="img-fluid"></ion-img>
-                </div>
-                <div class="card-body">
-                  <div class="game-info">
-
-                    <h1 class="game-title">{{item.game.title}}</h1>
-                    <a (click)="showGameRules(item)">
-                      <span>rules</span>
-                      view all
-                    </a>
-                  </div>
-
-                  <p class="tournament-timing">
-                    <span>
-                      <ion-icon name="time-sharp"></ion-icon>
-                    </span>
-                    mon at 2:00PM
-                  </p>
-
-                  <div class="t-pricing">
-                    <p class="tournament-price">
-                      <span>
-                        <ion-icon name="card"></ion-icon>
-                      </span>
-                      50$
-                    </p>
-                    <p class="tournament-prize">
-                      <span>
-                        <ion-icon name="trophy-sharp"></ion-icon>
-                      </span>
-                      120$
-                    </p>
-
-                    <a href="http://" target="_blank" class="primary-btn get-center">
-                      PARTICIPATE
-                      <span class="get-center">
-                        <ion-icon name="caret-forward"></ion-icon>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-virtual-scroll>
-      <ion-infinite-scroll (ionInfinite)="loadMore($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
-    </section>
-
-    <section class="tournament-list-section" *ngIf="segment === 'requests'">
-      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-      <ion-virtual-scroll [items]="response" approxItemHeight="170px">
-        <ion-row *virtualItem="let item; let itemBounds = bounds;">
-          <ion-col *ngFor="let item of response" size="12">
+          <ion-col size="12">
             <div class="tournament-card">
               <div class="tournament-card-content">
                 <div class="game-img">

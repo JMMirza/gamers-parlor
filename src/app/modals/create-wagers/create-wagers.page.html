@@ -1,43 +1,80 @@
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <form class="site-form" style="margin:0">
+    <form [formGroup]="wagerForm" (ngSubmit)="createWager()" novalidate class="site-form" style="margin: 0">
       <div class="form-group">
-        <ion-list>
+        <ion-list lines="none">
           <ion-item>
-            <ion-select placeholder="Select Game">
-              <ion-select-option value="apples">Apples</ion-select-option>
-              <ion-select-option value="oranges">Oranges</ion-select-option>
-              <ion-select-option value="bananas">Bananas</ion-select-option>
+            <ion-select formControlName="game_id" name="game_id" placeholder="Games"
+              [interfaceOptions]="gameSelectOptions">
+              <ion-select-option *ngFor="let item of games" [value]="item.id">{{ item.title }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.game_id">
+            <div class="error-message"
+              *ngIf="wagerForm.get('game_id').hasError(validation.type) && (wagerForm.get('game_id').dirty || wagerForm.get('game_id').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
       <div class="form-group">
-        <ion-list>
+        <ion-list lines="none">
           <ion-item>
-            <ion-select placeholder="Gamme Platform">
-              <ion-select-option value="apples">Apples</ion-select-option>
-              <ion-select-option value="oranges">Oranges</ion-select-option>
-              <ion-select-option value="bananas">Bananas</ion-select-option>
+            <ion-select formControlName="platform_id" name="platform_id" placeholder="Platforms"
+              [interfaceOptions]="platformSelectOptions">
+              <ion-select-option *ngFor="let item of platforms" [value]="item.id">{{ item.title }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.platform_id">
+            <div class="error-message"
+              *ngIf="wagerForm.get('platform_id').hasError(validation.type) && (wagerForm.get('platform_id').dirty || wagerForm.get('platform_id').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
       <div class="form-group">
-        <ion-input type="date" name="date" placeholder="" class="form-control">
-        </ion-input>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label>Timing</ion-label>
+            <ion-input value="{{ wagerForm.get('start_date').value | date: 'dd/MM/yyyy' }}" id="date"
+              class="ion-text-end"></ion-input>
+            <ion-popover trigger="date" size="cover">
+              <ng-template>
+                <ion-datetime presentation="date" formControlName="start_date"></ion-datetime>
+              </ng-template>
+            </ion-popover>
+          </ion-item>
+        </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.start_date">
+            <div class="error-message"
+              *ngIf="wagerForm.get('start_date').hasError(validation.type) && (wagerForm.get('start_date').dirty || wagerForm.get('start_date').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
       <div class="form-group">
-        <ion-input type="" name="fee" placeholder="Reg. Fee" class="form-control">
+        <ion-input type="number" name="fee" placeholder="Reg. Fee" class="form-control" formControlName="fee">
         </ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.fee">
+            <div class="error-message"
+              *ngIf="wagerForm.get('fee').hasError(validation.type) && (wagerForm.get('fee').dirty || wagerForm.get('fee').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
-      <button type="submit" class="secondary-btn">
-        Add player
-      </button>
+      <button type="submit" class="secondary-btn">Challenge</button>
     </form>
   </main>
 </ion-content>
-
 
 <ion-footer>
   <ion-toolbar>

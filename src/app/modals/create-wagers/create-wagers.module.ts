@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CreateWagersPageRoutingModule } from './create-wagers-routing.module';
 import { CreateWagersPage } from './create-wagers.page';
@@ -8,9 +8,10 @@ import { CreateWagersPage } from './create-wagers.page';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
-    CreateWagersPageRoutingModule
+    CreateWagersPageRoutingModule,
   ],
-  declarations: [CreateWagersPage]
+  declarations: [CreateWagersPage],
 })
 export class CreateWagersPageModule {}
