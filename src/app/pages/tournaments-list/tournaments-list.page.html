@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
   <ion-toolbar line="none">
     <ion-buttons slot="end" color="secondary-contrast">
       <ion-menu-button color="secondary-contrast"></ion-menu-button>
@@ -8,23 +8,25 @@
 
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <div class="game-platform-filters">
-      <div class="game-filters">
-        <ion-img src="../../../assets/gamee (1).png"></ion-img>
-      </div>
-      <div class="game-filters">
-        <ion-img src="../../../assets/gamee (2).png"></ion-img>
-      </div>
-      <div class="game-filters active">
-        <ion-img src="../../../assets/gamee (5).png"></ion-img>
-      </div>
-      <div class="game-filters">
-        <ion-img src="../../../assets/gamee (3).png"></ion-img>
-      </div>
-      <div class="game-filters">
-        <ion-img src="../../../assets/gamee (4).png"></ion-img>
-      </div>
-    </div>
+    <ion-segment scrollable class="game-platform-filters">
+      <ion-segment-button value="home" class="game-filters">
+        <ion-img src="../../../assets/gamee (1).png" name="home"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="ps5" class="game-filters">
+        <ion-img src="../../../assets/gamee (2).png" name="ps5"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="xbox" class="game-filters">
+        <ion-img src="../../../assets/gamee (3).png" name="xbox"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="ps4" class="game-filters">
+        <ion-img src="../../../assets/gamee (4).png" name="ps4"></ion-img>
+      </ion-segment-button>
+      <ion-segment-button value="pc" class="game-filters">
+        <ion-img src="../../../assets/gamee (5).png" name="pc"></ion-img>
+      </ion-segment-button>
+
+    </ion-segment>
+  
     <section class="tournaments-slider-section">
       <h1 class="main-heading"><span>vip</span> Tournaments</h1>
       <swiper class="slider-cover" [initialSlide]="1" [slidesPerView]="1.25" [spaceBetween]="20" [centeredSlides]="true"

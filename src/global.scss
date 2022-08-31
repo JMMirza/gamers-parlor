@@ -491,6 +491,12 @@ ion-title {
     justify-content: center;
     gap: 5px;
 
+    // ion-segment-button.segment-button-checked {
+    //     border: none;
+    //     --border: none;
+    //     --background: var(--ion-color-primary);
+    // }
+
     .game-filters.active {
         background: var(--ion-color-primary);
         color: var(--ion-color-secondary-contrast);
