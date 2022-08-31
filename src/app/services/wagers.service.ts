@@ -10,4 +10,16 @@ export class WagersService {
   listWagers(params?) {
     return this.httpService.get('list-wagers', params);
   }
+
+  listWagerMatches(params?) {
+    return this.httpService.get('list-wager-matches', params);
+  }
+
+  getWagersData(params?) {
+    return this.httpService.get('get-wager-data', params);
+  }
+
+  createWagerPost(params) {
+    return this.httpService.post('create-wager-post', params);
+  }
 }

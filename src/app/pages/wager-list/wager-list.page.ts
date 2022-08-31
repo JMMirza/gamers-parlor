@@ -15,7 +15,13 @@ export class WagerListPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   pageNo = 1;
   response: any;
-  segment = 'requests';
+  platforms: any;
+  // segment = 'requests';
+
+  filters = {
+    platform_id: '',
+    type: 'requests',
+  };
 
   constructor(
     private wagerService: WagersService,
@@ -28,7 +34,7 @@ export class WagerListPage implements OnInit {
     this.listWagers();
   }
 
-  async listWagers() {
+  async listWagers(params?) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading..',
       // duration: 3000,
@@ -36,10 +42,11 @@ export class WagerListPage implements OnInit {
 
     loading.present();
 
-    await this.wagerService.listWagers().subscribe(
+    await this.wagerService.listWagers(params).subscribe(
       (data: any) => {
         console.log(data);
-        this.response = data;
+        this.response = data.wagers;
+        this.platforms = data.platforms;
         loading.dismiss();
       },
       (error) => {
@@ -60,7 +67,58 @@ export class WagerListPage implements OnInit {
     });
     modal.present();
 
-    const { data, role } = await modal.onWillDismiss();
+    await modal.onWillDismiss().then((data) => {
+      console.log(data);
+      this.listWagers();
+    });
+  }
 
+  async loadMore(event) {
+    this.pageNo++;
+    await this.wagerService.listWagers({ page_no: this.pageNo }).subscribe(
+      (data: any) => {
+        console.log(data);
+
+        for (var item of data.wagers) {
+          this.response.push(item);
+        }
+
+        event.target.complete();
+      },
+      (error) => {
+        console.log(error);
+        event.target.complete();
+      }
+    );
+  }
+
+  public async doRefresh(event) {
+    this.pageNo = 1;
+    await this.wagerService.listWagers({ page_no: this.pageNo }).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.response = data.wagers;
+        event.target.complete();
+      },
+      (error) => {
+        console.log(error);
+        event.target.complete();
+      }
+    );
+  }
+
+  async segmentChanged(ev) {
+    // this.filters.type = ev.detail.value;
+    await this.listWagers(this.filters);
+  }
+
+  async onFilter(platform) {
+    this.filters.platform_id = platform;
+    await this.listWagers(this.filters);
+  }
+
+  async listMatches(platform?) {
+    this.filters.type = platform;
+    await this.listWagers(this.filters);
   }
 }
