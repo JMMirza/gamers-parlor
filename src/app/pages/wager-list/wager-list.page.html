@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
   <ion-toolbar line="none">
     <ion-buttons slot="end" color="secondary-contrast">
       <ion-menu-button color="secondary-contrast"></ion-menu-button>
@@ -16,10 +16,10 @@
 
     <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="filters.type">
       <ion-segment-button value="requests">
-        <ion-label>requests</ion-label>
+        <ion-label>Match Finder</ion-label>
       </ion-segment-button>
       <ion-segment-button value="matches">
-        <ion-label (click)="listMatches()">matches</ion-label>
+        <ion-label (click)="listMatches()">My Matches</ion-label>
       </ion-segment-button>
     </ion-segment>
 
