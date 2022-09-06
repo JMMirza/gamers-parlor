@@ -1,8 +1,9 @@
 <ion-header>
-  <ion-toolbar line="none">
-    <ion-buttons slot="end" color="secondary-contrast">
-      <ion-menu-button color="secondary-contrast"></ion-menu-button>
+  <ion-toolbar class="ion-no-padding">
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <!-- <ion-title class="ion-text-start ion-no-padding ion-padding-start">profile</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
@@ -26,7 +27,7 @@
       </ion-segment-button>
 
     </ion-segment>
-  
+
     <section class="tournaments-slider-section">
       <h1 class="main-heading"><span>vip</span> Tournaments</h1>
       <swiper class="slider-cover" [initialSlide]="1" [slidesPerView]="1.25" [spaceBetween]="20" [centeredSlides]="true"
