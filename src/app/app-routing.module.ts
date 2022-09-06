@@ -16,33 +16,52 @@ const routes: Routes = [
   },
   {
     path: 'signup',
+
     loadChildren: () =>
       import('./pages/signup/signup.module').then((m) => m.SignupPageModule),
-  },  {
+  },
+  {
     path: 'my-tournaments',
-    loadChildren: () => import('./pages/my-tournaments/my-tournaments.module').then( m => m.MyTournamentsPageModule)
+    loadChildren: () =>
+      import('./pages/my-tournaments/my-tournaments.module').then(
+        (m) => m.MyTournamentsPageModule
+      ),
   },
   {
     path: 'my-teams',
-    loadChildren: () => import('./pages/my-teams/my-teams.module').then( m => m.MyTeamsPageModule)
+    loadChildren: () =>
+      import('./pages/my-teams/my-teams.module').then(
+        (m) => m.MyTeamsPageModule
+      ),
   },
   {
     path: 'create-team',
-    loadChildren: () => import('./modals/create-team/create-team.module').then( m => m.CreateTeamPageModule)
+    loadChildren: () =>
+      import('./modals/create-team/create-team.module').then(
+        (m) => m.CreateTeamPageModule
+      ),
   },
   {
     path: 'create-wagers',
-    loadChildren: () => import('./modals/create-wagers/create-wagers.module').then( m => m.CreateWagersPageModule)
+    loadChildren: () =>
+      import('./modals/create-wagers/create-wagers.module').then(
+        (m) => m.CreateWagersPageModule
+      ),
   },
   {
     path: 'edit-profile',
-    loadChildren: () => import('./modals/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+    loadChildren: () =>
+      import('./modals/edit-profile/edit-profile.module').then(
+        (m) => m.EditProfilePageModule
+      ),
   },
   {
     path: 'create-tournament',
-    loadChildren: () => import('./modals/create-tournament/create-tournament.module').then( m => m.CreateTournamentPageModule)
+    loadChildren: () =>
+      import('./modals/create-tournament/create-tournament.module').then(
+        (m) => m.CreateTournamentPageModule
+      ),
   },
-
 ];
 
 @NgModule({
@@ -53,5 +72,3 @@ const routes: Routes = [
   providers: [AuthGuard],
 })
 export class AppRoutingModule {}
-
-

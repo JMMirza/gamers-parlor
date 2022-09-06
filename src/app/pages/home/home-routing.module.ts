@@ -3,18 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: HomePage
-//   }
-// ];
-
-// tournaments
-// wager
-// Ladder
-// Profile
-
 const routes: Routes = [
   {
     path: 'home',

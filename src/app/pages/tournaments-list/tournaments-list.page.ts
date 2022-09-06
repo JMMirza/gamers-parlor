@@ -18,6 +18,7 @@ export class TournamentsListPage implements OnInit {
 
   pageNo = 1;
   response: any;
+  platforms: any;
   response_vip: any;
 
   constructor(
@@ -28,11 +29,20 @@ export class TournamentsListPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.listTournaments();
+    this.listTournaments({ pageNo: this.pageNo });
     this.listVipTournaments();
   }
 
-  async listTournaments() {
+  platformFilter(e) {
+    console.log('platform id', e.detail.value);
+
+    this.listTournaments({
+      pageNo: this.pageNo,
+      platform_id: e.detail.value,
+    });
+  }
+
+  async listTournaments(params?) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading..',
       // duration: 3000,
@@ -40,19 +50,18 @@ export class TournamentsListPage implements OnInit {
 
     loading.present();
 
-    await this.tournamentService
-      .listTournament({ pageNo: this.pageNo })
-      .subscribe(
-        (data: any) => {
-          console.log(data);
-          this.response = data;
-          loading.dismiss();
-        },
-        (error) => {
-          console.log(error);
-          loading.dismiss();
-        }
-      );
+    await this.tournamentService.listTournament(params).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.response = data.tournaments;
+        this.platforms = data.platforms;
+        loading.dismiss();
+      },
+      (error) => {
+        console.log(error);
+        loading.dismiss();
+      }
+    );
   }
 
   async listVipTournaments() {
@@ -84,10 +93,12 @@ export class TournamentsListPage implements OnInit {
       .listTournament({ page_no: this.pageNo })
       .subscribe(
         (data: any) => {
-          console.log(data);
+          console.log(data.tournaments);
 
-          for (var item of data) {
-            this.response.push(item);
+          if (data) {
+            for (var item of data.tournaments) {
+              this.response.push(item);
+            }
           }
 
           event.target.complete();
@@ -106,7 +117,7 @@ export class TournamentsListPage implements OnInit {
       .subscribe(
         (data: any) => {
           console.log(data);
-          this.response = data;
+          this.response = data.tournaments;
           event.target.complete();
         },
         (error) => {

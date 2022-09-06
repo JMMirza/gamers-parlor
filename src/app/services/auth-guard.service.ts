@@ -14,13 +14,14 @@ import { AuthService } from './auth.service';
 export class AuthGuardService {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(
+  async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean | Promise<boolean> {
-    var isAuthenticated = this.authService.isAuthenticated();
+  ): Promise<boolean> {
+    var isAuthenticated = await this.authService.isAuthenticated();
     if (!isAuthenticated) {
       this.router.navigate(['/login']);
+      console.log('afasdfasdf');
     }
     return isAuthenticated;
   }
