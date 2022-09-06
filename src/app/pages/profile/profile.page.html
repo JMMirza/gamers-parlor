@@ -11,10 +11,7 @@
   <main class="mt-0">
     <div class="profile-banner">
       <button type="button" class="edit-btn get-center" (click)="openModal()">
-        edit
-        <span>
-          <ion-icon name="pencil-outline"></ion-icon>
-        </span>
+        <ion-icon name="pencil-sharp"></ion-icon>
       </button>
     </div>
 
@@ -42,10 +39,7 @@
             </div>
           </div>
           <div class="tags-cover">
-            <div
-              class="user-tags get-center"
-              *ngFor="let item of response.game_tags"
-            >
+            <div class="user-tags get-center" *ngFor="let item of response.game_tags">
               {{item.game_tag.name}}
             </div>
           </div>
