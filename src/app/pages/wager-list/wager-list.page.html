@@ -8,11 +8,11 @@
 
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <div class="game-platform-filters">
+    <!-- <div class="game-platform-filters">
       <div value="nemie" class="game-filters" *ngFor="let platform of platforms">
         <ion-img src="{{platform.logo_url}}" (click)="onFilter(platform.id)"></ion-img>
       </div>
-    </div>
+    </div> -->
 
     <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="filters.type">
       <ion-segment-button value="requests">

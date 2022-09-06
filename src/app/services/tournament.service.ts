@@ -13,4 +13,8 @@ export class TournamentService {
   listVipTournament(params?) {
     return this.httpService.get('list-vip-tournaments', params);
   }
+
+  createTournament(params) {
+    return this.httpService.post('create-tournament', params);
+  }
 }

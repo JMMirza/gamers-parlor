@@ -9,7 +9,7 @@
 
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <ion-segment scrollable class="game-platform-filters">
+    <!-- <ion-segment scrollable class="game-platform-filters">
       <ion-segment-button value="home" class="game-filters">
         <ion-img src="../../../assets/gamee (1).png" name="home"></ion-img>
       </ion-segment-button>
@@ -26,6 +26,15 @@
         <ion-img src="../../../assets/gamee (5).png" name="pc"></ion-img>
       </ion-segment-button>
 
+    </ion-segment> -->
+
+    <ion-segment class="match-filter" scrollable>
+      <ion-segment-button value="requests">
+        <ion-label>Match Finder</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="matches">
+        <ion-label (click)="listMatches()">My Matches</ion-label>
+      </ion-segment-button>
     </ion-segment>
 
     <section class="tournaments-slider-section">
@@ -109,4 +118,10 @@
       </ion-infinite-scroll>
     </section>
   </main>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

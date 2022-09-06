@@ -4,6 +4,8 @@ import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { SwiperComponent } from 'swiper/angular';
 import { ToastService } from '../../services/toast.service';
+import { ModalController } from '@ionic/angular';
+import { CreateTournamentPage } from '../../modals/create-tournament/create-tournament.page';
 
 @Component({
   selector: 'app-tournaments-list',
@@ -17,10 +19,12 @@ export class TournamentsListPage implements OnInit {
   pageNo = 1;
   response: any;
   response_vip: any;
+
   constructor(
     private tournamentService: TournamentService,
     private loadingCtrl: LoadingController,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -115,5 +119,17 @@ export class TournamentsListPage implements OnInit {
   showGameRules(game) {
     // console.log(game);
     this.toastService.presentAlert(game.terms_and_condition);
+  }
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: CreateTournamentPage,
+    });
+    modal.present();
+
+    await modal.onWillDismiss().then((data) => {
+      console.log(data);
+      this.listTournaments();
+    });
   }
 }
