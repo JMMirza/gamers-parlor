@@ -4,61 +4,60 @@
 
 
       <div class="form-group">
-        <ion-input type="text" placeholder="Name" class="form-control" name="tournament_name"
-          formControlName="tournament_name">
+        <ion-input type="text" name="name" placeholder="Name" class="form-control" formControlName="name">
         </ion-input>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.name">
             <div class="error-message"
               *ngIf="tournamentForm.get('name').hasError(validation.type) && (tournamentForm.get('name').dirty || tournamentForm.get('name').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <ion-list lines="none">
-          <ion-item>
-            <ion-select id="gameID" formControlName="game_id" name="game_id" placeholder="Games"
+          <ion-item lines="none">
+            <ion-select formControlName="game_id" name="game_id" placeholder="Games"
               [interfaceOptions]="gameSelectOptions">
               <ion-select-option *ngFor="let item of games" [value]="item.id">{{ item.title }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.game_id">
             <div class="error-message"
               *ngIf="tournamentForm.get('game_id').hasError(validation.type) && (tournamentForm.get('game_id').dirty || tournamentForm.get('game_id').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
       <div class="form-group">
         <ion-list lines="none">
-          <ion-item>
-            <ion-select id="platformID" formControlName="platform_id" name="platform_id" placeholder="Platforms"
+          <ion-item lines="none">
+            <ion-select formControlName="platform_id" name="platform_id" placeholder="Platforms"
               [interfaceOptions]="platformSelectOptions">
-              <ion-select-option *ngFor="let platform of platforms" [value]="platform.id">{{ platform.title }}
-              </ion-select-option>
+              <ion-select-option *ngFor="let item of platforms" [value]="item.id">{{ item.title }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.platform_id">
             <div class="error-message"
               *ngIf="tournamentForm.get('platform_id').hasError(validation.type) && (tournamentForm.get('platform_id').dirty || tournamentForm.get('platform_id').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
       <div class="form-group">
         <ion-list lines="none">
-          <ion-item>
+          <ion-item lines="none">
             <ion-label>Start Date</ion-label>
-            <ion-input value="" id="date" class="ion-text-end"></ion-input>
+            <ion-input value="{{ tournamentForm.get('start_date').value | date: 'dd/MM/yyyy' }}" id="date"
+              class="ion-text-end"></ion-input>
             <ion-popover trigger="date" size="cover">
               <ng-template>
                 <ion-datetime presentation="date" formControlName="start_date"></ion-datetime>
@@ -66,21 +65,22 @@
             </ion-popover>
           </ion-item>
         </ion-list>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.start_date">
             <div class="error-message"
               *ngIf="tournamentForm.get('start_date').hasError(validation.type) && (tournamentForm.get('start_date').dirty || tournamentForm.get('start_date').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <ion-list lines="none">
-          <ion-item>
+          <ion-item lines="none">
             <ion-label>End Date</ion-label>
-            <ion-input value="" id="date" class="ion-text-end"></ion-input>
+            <ion-input value="{{ tournamentForm.get('end_date').value | date: 'dd/MM/yyyy' }}" id="date"
+              class="ion-text-end"></ion-input>
             <ion-popover trigger="date" size="cover">
               <ng-template>
                 <ion-datetime presentation="date" formControlName="end_date"></ion-datetime>
@@ -88,94 +88,96 @@
             </ion-popover>
           </ion-item>
         </ion-list>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.end_date">
             <div class="error-message"
               *ngIf="tournamentForm.get('end_date').hasError(validation.type) && (tournamentForm.get('end_date').dirty || tournamentForm.get('end_date').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <ion-input type="number" name="number_of_request" placeholder="Number of teams" class="form-control"
           formControlName="number_of_request">
         </ion-input>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.number_of_request">
             <div class="error-message"
               *ngIf="tournamentForm.get('number_of_request').hasError(validation.type) && (tournamentForm.get('number_of_request').dirty || tournamentForm.get('number_of_request').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <ion-input type="number" name="registration_fee" placeholder="Reg. Fee" class="form-control"
           formControlName="registration_fee">
         </ion-input>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.registration_fee">
             <div class="error-message"
               *ngIf="tournamentForm.get('registration_fee').hasError(validation.type) && (tournamentForm.get('registration_fee').dirty || tournamentForm.get('registration_fee').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <ion-list lines="none">
-          <ion-item>
-            <ion-select formControlName="published" name="published" placeholder="Published">
+          <ion-item lines="none">
+            <ion-select formControlName="published" name="published" placeholder="Published"
+              [interfaceOptions]="platformSelectOptions">
               <ion-select-option [value]="1">Yes</ion-select-option>
               <ion-select-option [value]="0">No</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.published">
             <div class="error-message"
               *ngIf="tournamentForm.get('published').hasError(validation.type) && (tournamentForm.get('published').dirty || tournamentForm.get('published').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <ion-list lines="none">
-          <ion-item>
-            <ion-select formControlName="is_vip" name="is_vip" placeholder="VIP">
+          <ion-item lines="none">
+            <ion-select formControlName="is_vip" name="is_vip" placeholder="VIP"
+              [interfaceOptions]="platformSelectOptions">
               <ion-select-option [value]="1">Yes</ion-select-option>
               <ion-select-option [value]="0">No</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.is_vip">
             <div class="error-message"
               *ngIf="tournamentForm.get('is_vip').hasError(validation.type) && (tournamentForm.get('is_vip').dirty || tournamentForm.get('is_vip').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <div class="form-group">
         <ion-input type="text" name="terms_and_condition" placeholder="Terms and condition" class="form-control"
           formControlName="terms_and_condition">
         </ion-input>
-        <!-- <div class="validation-errors">
+        <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.terms_and_condition">
             <div class="error-message"
               *ngIf="tournamentForm.get('terms_and_condition').hasError(validation.type) && (tournamentForm.get('terms_and_condition').dirty || tournamentForm.get('terms_and_condition').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
-        </div> -->
+        </div>
       </div>
 
       <button type="submit" class="secondary-btn">Challenge</button>

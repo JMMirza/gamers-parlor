@@ -45,13 +45,18 @@ export class CreateTournamentPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.tournamentForm = this.formBuilder.group({
-    //   start_date: ['', [Validators.required]],
-    //   fee: ['', [Validators.required]],
-    //   game_id: [0, [Validators.required]],
-    //   platform_id: [0, [Validators.required]],
-    //   terms_and_condition: ['N/A'],
-    // });
+    this.tournamentForm = this.formBuilder.group({
+      name: ['PSL', [Validators.required]],
+      game_id: ['2', [Validators.required]],
+      platform_id: ['2', [Validators.required]],
+      start_date: [moment().toISOString(), [Validators.required]],
+      end_date: [moment().toISOString(), [Validators.required]],
+      registration_fee: ['1000', [Validators.required]],
+      number_of_request: ['10', [Validators.required]],
+      published: ['yes', [Validators.required]],
+      is_vip: ['yes', [Validators.required]],
+      terms_and_condition: ['Some terms and conditions', [Validators.required]],
+    });
 
     this.getWagersData();
   }
@@ -89,6 +94,7 @@ export class CreateTournamentPage implements OnInit {
 
       let params = this.tournamentForm.value;
       params.start_date = moment(params.start_date).format('YYYY-MM-DD');
+      params.end_date = moment(params.end_date).format('YYYY-MM-DD');
 
       await this.tournamentService.createTournament(params).subscribe(
         (data: any) => {
