@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'edit-profile',
     loadChildren: () => import('./modals/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
   },
+  {
+    path: 'create-tournament',
+    loadChildren: () => import('./modals/create-tournament/create-tournament.module').then( m => m.CreateTournamentPageModule)
+  },
 
 ];
 
