@@ -6,12 +6,7 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './edit-profile.page.html',
   styleUrls: ['./edit-profile.page.scss'],
 })
-
-
-
 export class EditProfilePage implements OnInit {
-
-
   constructor(private modalCtrl: ModalController) {}
 
   cancel() {
@@ -22,7 +17,5 @@ export class EditProfilePage implements OnInit {
     return this.modalCtrl.dismiss('', 'confirm');
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -5,6 +5,8 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { User } from '../../models/User';
 import { EditProfilePage } from 'src/app/modals/edit-profile/edit-profile.page';
 import { ModalController } from '@ionic/angular';
+import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +21,8 @@ export class ProfilePage implements OnInit {
   constructor(
     private userProfile: UserProfileService,
     private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private camera: Camera
   ) {}
 
   ngOnInit() {
@@ -47,7 +50,6 @@ export class ProfilePage implements OnInit {
     );
   }
 
-
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: EditProfilePage,
@@ -55,6 +57,27 @@ export class ProfilePage implements OnInit {
     modal.present();
 
     const { data, role } = await modal.onWillDismiss();
+  }
 
+  async getPhoto() {
+    try {
+      const options: CameraOptions = {
+        quality: 50,
+        destinationType: this.camera.DestinationType.FILE_URI,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+      };
+
+      this.camera.getPicture(options).then(
+        (imageData) => {
+          let base64Image = 'data:image/jpeg;base64,' + imageData;
+        },
+        (err) => {
+          // Handle error
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
