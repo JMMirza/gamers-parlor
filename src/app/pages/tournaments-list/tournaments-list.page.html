@@ -4,7 +4,8 @@
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe">tournament list</ion-title>
+      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe">tournament list
+      </ion-title>
     </ion-toolbar>
   </ion-header>
   <main class="ion-padding-horizontal">
@@ -69,7 +70,7 @@
                       </span>
                       120$
                     </p>
-                    <button class="primary-btn get-center" (click)="participateModal()">
+                    <button class="primary-btn get-center" [routerLink]="['/participate-tournament']">
                       PARTICIPATE
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>

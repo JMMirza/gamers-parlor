@@ -61,7 +61,11 @@ const routes: Routes = [
       import('./modals/create-tournament/create-tournament.module').then(
         (m) => m.CreateTournamentPageModule
       ),
+  },  {
+    path: 'participate-tournament',
+    loadChildren: () => import('./pages/participate-tournament/participate-tournament.module').then( m => m.ParticipateTournamentPageModule)
   },
+
 ];
 
 @NgModule({
