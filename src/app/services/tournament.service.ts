@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { HttpService } from './http.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,6 +14,13 @@ export class TournamentService {
 
   listVipTournament(params?) {
     return this.httpService.get('list-vip-tournaments', params);
+  }
+
+  async tournamentsData(params?) {
+    let tournaments = this.listTournament(params);
+    let vipTournaments = this.listVipTournament(params);
+
+    return await forkJoin([tournaments, vipTournaments]);
   }
 
   createTournament(params) {
