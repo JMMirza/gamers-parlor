@@ -6,6 +6,7 @@ import { SwiperComponent } from 'swiper/angular';
 import { ToastService } from '../../services/toast.service';
 import { ModalController } from '@ionic/angular';
 import { CreateTournamentPage } from '../../modals/create-tournament/create-tournament.page';
+import { CreateTeamPage } from '../../modals/create-team/create-team.page';
 
 @Component({
   selector: 'app-tournaments-list',
@@ -135,6 +136,19 @@ export class TournamentsListPage implements OnInit {
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: CreateTournamentPage,
+    });
+    modal.present();
+
+    await modal.onWillDismiss().then((data) => {
+      console.log(data);
+      this.listTournaments();
+    });
+  }
+
+
+  async participateModal() {
+    const modal = await this.modalCtrl.create({
+      component: CreateTeamPage,
     });
     modal.present();
 
