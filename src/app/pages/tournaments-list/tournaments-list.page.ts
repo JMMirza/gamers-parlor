@@ -31,7 +31,7 @@ export class TournamentsListPage implements OnInit {
 
   ngOnInit() {
     this.listTournaments({ pageNo: this.pageNo });
-    this.listVipTournaments();
+    // this.listVipTournaments();
   }
 
   platformFilter(e) {
@@ -51,11 +51,15 @@ export class TournamentsListPage implements OnInit {
 
     loading.present();
 
-    await this.tournamentService.listTournament(params).subscribe(
+    await (
+      await this.tournamentService.tournamentsData(params)
+    ).subscribe(
       (data: any) => {
         console.log(data);
-        this.response = data.tournaments;
-        this.platforms = data.platforms;
+        this.response = data[0].tournaments;
+        this.platforms = data[0].platforms;
+        this.response_vip = data[1];
+
         loading.dismiss();
       },
       (error) => {
@@ -113,19 +117,21 @@ export class TournamentsListPage implements OnInit {
 
   public async doRefresh(event) {
     this.pageNo = 1;
-    await this.tournamentService
-      .listTournament({ page_no: this.pageNo })
-      .subscribe(
-        (data: any) => {
-          console.log(data);
-          this.response = data.tournaments;
-          event.target.complete();
-        },
-        (error) => {
-          console.log(error);
-          event.target.complete();
-        }
-      );
+    await (
+      await this.tournamentService.tournamentsData({ page_no: this.pageNo })
+    ).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.response = data[0].tournaments;
+        this.platforms = data[0].platforms;
+        this.response_vip = data[1];
+        event.target.complete();
+      },
+      (error) => {
+        console.log(error);
+        event.target.complete();
+      }
+    );
   }
 
   showGameRules(game) {
@@ -144,7 +150,6 @@ export class TournamentsListPage implements OnInit {
       this.listTournaments();
     });
   }
-
 
   async participateModal() {
     const modal = await this.modalCtrl.create({
