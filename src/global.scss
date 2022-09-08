@@ -59,8 +59,16 @@ ion-img,
     margin: 0 auto;
 }
 
+// :host-context(.item-has-focus) .select-icon
+
+ion-select::part(icon) {
+    opacity: 1;
+   position: absolute;
+   right: 0;
+}
 .form-group {
     margin-bottom: 10px;
+
     .form-control {
         height: 59px;
         border-radius: 6px;
@@ -1010,7 +1018,6 @@ ion-segment {
     margin-right: 20px;
 }
 
-
-ion-back-button.back-btn{
+ion-back-button.back-btn {
     color: var(--ion-color-secondary-contrast);
 }
