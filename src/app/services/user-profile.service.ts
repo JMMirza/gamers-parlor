@@ -10,4 +10,12 @@ export class UserProfileService {
   getProfile(params?) {
     return this.httpService.get('get-profile', params);
   }
+
+  searchUser(params) {
+    return this.httpService.get('search-user', params);
+  }
+
+  getAllUser() {
+    return this.httpService.get('get-all-user');
+  }
 }
