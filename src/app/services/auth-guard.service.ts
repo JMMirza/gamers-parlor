@@ -21,7 +21,6 @@ export class AuthGuardService {
     var isAuthenticated = await this.authService.isAuthenticated();
     if (!isAuthenticated) {
       this.router.navigate(['/login']);
-      console.log('afasdfasdf');
     }
     return isAuthenticated;
   }
