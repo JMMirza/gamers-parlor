@@ -23,13 +23,14 @@
     <section class="" *ngIf="segment === 'createTeams'">
       <form class="site-form" style="margin:0">
         <div class="form-group">
-          <ion-input type="text" name="fullName" placeholder="Enter Name" class="form-control">
+          <ion-input type="text" name="fullName" placeholder="Name" class="form-control">
           </ion-input>
         </div>
         <div class="form-group">
           <ion-input type="number" name="noMember" placeholder="Number of Members" class="form-control">
           </ion-input>
         </div>
+       
         <button type="submit" class="secondary-btn">
           create
         </button>
@@ -38,49 +39,17 @@
 
     <section class="" *ngIf="segment === 'addMembers'">
       <form class="site-form" style="margin:0">
-        <!-- <div class="form-group">
-          <ion-input type="text" name="fullName" placeholder="Full Name" class="form-control">
-          </ion-input>
-        </div>
         <div class="form-group">
-          <ion-input type="email" name="email" placeholder="Enter your Email" class="form-control">
-          </ion-input>
-        </div> -->
-        <div class="form-group">
-          <ion-input type="text" name="playerRole" placeholder="Enter your Role" class="form-control">
-          </ion-input>
-        </div>
-
-        <div class="form-group">
-          <ion-list>
-            <ion-item>
-              <ion-select placeholder="Teamss List">
-                <ion-select-option value="apples">Apples</ion-select-option>
-                <ion-select-option value="oranges">Oranges</ion-select-option>
-                <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-list lines="none">
+            <ion-item lines="none">
+              <ion-select placeholder="Select Members" [multiple]="true">
+                <ion-select-option value="user1">User 1</ion-select-option>
+                <ion-select-option value="user2">User 2</ion-select-option>
+                <ion-select-option value="user3">User 3</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>
         </div>
-        <div class="form-group">
-          <ion-list>
-            <ion-item>
-              <ion-select placeholder="User List">
-                <ion-select-option value="apples">Apples</ion-select-option>
-                <ion-select-option value="oranges">Oranges</ion-select-option>
-                <ion-select-option value="bananas">Bananas</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-        </div>
-        <!-- <div class="form-group">
-          <ion-input type="password" name="password" placeholder="Password" class="form-control">
-          </ion-input>
-        </div>
-        <div class="form-group">
-          <ion-input type="password" name="confirmPassword" placeholder="Confirm Password" class="form-control">
-          </ion-input>
-        </div> -->
         <button type="submit" class="secondary-btn">
           Add player
         </button>
