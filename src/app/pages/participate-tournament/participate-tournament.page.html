@@ -1,17 +1,26 @@
-<ion-header>
-  <ion-toolbar line="none">
-    <ion-title>Participate</ion-title>
-    <ion-buttons slot="start" color="secondary-contrast">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="content-inner-body">
+  <ion-header>
+    <ion-toolbar class="ion-no-padding">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home" class="back-btn"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe">Participate
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
   <main class="ion-padding-horizontal">
+    <ion-segment class="match-filter">
+      <ion-segment-button value="createTeams">
+        <ion-label>create team</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="addMembers">
+        <ion-label>add member</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
-    <section class="">
-
-    </section>
+ 
   </main>
 </ion-content>
