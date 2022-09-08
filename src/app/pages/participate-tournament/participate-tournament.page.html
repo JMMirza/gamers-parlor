@@ -21,7 +21,7 @@
       </ion-segment-button>
     </ion-segment>
     <section class="" *ngIf="segment === 'createTeams'">
-      <form class="site-form" style="margin:0">
+      <form class="site-form" style="margin: 0">
         <div class="form-group">
           <ion-input type="text" name="fullName" placeholder="Name" class="form-control">
           </ion-input>
@@ -30,15 +30,13 @@
           <ion-input type="number" name="noMember" placeholder="Number of Members" class="form-control">
           </ion-input>
         </div>
-       
-        <button type="submit" class="secondary-btn">
-          create
-        </button>
+
+        <button type="submit" class="secondary-btn">create</button>
       </form>
     </section>
 
     <section class="" *ngIf="segment === 'addMembers'">
-      <form class="site-form" style="margin:0">
+      <form class="site-form" style="margin: 0">
         <div class="form-group">
           <ion-list lines="none">
             <ion-item lines="none">
@@ -51,12 +49,8 @@
             </ion-item>
           </ion-list>
         </div>
-        <button type="submit" class="secondary-btn">
-          Add player
-        </button>
+        <button type="submit" class="secondary-btn">Add player</button>
       </form>
     </section>
-
-
   </main>
 </ion-content>
