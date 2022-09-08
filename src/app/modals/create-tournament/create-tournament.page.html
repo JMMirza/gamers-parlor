@@ -13,7 +13,6 @@
   <main class="ion-padding-horizontal">
     <form [formGroup]="tournamentForm" (ngSubmit)="createTournament()" novalidate class="site-form" style="margin: 0">
 
-
       <div class="form-group">
         <ion-input type="text" name="name" placeholder="Name" class="form-control" formControlName="name">
         </ion-input>
@@ -45,6 +44,7 @@
           </ng-container>
         </div>
       </div>
+
       <div class="form-group">
         <ion-list lines="none">
           <ion-item lines="none">
@@ -63,6 +63,7 @@
           </ng-container>
         </div>
       </div>
+
       <div class="form-group">
         <ion-list lines="none">
           <ion-item lines="none">
@@ -195,4 +196,3 @@
     </form>
   </main>
 </ion-content>
-
