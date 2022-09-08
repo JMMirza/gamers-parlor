@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./participate-tournament.page.scss'],
 })
 export class ParticipateTournamentPage implements OnInit {
+  segment = 'createTeams';
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+    this.segment = ev.detail.value;
   }
-
 }
