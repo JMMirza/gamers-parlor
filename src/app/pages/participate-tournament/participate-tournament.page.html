@@ -12,15 +12,12 @@
     </ion-toolbar>
   </ion-header>
   <main class="ion-padding-horizontal">
-    <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="segment">
-      <ion-segment-button value="createTeams">
-        <ion-label>create team</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="addMembers">
-        <ion-label>add member</ion-label>
+    <ion-segment class="match-filter" [(ngModel)]="segments[this.step].value">
+      <ion-segment-button [value]="segment.value" *ngFor="let segment of segments">
+        <ion-label>{{segment.label}}</ion-label>
       </ion-segment-button>
     </ion-segment>
-    <section class="" *ngIf="segment === 'createTeams'">
+    <section class="" *ngIf="segments[this.step].value === segments[0].value">
       <form class="site-form" style="margin: 0">
         <div class="form-group">
           <ion-input type="text" name="fullName" placeholder="Name" class="form-control">
@@ -31,26 +28,39 @@
           </ion-input>
         </div>
 
-        <button type="submit" class="secondary-btn">create</button>
+
       </form>
     </section>
 
-    <section class="" *ngIf="segment === 'addMembers'">
-      <form class="site-form" style="margin: 0">
-        <div class="form-group">
-          <ion-list lines="none">
-            <ion-item lines="none">
-              <ion-select placeholder="Select Members" [multiple]="true">
-                <ion-select-option value="user1">User 1</ion-select-option>
-                <ion-select-option value="user2">User 2</ion-select-option>
-                <ion-select-option value="user3">User 3</ion-select-option>
-              </ion-select>
-              <!-- <ion-icon color="primary" name="arrow-down" mode="ios" slot="end"></ion-icon> -->
-            </ion-item>
-          </ion-list>
-        </div>
-        <button type="submit" class="secondary-btn">Add player</button>
-      </form>
+    <section class="" *ngIf="segments[this.step].value === segments[1].value">
+      <div class="form-group">
+        <ion-input type="text" name="fullName" placeholder="Search Player" class="form-control">
+        </ion-input>
+      </div>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-icon style="width: 100%; height: 100%" name="musical-notes"></ion-icon>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Abbey Road</h3>
+            <p>The Beatles</p>
+            <!-- <p>1969</p> -->
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </section>
   </main>
 </ion-content>
+
+
+<ion-footer>
+  <ion-row>
+    <ion-col *ngIf="step > 0">
+      <button type="submit" (click)="previous()" class="secondary-btn">Back</button>
+    </ion-col>
+    <ion-col>
+      <button type="submit" (click)="next()" class="secondary-btn">Next</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

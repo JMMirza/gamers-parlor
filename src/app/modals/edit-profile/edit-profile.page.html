@@ -1,4 +1,3 @@
-
 <ion-header class="custom-footer" collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -11,50 +10,59 @@
 </ion-header>
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <form class="site-form" style="margin:0">
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" novalidate class="site-form" style="margin:0">
       <div class="form-group">
-        <ion-list lines="none">
-          <ion-item>
-            <ion-select placeholder="Select Game">
-              <ion-select-option value="apples">Apples</ion-select-option>
-              <ion-select-option value="oranges">Oranges</ion-select-option>
-              <ion-select-option value="bananas">Bananas</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
+        <ion-input type="text" name="name" placeholder="Name" class="form-control">
+        </ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.name">
+            <div class="error-message"
+              *ngIf="profileForm.get('name').hasError(validation.type) && (profileForm.get('name').dirty || profileForm.get('name').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
+
+      <div class="form-group">
+        <ion-input type="email" name="email" placeholder="Email" class="form-control" formControlName="email">
+        </ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.email">
+            <div class="error-message"
+              *ngIf="profileForm.get('email').hasError(validation.type) && (profileForm.get('email').dirty || profileForm.get('email').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
       <div class="form-group">
         <ion-list lines="none">
           <ion-item lines="none">
-            <ion-select placeholder="Gamme Platform">
-              <ion-select-option value="apples">Apples</ion-select-option>
-              <ion-select-option value="oranges">Oranges</ion-select-option>
-              <ion-select-option value="bananas">Bananas</ion-select-option>
-            </ion-select>
+            <ion-label>Start Date</ion-label>
+            <ion-input value="{{ profileForm.get('date_of_birth').value | date: 'dd/MM/yyyy' }}" id="date"
+              class="ion-text-end"></ion-input>
+            <ion-popover trigger="date" size="cover">
+              <ng-template>
+                <ion-datetime presentation="date" formControlName="date_of_birth"></ion-datetime>
+              </ng-template>
+            </ion-popover>
           </ion-item>
         </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.date_of_birth">
+            <div class="error-message"
+              *ngIf="profileForm.get('date_of_birth').hasError(validation.type) && (profileForm.get('date_of_birth').dirty || profileForm.get('date_of_birth').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </div>
-      <div class="form-group">
-        <ion-datetime-button datetime="datetime"></ion-datetime-button>
 
-          <ion-modal [keepContentsMounted]="true">
-            <ng-template>
-              <ion-datetime id="datetime"></ion-datetime>
-            </ng-template>
-          </ion-modal>
-
-      </div>
-      <div class="form-group">
-        <ion-input type="" name="fee" placeholder="Reg. Fee" class="form-control">
-        </ion-input>
-      </div>
       <button type="submit" class="secondary-btn">
-        Add player
+        Update Profile
       </button>
     </form>
   </main>
 </ion-content>
-
-
-
-
