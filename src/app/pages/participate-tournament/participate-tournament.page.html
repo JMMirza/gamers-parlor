@@ -68,47 +68,48 @@
         </ion-item>
       </ion-list> -->
 
+      <ion-list lines="none">
+        <div class="tournament-card" *ngFor="let u of selectedUsers; let i = index">
+          <div class="tournament-card-content">
+            <div class="game-img">
+              <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
+            </div>
+            <div class="card-body">
+              <div class="game-info">
 
-      <div class="tournament-card" *ngFor="let u of selectedUsers; let i = index">
-        <div class="tournament-card-content">
-          <div class="game-img">
-            <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
-          </div>
-          <div class="card-body">
-            <div class="game-info">
-
-              <ion-label>
-                <h3>{{ u.name }}</h3>
-                <p>{{ u.email }}</p>
-              </ion-label>
-              <ion-button class="btn btn-primary" (click)="removeUser(u, i)">
-                <ion-icon name="remove"></ion-icon>
-              </ion-button>
+                <ion-label>
+                  <h3>{{ u.name }}</h3>
+                  <p>{{ u.email }}</p>
+                </ion-label>
+                <ion-button class="btn btn-primary" (click)="removeUser(u, i)">
+                  <ion-icon name="remove"></ion-icon>
+                </ion-button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ion-list>
+      <ion-list lines="none">
+        <div class="tournament-card" *ngFor="let u of selectedUsers; let i = index">
+          <div class="tournament-card-content">
+            <div class="game-img">
+              <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
+            </div>
+            <div class="card-body">
+              <div class="game-info">
 
-
-      <div class="tournament-card" *ngFor="let u of selectedUsers; let i = index">
-        <div class="tournament-card-content">
-          <div class="game-img">
-            <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
-          </div>
-          <div class="card-body">
-            <div class="game-info">
-
-              <ion-label>
-                <h3>{{ u.name }}</h3>
-                <p>{{ u.email }}</p>
-              </ion-label>
-              <ion-button class="btn btn-primary" (click)="selectUser(u,index)">
-                <ion-icon name="add"></ion-icon>
-              </ion-button>
+                <ion-label>
+                  <h3>{{ u.name }}</h3>
+                  <p>{{ u.email }}</p>
+                </ion-label>
+                <ion-button class="btn btn-primary" (click)="selectUser(u,index)">
+                  <ion-icon name="add"></ion-icon>
+                </ion-button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ion-list>
 
     </section>
   </main>
