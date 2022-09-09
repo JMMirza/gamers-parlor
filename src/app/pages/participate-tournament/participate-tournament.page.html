@@ -38,7 +38,7 @@
         </ion-input>
       </div>
 
-      <ion-list lines="none">
+      <!-- <ion-list lines="none">
         <ion-item *ngFor="let u of selectedUsers; let i = index">
           <ion-avatar slot="start">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
@@ -51,9 +51,9 @@
             <ion-icon name="remove"></ion-icon>
           </ion-button>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
 
-      <ion-list lines="none">
+      <!-- <ion-list lines="none">
         <ion-item *ngFor="let u of users; let i = index">
           <ion-avatar slot="start">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
@@ -66,7 +66,49 @@
             <ion-icon name="add"></ion-icon>
           </ion-button>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
+
+
+      <div class="tournament-card" *ngFor="let u of selectedUsers; let i = index">
+        <div class="tournament-card-content">
+          <div class="game-img">
+            <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
+          </div>
+          <div class="card-body">
+            <div class="game-info">
+
+              <ion-label>
+                <h3>{{ u.name }}</h3>
+                <p>{{ u.email }}</p>
+              </ion-label>
+              <ion-button class="btn btn-primary" (click)="removeUser(u, i)">
+                <ion-icon name="remove"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tournament-card" *ngFor="let u of selectedUsers; let i = index">
+        <div class="tournament-card-content">
+          <div class="game-img">
+            <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
+          </div>
+          <div class="card-body">
+            <div class="game-info">
+
+              <ion-label>
+                <h3>{{ u.name }}</h3>
+                <p>{{ u.email }}</p>
+              </ion-label>
+              <ion-button class="btn btn-primary" (click)="selectUser(u,index)">
+                <ion-icon name="add"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </section>
   </main>
