@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
+import { MyTeamsService } from 'src/app/services/my-teams.service';
 
 @Component({
   selector: 'app-participate-tournament',
@@ -11,6 +12,13 @@ import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 export class ParticipateTournamentPage implements OnInit {
   segment = 'createTeams';
   users: any = [];
+  selectedUsers: any = [];
+  formData = {
+    players: null,
+    team_name: null,
+    team_logo: null,
+  };
+
   step = 0;
 
   segments = [
@@ -26,6 +34,7 @@ export class ParticipateTournamentPage implements OnInit {
 
   constructor(
     private userService: UserProfileService,
+    private teamService: MyTeamsService,
     private loadingCtrl: LoadingController,
     private camera: Camera
   ) {}
@@ -91,7 +100,7 @@ export class ParticipateTournamentPage implements OnInit {
 
       this.camera.getPicture(options).then(
         (imageData) => {
-          let base64Image = 'data:image/jpeg;base64,' + imageData;
+          this.formData.team_logo = 'data:image/jpeg;base64,' + imageData;
         },
         (err) => {
           // Handle error
@@ -100,5 +109,29 @@ export class ParticipateTournamentPage implements OnInit {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  selectUser(user, index) {
+    this.selectedUsers.push(user);
+    this.users.splice(index, 1);
+  }
+
+  removeUser(user, index) {
+    this.selectedUsers.splice(index, 1);
+    this.users.push(user);
+  }
+
+  async createTeam() {
+    this.formData.players = this.selectedUsers;
+    console.log(this.formData);
+    await this.teamService.createTeam(this.formData).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.users = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

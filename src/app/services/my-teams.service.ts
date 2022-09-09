@@ -10,4 +10,8 @@ export class MyTeamsService {
   listMyTeams(params?) {
     return this.httpService.get('list-player-teams', params);
   }
+
+  createTeam(params) {
+    return this.httpService.post('create-team', params);
+  }
 }

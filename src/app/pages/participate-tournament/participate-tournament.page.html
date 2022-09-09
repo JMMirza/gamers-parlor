@@ -20,7 +20,8 @@
     <section class="" *ngIf="segments[this.step].value === segments[0].value">
       <form class="site-form" style="margin: 0">
         <div class="form-group">
-          <ion-input type="text" name="fullName" placeholder="Name" class="form-control">
+          <ion-input type="text" name="fullName" placeholder="Name" class="form-control"
+            [(ngModel)]="formData.team_name">
           </ion-input>
         </div>
         <button type="submit" (click)="uploadLogo()" class="secondary-btn mt-0 border-0">Upload Logo</button>
@@ -36,8 +37,9 @@
           (ionChange)='searchPlayers($event)'>
         </ion-input>
       </div>
+
       <ion-list lines="none">
-        <ion-item *ngFor="let u of users">
+        <ion-item *ngFor="let u of selectedUsers; let i = index">
           <ion-avatar slot="start">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
           </ion-avatar>
@@ -45,8 +47,23 @@
             <h3>{{ u.name }}</h3>
             <p>{{ u.email }}</p>
           </ion-label>
-          <ion-button class="btn btn-primary">
-            <ion-icon name="add-circle"></ion-icon>
+          <ion-button class="btn btn-primary" (click)="removeUser(u, i)">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+      <ion-list lines="none">
+        <ion-item *ngFor="let u of users; let i = index">
+          <ion-avatar slot="start">
+            <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h3>{{ u.name }}</h3>
+            <p>{{ u.email }}</p>
+          </ion-label>
+          <ion-button class="btn btn-primary" (click)="selectUser(u,index)">
+            <ion-icon name="add"></ion-icon>
           </ion-button>
         </ion-item>
       </ion-list>
@@ -57,12 +74,21 @@
 
 
 <ion-footer>
-  <ion-row>
+  <ion-row *ngIf="step == 0">
     <ion-col *ngIf="step > 0" class="ion-no-padding">
       <button type="submit" (click)="previous()" class="secondary-btn mt-0 border-0">Back</button>
     </ion-col>
     <ion-col class="ion-no-padding">
       <button type="submit" (click)="next()" class="secondary-btn mt-0 border-0">Next</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="step == 1">
+    <ion-col *ngIf="step > 0" class="ion-no-padding">
+      <button type="submit" (click)="previous()" class="secondary-btn mt-0 border-0">Back</button>
+    </ion-col>
+    <ion-col class="ion-no-padding">
+      <button type="submit" (click)="createTeam()" class="secondary-btn mt-0 border-0">Submit</button>
     </ion-col>
   </ion-row>
 </ion-footer>
