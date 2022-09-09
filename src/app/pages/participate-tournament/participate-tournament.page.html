@@ -35,9 +35,9 @@
         </ion-input>
       </div>
 
-      <ion-list lines="none">
+      <!-- <ion-list lines="none">
         <ion-item *ngFor="let u of selectedUsers; let i = index">
-          <ion-avatar slot="start">
+          <ion-avatar slot="start" class="game-img">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
           </ion-avatar>
           <ion-label>
@@ -48,21 +48,36 @@
             <ion-icon name="remove"></ion-icon>
           </ion-button>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
 
-      <ion-list lines="none">
-        <ion-item *ngFor="let u of users; let i = index">
-          <ion-avatar slot="start">
+      <ion-list lines="none" class="tournament-card">
+        <div *ngFor="let u of users; let i = index" class="tournament-card-content">
+          <div slot="start" class="game-img">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
-          </ion-avatar>
+          </div>
           <ion-label>
             <h3>{{ u.name }}</h3>
             <p>{{ u.email }}</p>
           </ion-label>
-          <ion-button class="btn btn-primary" (click)="selectUser(u,index)">
+          <button class="btn btn-primary" (click)="removeUser(u, i)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+        </div>
+      </ion-list>
+
+      <ion-list lines="none" class="tournament-card">
+        <div *ngFor="let u of users; let i = index" class="tournament-card-content">
+          <div slot="start" class="game-img">
+            <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
+          </div>
+          <ion-label>
+            <h3>{{ u.name }}</h3>
+            <p>{{ u.email }}</p>
+          </ion-label>
+          <button class="btn btn-primary" (click)="selectUser(u,index)">
             <ion-icon name="add"></ion-icon>
-          </ion-button>
-        </ion-item>
+          </button>
+        </div>
       </ion-list>
 
     </section>
