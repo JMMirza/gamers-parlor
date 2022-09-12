@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlayerTournamentsService } from 'src/app/services/player-tournaments.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
+import { TeamListPage } from 'src/app/modals/team-list/team-list.page';
+import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
   selector: 'app-my-tournaments',
@@ -14,11 +16,14 @@ export class MyTournamentsPage implements OnInit {
   pageNo = 1;
   response: any;
   platforms: any;
+  tournament_teams: any;
 
   constructor(
     private playerTournamentsService: PlayerTournamentsService,
+    private tournamnentService: TournamentService,
     private loadingCtrl: LoadingController,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -59,5 +64,17 @@ export class MyTournamentsPage implements OnInit {
       pageNo: this.pageNo,
       platform_id: e.detail.value,
     });
+  }
+
+  async viewTeamList(team) {
+    console.log(team);
+
+    const modal = await this.modalCtrl.create({
+      component: TeamListPage,
+      componentProps: { team: team },
+    });
+    modal.present();
+    // modal.componentInstance.user = this.response;
+    const { data, role } = await modal.onWillDismiss();
   }
 }

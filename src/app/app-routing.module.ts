@@ -65,6 +65,10 @@ const routes: Routes = [
     path: 'participate-tournament',
     loadChildren: () => import('./pages/participate-tournament/participate-tournament.module').then( m => m.ParticipateTournamentPageModule)
   },
+  {
+    path: 'team-list',
+    loadChildren: () => import('./modals/team-list/team-list.module').then( m => m.TeamListPageModule)
+  },
 
 ];
 

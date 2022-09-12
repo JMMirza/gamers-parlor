@@ -59,7 +59,7 @@
                       </span>
                       120$
                     </p>
-                    <button class="primary-btn get-center" [routerLink]="['/participate-tournament']">
+                    <button class="primary-btn get-center" (click)="viewTeamList(item.team)">
                       VIEW TEAM
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>

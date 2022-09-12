@@ -26,4 +26,8 @@ export class TournamentService {
   createTournament(params) {
     return this.httpService.post('create-tournament', params);
   }
+
+  listTournamentTeams(params) {
+    return this.httpService.get('list-tournament-teams', params);
+  }
 }
