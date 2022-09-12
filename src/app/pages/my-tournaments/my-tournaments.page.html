@@ -1,42 +1,97 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end" color="secondary-contrast">
-      <ion-menu-button color="secondary-contrast"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-
 <ion-content class="content-inner-body">
-  <main class="ion-padding-horizontal">
-    <ion-segment>
-      <ion-segment-button value="nemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (1).png"></ion-img>
-      </ion-segment-button>
-      <ion-segment-button value="friends" class="game-filters">
-        <ion-img src="../../../assets/gamee (2).png"></ion-img>
-      </ion-segment-button>
-      <ion-segment-button value="eemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (3).png"></ion-img>
-      </ion-segment-button>
-      <ion-segment-button value="enemie" class="game-filters">
-        <ion-img src="../../../assets/gamee (4).png"></ion-img>
-      </ion-segment-button>
+  <ion-header>
+    <ion-toolbar class="ion-no-padding">
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe">my tournaments
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-      <ion-segment-button value="eneme" class="game-filters">
-        <ion-img src="../../../assets/gamee (5).png"></ion-img>
+
+  <main class="ion-padding-horizontal">
+    <ion-segment class="match-filter" scrollable (ionChange)="platformFilter($event)">
+      <ion-segment-button [value]="platform.id" *ngFor="let platform of platforms">
+        <ion-label>{{platform.title}}</ion-label>
       </ion-segment-button>
     </ion-segment>
 
+    <section class="tournament-list-section">
+      <h1 class="main-heading">Tournaments</h1>
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <ion-virtual-scroll [items]="response" approxItemHeight="170px">
+        <ion-row *virtualItem="let item; let itemBounds = bounds;">
+          <ion-col size="12">
+            <div class="tournament-card">
+              <div class="tournament-card-content">
+                <div class="game-img">
+                  <ion-img src="{{item.tournament.game.logo_url}}" class="img-fluid"></ion-img>
+                </div>
+                <div class="card-body">
+                  <div class="game-info">
+                    <h1 class="game-title">{{item.tournament.name}}</h1>
+                    <a (click)="showGameRules(item.tournament)">
+                      <span>rules</span>
+                      view all
+                    </a>
+                  </div>
 
-    <div class="tournaments-slider-section">
-      <h1 class="main-heading">
-        <span>vip</span> Tournaments
-      </h1>
-      <div class="slider-cover">
-        <app-vip-tournament-card></app-vip-tournament-card>
-      </div>
-    </div>
+                  <p class="tournament-timing">
+                    <span>
+                      <ion-icon name="time-sharp"></ion-icon>
+                    </span>
+                    mon at 2:00PM
+                  </p>
+
+                  <div class="t-pricing">
+                    <p class="tournament-price">
+                      <span>
+                        <ion-icon name="card"></ion-icon>
+                      </span>
+                      50$
+                    </p>
+                    <p class="tournament-prize">
+                      <span>
+                        <ion-icon name="trophy-sharp"></ion-icon>
+                      </span>
+                      120$
+                    </p>
+                    <button class="primary-btn get-center" [routerLink]="['/participate-tournament']">
+                      VIEW TEAM
+                      <span class="get-center">
+                        <ion-icon name="caret-forward"></ion-icon>
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="card-footer">
+                    <p class="tournament-prize">
+                      <span>
+                        <ion-icon name="people"></ion-icon>
+                      </span>
+                      4
+                    </p>
+                    <!-- <p class="vip-member">
+                      <span>
+                        <ion-icon name="person-circle-sharp"></ion-icon>
+                      </span>
+                      {{item.tournament.enrollments.length}} /{{item.tournament.number_of_request}}
+                    </p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-virtual-scroll>
+      <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </section>
+
   </main>
 
   <div class="game-icon-top">
@@ -56,7 +111,7 @@
 
 
 
-<!-- 
+<!--
 <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
   <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
@@ -70,7 +125,7 @@
             <img src="../../../assets/fifa.jpg" />
           </ion-avatar>
           <ion-label class="ion-no-margin">
-            <h2>{{item.tournament.name}}</h2>
+            <h2>{{item.tournament.tournament.name}}</h2>
             <p>Tournament fee: 20$</p>
             <p>requests: 13</p>
             <p>Created At: 22 Jun, 2022</p>

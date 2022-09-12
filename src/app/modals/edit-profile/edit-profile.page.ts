@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 import * as moment from 'moment';
+import { UserProfileService } from 'src/app/services/user-profile.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,6 +13,7 @@ import * as moment from 'moment';
 })
 export class EditProfilePage implements OnInit {
   response: any;
+  @Input() public user;
   games: any = [];
   platforms: any = [];
   profileForm: FormGroup;
@@ -23,6 +26,7 @@ export class EditProfilePage implements OnInit {
   };
 
   constructor(
+    private userProfile: UserProfileService,
     private modalCtrl: ModalController,
     public formBuilder: FormBuilder,
     private toastService: ToastService
@@ -39,9 +43,9 @@ export class EditProfilePage implements OnInit {
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      date_of_birth: [moment().toISOString(), [Validators.required]],
+      date_of_birth: ['', [Validators.required]],
     });
+    console.log(this.user);
   }
 
   public updateProfile = async () => {
@@ -53,34 +57,34 @@ export class EditProfilePage implements OnInit {
       let params = this.profileForm.value;
       params.date_of_birth = moment(params.date_of_birth).format('YYYY-MM-DD');
 
-      // await this.tournamentService.createTournament(params).subscribe(
-      //   (data: any) => {
-      //     console.log(data);
-      //     if (data) {
-      //       this.toastService.presentToast('Success');
-      //       this.confirm(data);
-      //     }
-      //   },
-      //   (error) => {
-      //     console.log(error);
-      //     if (error instanceof HttpErrorResponse) {
-      //       if (error.status == 400) {
-      //         const validationErrors = error.error;
-      //         Object.keys(validationErrors.errors).forEach((prop) => {
-      //           const formControl = this.profileForm.get(prop);
-      //           if (formControl) {
-      //             console.log(validationErrors.errors[prop]);
-      //             formControl.setErrors({
-      //               serverError: validationErrors.errors[prop],
-      //             });
-      //           } else {
-      //             // show other errors in list or some where
-      //           }
-      //         });
-      //       }
-      //     }
-      //   }
-      // );
+      await this.userProfile.updateProfile(params).subscribe(
+        (data: any) => {
+          console.log(data);
+          if (data) {
+            this.toastService.presentToast('Success');
+            this.confirm();
+          }
+        },
+        (error) => {
+          console.log(error);
+          if (error instanceof HttpErrorResponse) {
+            if (error.status == 400) {
+              const validationErrors = error.error;
+              Object.keys(validationErrors.errors).forEach((prop) => {
+                const formControl = this.profileForm.get(prop);
+                if (formControl) {
+                  console.log(validationErrors.errors[prop]);
+                  formControl.setErrors({
+                    serverError: validationErrors.errors[prop],
+                  });
+                } else {
+                  // show other errors in list or some where
+                }
+              });
+            }
+          }
+        }
+      );
     }
   };
 }

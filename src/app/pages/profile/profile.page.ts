@@ -55,7 +55,7 @@ export class ProfilePage implements OnInit {
       component: EditProfilePage,
     });
     modal.present();
-
+    // modal.componentInstance.user = this.response;
     const { data, role } = await modal.onWillDismiss();
   }
 

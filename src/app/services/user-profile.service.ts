@@ -18,4 +18,8 @@ export class UserProfileService {
   getAllUser() {
     return this.httpService.get('get-all-user');
   }
+
+  updateProfile(params) {
+    return this.httpService.post('update-profile', params);
+  }
 }

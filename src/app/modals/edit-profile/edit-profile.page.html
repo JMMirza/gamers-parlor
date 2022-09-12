@@ -25,19 +25,6 @@
       </div>
 
       <div class="form-group">
-        <ion-input type="email" name="email" placeholder="Email" class="form-control" formControlName="email">
-        </ion-input>
-        <div class="validation-errors">
-          <ng-container *ngFor="let validation of validation_messages.email">
-            <div class="error-message"
-              *ngIf="profileForm.get('email').hasError(validation.type) && (profileForm.get('email').dirty || profileForm.get('email').touched)">
-              {{ validation.message }}
-            </div>
-          </ng-container>
-        </div>
-      </div>
-
-      <div class="form-group">
         <ion-list lines="none">
           <ion-item lines="none">
             <ion-label>Date Of Birth</ion-label>

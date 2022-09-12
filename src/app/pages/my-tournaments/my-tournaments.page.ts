@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlayerTournamentsService } from 'src/app/services/player-tournaments.service';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-my-tournaments',
@@ -12,17 +13,19 @@ export class MyTournamentsPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   pageNo = 1;
   response: any;
+  platforms: any;
 
   constructor(
     private playerTournamentsService: PlayerTournamentsService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {
     this.listMyTournament();
   }
 
-  async listMyTournament() {
+  async listMyTournament(params?) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading..',
       // duration: 3000,
@@ -30,10 +33,11 @@ export class MyTournamentsPage implements OnInit {
 
     loading.present();
 
-    await this.playerTournamentsService.listMyTournaments().subscribe(
+    await this.playerTournamentsService.listMyTournaments(params).subscribe(
       (data: any) => {
         console.log(data);
-        this.response = data;
+        this.response = data.tournaments;
+        this.platforms = data.platforms;
         loading.dismiss();
       },
       (error) => {
@@ -41,5 +45,19 @@ export class MyTournamentsPage implements OnInit {
         loading.dismiss();
       }
     );
+  }
+
+  showGameRules(game) {
+    // console.log(game);
+    this.toastService.presentAlert(game.terms_and_condition);
+  }
+
+  platformFilter(e) {
+    console.log('platform id', e.detail.value);
+
+    this.listMyTournament({
+      pageNo: this.pageNo,
+      platform_id: e.detail.value,
+    });
   }
 }

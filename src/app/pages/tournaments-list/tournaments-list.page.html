@@ -38,7 +38,7 @@
       </ion-refresher>
       <ion-virtual-scroll [items]="response" approxItemHeight="170px">
         <ion-row *virtualItem="let item; let itemBounds = bounds;">
-          <ion-col *ngFor="let item of response" size="12">
+          <ion-col size="12">
             <div class="tournament-card">
               <div class="tournament-card-content">
                 <div class="game-img">
@@ -109,10 +109,7 @@
 
 
 
-
-
-
-    <ion-list *ngIf="!loaded" lines="none" class="ion-no-padding">
+    <!-- <ion-list *ngIf="!loaded" lines="none" class="ion-no-padding">
       <ion-item class="custom-skeleton ion-align-items-baseline" color="light">
         <ion-thumbnail slot="start">
           <ion-skeleton-text [animated]="true"></ion-skeleton-text>
@@ -163,7 +160,7 @@
           </ion-skeleton-text>
         </ion-label>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
   </main>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
