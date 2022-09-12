@@ -51,7 +51,7 @@
       </ion-list> -->
 
       <ion-list lines="none" class="tournament-card">
-        <div *ngFor="let u of users; let i = index" class="tournament-card-content">
+        <div *ngFor="let u of selectedUsers; let i = index" class="tournament-card-content">
           <div slot="start" class="game-img">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
           </div>
