@@ -25,6 +25,12 @@
           </ion-input>
         </div>
         <button type="submit" (click)="uploadLogo()" class="secondary-btn mt-0 border-0">Upload Logo</button>
+        <div class="img-img">
+          <ion-img src="" class="img-fluid"></ion-img>
+          <div class="btn-close get-center">
+            <ion-icon name="close-sharp"></ion-icon>
+          </div>
+        </div>
       </form>
     </section>
 
@@ -55,13 +61,13 @@
           <div slot="start" class="game-img">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
           </div>
-          <ion-label>
+          <ion-label class="w-100">
             <h3>{{ u.name }}</h3>
             <p>{{ u.email }}</p>
           </ion-label>
-          <button class="btn btn-primary" (click)="removeUser(u, i)">
-            <ion-icon name="remove"></ion-icon>
-          </button>
+          <div type="button" class="btn btn-primary btn-radius get-center" (click)="removeUser(u, i)">
+            <ion-icon name="remove-sharp"></ion-icon>
+          </div>
         </div>
       </ion-list>
 
@@ -70,13 +76,13 @@
           <div slot="start" class="game-img">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
           </div>
-          <ion-label>
+          <ion-label class="w-100">
             <h3>{{ u.name }}</h3>
             <p>{{ u.email }}</p>
           </ion-label>
-          <button class="btn btn-primary" (click)="selectUser(u,index)">
-            <ion-icon name="add"></ion-icon>
-          </button>
+          <div type="button" class="btn btn-primary btn-radius get-center" (click)="selectUser(u,index)">
+            <ion-icon name="add-sharp"></ion-icon>
+          </div>
         </div>
       </ion-list>
 
