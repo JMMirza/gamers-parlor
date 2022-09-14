@@ -53,10 +53,14 @@ export class ProfilePage implements OnInit {
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: EditProfilePage,
+      componentProps: { user: this.response },
     });
     modal.present();
     // modal.componentInstance.user = this.response;
     const { data, role } = await modal.onWillDismiss();
+
+    console.log(data);
+    this.response = data;
   }
 
   async getPhoto() {

@@ -69,6 +69,10 @@ const routes: Routes = [
     path: 'team-list',
     loadChildren: () => import('./modals/team-list/team-list.module').then( m => m.TeamListPageModule)
   },
+  {
+    path: 'wager-post-participate',
+    loadChildren: () => import('./modals/wager-post-participate/wager-post-participate.module').then( m => m.WagerPostParticipatePageModule)
+  },
 
 ];
 

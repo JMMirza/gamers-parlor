@@ -22,4 +22,8 @@ export class WagersService {
   createWagerPost(params) {
     return this.httpService.post('create-wager-post', params);
   }
+
+  createWagerRequestPost(params) {
+    return this.httpService.post('create-wager-request-post', params);
+  }
 }

@@ -1,34 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
+import { WagersService } from 'src/app/services/wagers.service';
 import * as moment from 'moment';
-import { UserProfileService } from 'src/app/services/user-profile.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { User } from 'src/app/models/User';
 
 @Component({
-  selector: 'app-edit-profile',
-  templateUrl: './edit-profile.page.html',
-  styleUrls: ['./edit-profile.page.scss'],
+  selector: 'app-wager-post-participate',
+  templateUrl: './wager-post-participate.page.html',
+  styleUrls: ['./wager-post-participate.page.scss'],
 })
-export class EditProfilePage implements OnInit {
-  response: any;
-  @Input() user: User;
-  games: any = [];
-  platforms: any = [];
-  profileForm: FormGroup;
+export class WagerPostParticipatePage implements OnInit {
+  wagerRequestForm: FormGroup;
 
   validation_messages = {
-    // start_date: [{ type: 'required', message: 'Start Date is required.' }],
-    // fee: [{ type: 'required', message: 'Fee is required.' }],
-    // game_id: [{ type: 'required', message: 'Game is required.' }],
-    // platform_id: [{ type: 'required', message: 'Platform is required.' }],
+    request_time: [{ type: 'required', message: 'Start Date is required.' }],
   };
 
   constructor(
-    private userProfile: UserProfileService,
     private modalCtrl: ModalController,
+    private wagerService: WagersService,
     public formBuilder: FormBuilder,
     private toastService: ToastService
   ) {}
@@ -42,23 +34,21 @@ export class EditProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.profileForm = this.formBuilder.group({
-      name: [this.user.name, [Validators.required]],
-      date_of_birth: ['1999/08/12', [Validators.required]],
+    this.wagerRequestForm = this.formBuilder.group({
+      request_time: ['', [Validators.required]],
     });
-    console.log(this.user);
   }
 
-  public updateProfile = async () => {
-    if (!this.profileForm.valid) {
+  public createWager = async () => {
+    if (!this.wagerRequestForm.valid) {
       console.log('Chuti kar mera puttar');
     } else {
-      console.log(this.profileForm.value);
+      console.log(this.wagerRequestForm.value);
 
-      let params = this.profileForm.value;
-      params.date_of_birth = moment(params.date_of_birth).format('YYYY-MM-DD');
+      let params = this.wagerRequestForm.value;
+      params.request_time = moment(params.request_time).format('YYYY-MM-DD');
 
-      await this.userProfile.updateProfile(params).subscribe(
+      await this.wagerService.createWagerRequestPost(params).subscribe(
         (data: any) => {
           console.log(data);
           if (data) {
@@ -72,7 +62,7 @@ export class EditProfilePage implements OnInit {
             if (error.status == 400) {
               const validationErrors = error.error;
               Object.keys(validationErrors.errors).forEach((prop) => {
-                const formControl = this.profileForm.get(prop);
+                const formControl = this.wagerRequestForm.get(prop);
                 if (formControl) {
                   console.log(validationErrors.errors[prop]);
                   formControl.setErrors({

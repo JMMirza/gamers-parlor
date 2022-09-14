@@ -5,6 +5,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 import { ModalController } from '@ionic/angular';
 import { CreateWagersPage } from '../../modals/create-wagers/create-wagers.page';
+import { WagerPostParticipatePage } from 'src/app/modals/wager-post-participate/wager-post-participate.page';
 
 @Component({
   selector: 'app-wager-list',
@@ -64,6 +65,18 @@ export class WagerListPage implements OnInit {
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: CreateWagersPage,
+    });
+    modal.present();
+
+    await modal.onWillDismiss().then((data) => {
+      console.log(data);
+      this.listWagers();
+    });
+  }
+
+  async wagerPostRequest() {
+    const modal = await this.modalCtrl.create({
+      component: WagerPostParticipatePage,
     });
     modal.present();
 

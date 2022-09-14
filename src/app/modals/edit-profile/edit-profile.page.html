@@ -12,7 +12,7 @@
   <main class="ion-padding-horizontal">
     <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" novalidate class="site-form" style="margin:0">
       <div class="form-group">
-        <ion-input type="text" name="name" placeholder="Name" class="form-control">
+        <ion-input type="text" formControlName="name" name="name" placeholder="Name" class="form-control">
         </ion-input>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.name">
@@ -28,8 +28,9 @@
         <ion-list lines="none">
           <ion-item lines="none">
             <ion-label>Date Of Birth</ion-label>
-            <ion-input value="{{ profileForm.get('date_of_birth').value | date: 'dd/MM/yyyy' }}" id="date"
-              class="ion-text-end"></ion-input>
+            <ion-input formControlName="date_of_birth"
+              value="{{ profileForm.get('date_of_birth').value | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
+            </ion-input>
             <ion-popover trigger="date" size="cover">
               <ng-template>
                 <ion-datetime presentation="date" formControlName="date_of_birth"></ion-datetime>

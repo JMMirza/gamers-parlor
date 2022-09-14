@@ -11,6 +11,7 @@ import { MyTeamsService } from 'src/app/services/my-teams.service';
 })
 export class ParticipateTournamentPage implements OnInit {
   segment = 'createTeams';
+  status: any;
   users: any = [];
   selectedUsers: any = [];
   formData = {
@@ -113,6 +114,7 @@ export class ParticipateTournamentPage implements OnInit {
 
   selectUser(user, index) {
     this.selectedUsers.push(user);
+    this.status = !this.status;
     this.users.splice(index, 1);
   }
 

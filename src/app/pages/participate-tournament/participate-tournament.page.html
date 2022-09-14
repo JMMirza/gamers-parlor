@@ -25,7 +25,7 @@
           </ion-input>
         </div>
         <button type="submit" (click)="uploadLogo()" class="secondary-btn mt-0 border-0">Upload Logo</button>
-        <div class="img-img">
+        <div class="img-img" *ngIf="formData.team_logo">
           <ion-img src="" class="img-fluid"></ion-img>
           <div class="btn-close get-center">
             <ion-icon name="close-sharp"></ion-icon>
@@ -65,7 +65,8 @@
             <h3>{{ u.name }}</h3>
             <p>{{ u.email }}</p>
           </ion-label>
-          <div type="button" class="btn btn-primary btn-radius get-center" (click)="removeUser(u, i)">
+          <div type="button" class="btn btn-primary btn-radius get-center" (click)="removeUser(u, i)"
+            [ngClass]="status ? 'success' : 'danger'">
             <ion-icon name="remove-sharp"></ion-icon>
           </div>
         </div>

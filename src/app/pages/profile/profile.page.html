@@ -25,7 +25,7 @@
             <div class="card-body">
               <h4 class="user-name">{{response.name}}</h4>
               <p class="user-email">{{response.email}}</p>
-              <p class="user-dob">- 19-Sep-1992 -</p>
+              <p class="user-dob">- {{response.date_of_birth | date:'mediumDate'}} -</p>
               <div class="user-achivement">
                 <div class="user-rank">
                   <h4>rank</h4>
