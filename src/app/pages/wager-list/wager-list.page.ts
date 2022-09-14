@@ -17,7 +17,7 @@ export class WagerListPage implements OnInit {
   pageNo = 1;
   response: any;
   platforms: any;
-  // segment = 'requests';
+  segment = 'wager_matches';
 
   filters = {
     matchCategory: '',
@@ -125,6 +125,7 @@ export class WagerListPage implements OnInit {
     console.log(ev.detail.value);
 
     this.filters.matchCategory = ev.detail.value;
+    this.segment = ev.detail.value;
     await this.listWagers(this.filters);
   }
 

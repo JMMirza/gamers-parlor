@@ -16,7 +16,7 @@
     </div> -->
 
     <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="filters.type">
-      <ion-segment-button value="requests">
+      <ion-segment-button value="wager_matches">
         <ion-label>Match Finder</ion-label>
       </ion-segment-button>
       <ion-segment-button value="my_matches">
@@ -67,7 +67,8 @@
                       120$
                     </p>
 
-                    <button class="primary-btn get-center" (click)="wagerPostRequest(item.id)">
+                    <button class="primary-btn get-center" *ngIf="segment==='wager_matches'"
+                      (click)="wagerPostRequest(item.id)">
                       REQUEST
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
