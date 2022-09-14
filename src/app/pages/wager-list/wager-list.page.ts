@@ -20,7 +20,7 @@ export class WagerListPage implements OnInit {
   // segment = 'requests';
 
   filters = {
-    platform_id: '',
+    matchCategory: '',
     type: 'requests',
   };
 
@@ -74,9 +74,10 @@ export class WagerListPage implements OnInit {
     });
   }
 
-  async wagerPostRequest() {
+  async wagerPostRequest(id) {
     const modal = await this.modalCtrl.create({
       component: WagerPostParticipatePage,
+      componentProps: { wagerPostId: id },
     });
     modal.present();
 
@@ -121,17 +122,15 @@ export class WagerListPage implements OnInit {
   }
 
   async segmentChanged(ev) {
-    // this.filters.type = ev.detail.value;
+    console.log(ev.detail.value);
+
+    this.filters.matchCategory = ev.detail.value;
     await this.listWagers(this.filters);
   }
 
-  async onFilter(platform) {
-    this.filters.platform_id = platform;
-    await this.listWagers(this.filters);
-  }
-
-  async listMatches(platform?) {
-    this.filters.type = platform;
-    await this.listWagers(this.filters);
+  async listMatches(matchCategory) {
+    console.log(matchCategory);
+    this.filters.matchCategory = matchCategory;
+    // await this.listWagers(this.filters);
   }
 }

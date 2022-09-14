@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
@@ -13,6 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class WagerPostParticipatePage implements OnInit {
   wagerRequestForm: FormGroup;
+  @Input() wagerPostId: any;
 
   validation_messages = {
     request_time: [{ type: 'required', message: 'Start Date is required.' }],
@@ -39,7 +40,7 @@ export class WagerPostParticipatePage implements OnInit {
     });
   }
 
-  public createWager = async () => {
+  public createWagerRequest = async () => {
     if (!this.wagerRequestForm.valid) {
       console.log('Chuti kar mera puttar');
     } else {
@@ -47,7 +48,8 @@ export class WagerPostParticipatePage implements OnInit {
 
       let params = this.wagerRequestForm.value;
       params.request_time = moment(params.request_time).format('YYYY-MM-DD');
-
+      params.wager_post_id = this.wagerPostId;
+      console.log(params);
       await this.wagerService.createWagerRequestPost(params).subscribe(
         (data: any) => {
           console.log(data);

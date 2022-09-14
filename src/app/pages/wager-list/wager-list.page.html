@@ -19,8 +19,8 @@
       <ion-segment-button value="requests">
         <ion-label>Match Finder</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="matches">
-        <ion-label (click)="listMatches()">My Matches</ion-label>
+      <ion-segment-button value="my_matches">
+        <ion-label>My Matches</ion-label>
       </ion-segment-button>
     </ion-segment>
 
@@ -67,7 +67,7 @@
                       120$
                     </p>
 
-                    <button class="primary-btn get-center" (click)="wagerPostRequest()">
+                    <button class="primary-btn get-center" (click)="wagerPostRequest(item.id)">
                       REQUEST
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
