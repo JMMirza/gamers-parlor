@@ -56,8 +56,8 @@
         </ion-item>
       </ion-list> -->
 
-      <ion-list lines="none" class="tournament-card">
-        <div *ngFor="let u of selectedUsers; let i = index" class="tournament-card-content">
+      <ion-list lines="none" class="tournament-card" *ngFor="let u of selectedUsers; let i = index">
+        <div class="tournament-card-content">
           <div slot="start" class="game-img">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
           </div>
@@ -71,8 +71,8 @@
         </div>
       </ion-list>
 
-      <ion-list lines="none" class="tournament-card">
-        <div *ngFor="let u of users; let i = index" class="tournament-card-content">
+      <ion-list lines="none" class="tournament-card" *ngFor="let u of users; let i = index">
+        <div class="tournament-card-content">
           <div slot="start" class="game-img">
             <ion-img [src]="u.avatar_url" class="img-fluid" name="musical-notes"></ion-img>
           </div>
