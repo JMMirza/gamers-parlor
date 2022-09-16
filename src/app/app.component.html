@@ -1,15 +1,15 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu contentId="main-content" type="overlay" id="closeMenu">
       <div color="medium" class="side-menu-bg-color">
         <ion-list id="inbox-list" class="ion-no-padding" list="none">
           <div class="side-menu-header">
             <ion-avatar slot="start" class="get-center">
-              <img src="../../../assets/fifa.jpg" class="img-fluid" />
+              <img src="{{this.response.avatar_url.value}}" class="img-fluid" />
             </ion-avatar>
             <ion-label>
-              <ion-list-header>Tom Hardy</ion-list-header>
-              <ion-note>new.player@gmail.com</ion-note>
+              <ion-list-header class="text-truncate">{{this.response.username.value.toUpperCase()}}</ion-list-header>
+              <ion-note>{{this.response.email.value}}</ion-note>
             </ion-label>
             <ion-label>
               <button type="button" class="edit-btn get-center margin-all" (click)="openModal()">

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Preferences } from '@capacitor/preferences';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -42,9 +43,34 @@ export class AuthService {
     });
   };
 
+  setUser = async (username, email, avatar_url) => {
+    await Preferences.set({
+      key: 'username',
+      value: username,
+    });
+
+    await Preferences.set({
+      key: 'email',
+      value: email,
+    });
+
+    await Preferences.set({
+      key: 'avatar_url',
+      value: avatar_url,
+    });
+  };
+
   async getToken(): Promise<string> {
     const { value } = await Preferences.get({ key: 'token' });
     // console.log(value);
     return value;
+  }
+
+  async getUserObject() {
+    const username = await Preferences.get({ key: 'username' });
+    const email = await Preferences.get({ key: 'email' });
+    const avatar_url = await Preferences.get({ key: 'avatar_url' });
+
+    return { username: username, email: email, avatar_url: avatar_url };
   }
 }

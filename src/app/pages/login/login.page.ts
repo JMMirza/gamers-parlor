@@ -59,9 +59,14 @@ export class LoginPage implements OnInit {
 
       await this.authService.login(this.loginForm.value).subscribe(
         (data: any) => {
-          console.log(data);
+          console.log(data.user);
           loading.dismiss();
           this.authService.setToken(data.token);
+          this.authService.setUser(
+            data.user.name,
+            data.user.email,
+            data.user.avatar_url
+          );
           this.router.navigate(['/']);
         },
         (error) => {

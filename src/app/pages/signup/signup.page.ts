@@ -65,6 +65,11 @@ export class SignupPage implements OnInit {
           console.log(data);
           loading.dismiss();
           this.authService.setToken(data.token);
+          this.authService.setUser(
+            data.user.name,
+            data.user.email,
+            data.user.avatar_url
+          );
         },
         (error) => {
           console.log(error);

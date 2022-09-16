@@ -7,6 +7,7 @@ import { EditProfilePage } from 'src/app/modals/edit-profile/edit-profile.page';
 import { ModalController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfilePage implements OnInit {
 
   constructor(
     private userProfile: UserProfileService,
+    private authService: AuthService,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
     private camera: Camera
@@ -41,6 +43,7 @@ export class ProfilePage implements OnInit {
       (data: any) => {
         console.log(data);
         this.response = data;
+        this.authService.setUser(data.name, data.email, data.avatar_url);
         loading.dismiss();
       },
       (error) => {
