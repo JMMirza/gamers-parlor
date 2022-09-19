@@ -5,11 +5,11 @@
         <ion-list id="inbox-list" class="ion-no-padding" list="none">
           <div class="side-menu-header">
             <ion-avatar slot="start" class="get-center">
-              <img src="{{this.response.avatar_url.value}}" class="img-fluid" />
+              <img src="{{response.avatar_url}}" class="img-fluid" />
             </ion-avatar>
             <ion-label>
-              <ion-list-header class="text-truncate">{{this.response.username.value.toUpperCase()}}</ion-list-header>
-              <ion-note>{{this.response.email.value}}</ion-note>
+              <ion-list-header class="text-truncate">{{ response.name | titlecase }}</ion-list-header>
+              <ion-note>{{response.email}}</ion-note>
             </ion-label>
             <ion-label>
               <button type="button" class="edit-btn get-center margin-all" (click)="openModal()">

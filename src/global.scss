@@ -1132,19 +1132,20 @@ ion-back-button.back-btn {
 .img-img {
   border-radius: 10px;
   background: var(--ion-color-869BAF);
-  max-width: 380px;
+  max-width: 320px;
   width: 100%;
-  height: 180px;
+  height: 320px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  // overflow: hidden;
+  // align-items: center;
+  justify-content: center;
+  overflow: hidden;
   position: relative;
   margin: 30px auto;
   .btn-close {
     position: absolute;
-    right: -9px;
-    top: -9px;
+    right: 9px;
+    top: 9px;
     color: var(--ion-color-secondary-contrast);
     background: var(--ion-color-primary);
     border: 2px solid var(--ion-color-secondary-contrast);

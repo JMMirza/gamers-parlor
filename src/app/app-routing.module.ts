@@ -61,19 +61,28 @@ const routes: Routes = [
       import('./modals/create-tournament/create-tournament.module').then(
         (m) => m.CreateTournamentPageModule
       ),
-  },  {
-    path: 'participate-tournament',
-    loadChildren: () => import('./pages/participate-tournament/participate-tournament.module').then( m => m.ParticipateTournamentPageModule)
+  },
+  {
+    path: 'participate-tournament/:tournamentId',
+    loadChildren: () =>
+      import(
+        './pages/participate-tournament/participate-tournament.module'
+      ).then((m) => m.ParticipateTournamentPageModule),
   },
   {
     path: 'team-list',
-    loadChildren: () => import('./modals/team-list/team-list.module').then( m => m.TeamListPageModule)
+    loadChildren: () =>
+      import('./modals/team-list/team-list.module').then(
+        (m) => m.TeamListPageModule
+      ),
   },
   {
     path: 'wager-post-participate',
-    loadChildren: () => import('./modals/wager-post-participate/wager-post-participate.module').then( m => m.WagerPostParticipatePageModule)
+    loadChildren: () =>
+      import(
+        './modals/wager-post-participate/wager-post-participate.module'
+      ).then((m) => m.WagerPostParticipatePageModule),
   },
-
 ];
 
 @NgModule({

@@ -19,9 +19,16 @@ export class AuthGuardService {
     state: RouterStateSnapshot
   ): Promise<boolean> {
     var isAuthenticated = await this.authService.isAuthenticated();
+    console.log('isAuthenticated', isAuthenticated);
     if (!isAuthenticated) {
       this.router.navigate(['/login']);
     }
+
+    this.authService.getUser().subscribe((data) => {
+      console.log(data);
+      this.authService.setUserData(data);
+    });
+
     return isAuthenticated;
   }
 }

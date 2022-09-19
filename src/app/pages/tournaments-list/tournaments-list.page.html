@@ -73,7 +73,7 @@
                       </span>
                       120$
                     </p>
-                    <button class="primary-btn get-center" [routerLink]="['/participate-tournament']">
+                    <button class="primary-btn get-center" [routerLink]="['/participate-tournament', item.id]">
                       PARTICIPATE
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
@@ -107,7 +107,7 @@
     </section>
 
 
-    <div class="error-bug">
+    <div class="error-bug" *ngIf="response.lenght == 0">
       <div class="svg-cover">
         <svg width="70" height="70" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="search-svgrepo-com 1" clip-path="url(#clip0_2_34)">

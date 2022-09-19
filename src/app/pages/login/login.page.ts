@@ -62,11 +62,7 @@ export class LoginPage implements OnInit {
           console.log(data.user);
           loading.dismiss();
           this.authService.setToken(data.token);
-          this.authService.setUser(
-            data.user.name,
-            data.user.email,
-            data.user.avatar_url
-          );
+
           this.router.navigate(['/']);
         },
         (error) => {

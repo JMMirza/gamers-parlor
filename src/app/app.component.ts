@@ -23,13 +23,10 @@ export class AppComponent {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {
-    this.userObject();
-  }
-
-  async userObject() {
-    this.response = await this.authService.getUserObject();
-    console.log(this.response);
+  async ngOnInit() {
+    this.authService.userData$.subscribe((user) => {
+      this.response = user;
+    });
   }
 
   async openModal() {

@@ -18,7 +18,7 @@ export class TournamentsListPage implements OnInit {
   @ViewChild('swiper') swiper: SwiperComponent;
 
   pageNo = 1;
-  response: any;
+  response: any = [];
   platforms: any;
   response_vip: any;
 
@@ -151,9 +151,12 @@ export class TournamentsListPage implements OnInit {
     });
   }
 
-  async participateModal() {
+  async participateModal(tournament) {
     const modal = await this.modalCtrl.create({
       component: CreateTeamPage,
+      componentProps: {
+        tournament: tournament,
+      },
     });
     modal.present();
 

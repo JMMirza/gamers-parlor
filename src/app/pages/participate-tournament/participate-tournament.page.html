@@ -26,8 +26,8 @@
         </div>
         <button type="submit" (click)="uploadLogo()" class="secondary-btn mt-0 border-0">Upload Logo</button>
         <div class="img-img" *ngIf="formData.team_logo">
-          <ion-img src="" class="img-fluid"></ion-img>
-          <div class="btn-close get-center">
+          <ion-img [src]="formData.team_logo" class="img-fluid"></ion-img>
+          <div class="btn-close get-center" (click)="formData.team_logo = null">
             <ion-icon name="close-sharp"></ion-icon>
           </div>
         </div>

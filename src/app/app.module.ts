@@ -8,7 +8,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { Camera } from '@awesome-cordova-plugins/camera/ngx';
+// import { Camera } from '@awesome-cordova-plugins/camera/ngx';
+// import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { Crop } from '@ionic-native/crop/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +27,7 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
       useClass: AuthInterceptorService,
       multi: true,
     },
-    Camera,
+    Crop,
   ],
   bootstrap: [AppComponent],
 })

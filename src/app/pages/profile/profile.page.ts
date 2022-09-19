@@ -5,8 +5,9 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { User } from '../../models/User';
 import { EditProfilePage } from 'src/app/modals/edit-profile/edit-profile.page';
 import { ModalController } from '@ionic/angular';
-import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Crop, CropOptions } from '@ionic-native/crop/ngx';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class ProfilePage implements OnInit {
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
-    private camera: Camera
+    private crop: Crop
   ) {}
 
   ngOnInit() {
@@ -43,7 +44,6 @@ export class ProfilePage implements OnInit {
       (data: any) => {
         console.log(data);
         this.response = data;
-        this.authService.setUser(data.name, data.email, data.avatar_url);
         loading.dismiss();
       },
       (error) => {
@@ -68,19 +68,30 @@ export class ProfilePage implements OnInit {
 
   async getPhoto() {
     try {
-      const options: CameraOptions = {
+      const profilePicture = await Camera.getPhoto({
         quality: 50,
-        destinationType: this.camera.DestinationType.FILE_URI,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-      };
+        width: 400,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Prompt,
+      });
 
-      this.camera.getPicture(options).then(
-        (imageData) => {
-          let base64Image = 'data:image/jpeg;base64,' + imageData;
+      console.log(profilePicture.path);
+
+      // this.formData.team_logo =
+      //   'data:image/jpeg;base64,' + profilePicture.base64String;
+
+      await this.crop.crop(profilePicture.path).then(
+        (res) => {
+          Filesystem.readFile({
+            path: res,
+          }).then((file) => {
+            console.log(file.data);
+            // this.formData.team_logo = 'data:image/jpeg;base64,' + file.data;
+          });
         },
         (err) => {
-          // Handle error
+          console.log(err);
         }
       );
     } catch (error) {
