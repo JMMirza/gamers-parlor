@@ -15,7 +15,7 @@ export class AppComponent {
     // { title: 'signup', url: 'signup', icon: 'home' },
     { title: 'My Tournaments', url: 'my-tournaments', icon: 'trophy' },
     { title: 'My Teams', url: 'my-teams', icon: 'people' },
-    { title: 'Logout', url: 'logout', icon: 'log-out-outline' },
+    { title: 'Logout', url: 'logout', icon: 'log-out' },
   ];
   constructor(
     private router: Router,
