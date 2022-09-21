@@ -1,31 +1,50 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
+  <ion-split-pane contentId="main-content" class="side-menu-bg-color">
     <ion-menu contentId="main-content" type="overlay" id="closeMenu">
-      <div color="medium" class="side-menu-bg-color">
-        <ion-list id="inbox-list" class="ion-no-padding" list="none">
-          <div class="side-menu-header">
-            <ion-avatar slot="start" class="get-center">
-              <img src="{{response.avatar_url}}" class="img-fluid" />
-            </ion-avatar>
-            <ion-label>
-              <ion-list-header class="text-truncate">{{ response.name | titlecase }}</ion-list-header>
-              <ion-note>{{response.email}}</ion-note>
-            </ion-label>
-            <ion-label>
-              <button type="button" class="edit-btn get-center margin-all" (click)="openModal()">
-                <ion-icon name="pencil-sharp"></ion-icon>
-              </button>
-            </ion-label>
+      <ion-list id="inbox-list" class="ion-no-padding" list="none">
+        <ion-header>
+          <ion-toolbar class="ion-no-padding">
+            <ion-buttons slot="end">
+              <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <div class="side-menu-header">
+          <div class="side-menu-profile-img get-center">
+            <img src="{{response.avatar_url}}" class="img-fluid" />
           </div>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-      </div>
+          <div class="user-info w-100">
+            <div class="get-corner w-100">
+              <div class="w-100">
+                <h1 class="text-truncate">{{ response.name | titlecase }}</h1>
+                <div>{{response.email}}</div>
+              </div>
+              <ion-label>
+                <button type="button" class="edit-btn get-center margin-all" (click)="openModal()">
+                  <ion-icon name="pencil-sharp"></ion-icon>
+                </button>
+              </ion-label>
+            </div>
+            <div class="user-assets get-corner w-100">
+              <div class="user-rank get-center flex-column">
+                <h4>rank</h4>
+                <p>8</p>
+              </div>
+              <div class="user-winning get-center flex-column">
+                <h4>winning</h4>
+                <p>$100</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+            class="ion-padding-horizontal">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
