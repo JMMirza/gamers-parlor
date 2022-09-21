@@ -14,7 +14,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
 export class MyTournamentsPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   pageNo = 1;
-  response: any;
+  response: any = [];
   platforms: any;
   tournament_teams: any;
 
