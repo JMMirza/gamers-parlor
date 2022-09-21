@@ -1102,7 +1102,7 @@ ion-segment {
   text-transform: capitalize;
   flex: 0;
   // margin-top: 10px;
-   margin-right: 20px;
+  margin-right: 20px;
 }
 
 .padding-20 {
@@ -1136,8 +1136,14 @@ ion-back-button.back-btn {
     padding-top: 0;
   }
   ion-menu-toggle {
+    
     ion-item {
       --background: transparent;
+      transition: 0.3s;
+      &:hover {
+        --background: var(--ion-color-primary);
+        background: var(--ion-color-primary);
+      }
       ion-icon {
         margin-inline-end: 12px !important;
       }
