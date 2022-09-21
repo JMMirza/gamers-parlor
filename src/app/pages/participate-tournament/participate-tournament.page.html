@@ -34,7 +34,7 @@
       </form>
     </section>
 
-    <section class="" *ngIf="segments[this.step].value === segments[1].value">
+    <section class="" *ngIf="segments[this.step].value === segments[1].value" style="margin-top: 10px;">
       <div class="form-group">
         <ion-input type="text" name="fullName" placeholder="Search Player" class="form-control"
           (ionChange)='searchPlayers($event)'>
