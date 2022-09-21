@@ -82,7 +82,11 @@ const routes: Routes = [
       import(
         './modals/wager-post-participate/wager-post-participate.module'
       ).then((m) => m.WagerPostParticipatePageModule),
+  },  {
+    path: 'buy-credits',
+    loadChildren: () => import('./pages/buy-credits/buy-credits.module').then( m => m.BuyCreditsPageModule)
   },
+
 ];
 
 @NgModule({

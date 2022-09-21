@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -29,7 +30,8 @@ export class SignupPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private authService: AuthService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -65,6 +67,7 @@ export class SignupPage implements OnInit {
           console.log(data);
           loading.dismiss();
           this.authService.setToken(data.token);
+          this.router.navigate(['/']);
         },
         (error) => {
           console.log(error);
