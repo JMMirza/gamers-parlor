@@ -70,6 +70,20 @@ ion-img,
   margin: 0 auto;
 }
 
+.height-40 {
+  height: 40px !important;
+}
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+.justify-content-center {
+  justify-content: center;
+}
+
 // :host-context(.item-has-focus) .select-icon
 
 ion-select::part(icon) {
@@ -896,6 +910,39 @@ ion-segment {
   }
 }
 
+.secondary-btn-reverse {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--ion-color-primary);
+  font-family: "Roboto", sans-serif !important;
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 3px;
+  text-decoration: none;
+  transition: 0.3s;
+  padding: 2.5px 12px;
+  text-transform: capitalize;
+  font-size: 16px;
+  line-height: 17px;
+  height: 59px;
+  width: 100%;
+  font-weight: 700;
+  margin-top: 30px;
+  ion-icon {
+    font-size: 12px;
+  }
+  &:hover {
+    background-color: var(--ion-color-primary);
+    color: var(--ion-color-secondary-contrast);
+  }
+  .button-native {
+    box-shadow: none !important;
+  }
+  button.button-native {
+    background: none;
+    border: none;
+    box-shadow: none !important;
+  }
+}
+
 .login-wrapper {
   height: 100vh;
   display: flex;
@@ -1079,6 +1126,19 @@ ion-segment {
   width: 100%;
 }
 
+.participate-banner {
+  background-image: url("../src/assets/bg-pati.png");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
 .mt-0 {
   margin-top: 0 !important;
 }
@@ -1086,6 +1146,12 @@ ion-segment {
 .pt-0 {
   padding-top: 0 !important;
   --padding-top: 0 !important;
+}
+
+.small-text {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999999;
 }
 
 .edit-btn {
@@ -1136,7 +1202,6 @@ ion-back-button.back-btn {
     padding-top: 0;
   }
   ion-menu-toggle {
-    
     ion-item {
       --background: transparent;
       transition: 0.3s;
@@ -1252,5 +1317,209 @@ ion-back-button.back-btn {
   }
   100% {
     transform: translateY(0px, 0px);
+  }
+}
+
+.qust-filed {
+  margin-top: 25px;
+  .form-control {
+    width: 100% !important;
+    height: 135px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    background-color: var(--ion-color-content-bg);
+    border: 2px dotted var(--ion-color-primary);
+    color: var(--ion-color-primary);
+  }
+
+  .input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .input-file + .js-labelFile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 1rem !important;
+    cursor: pointer;
+    font-size: 46px;
+  }
+  .btn-tertiary .heading {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999999;
+    padding-top: 0.2rem;
+    margin-top: 0.3rem;
+    span {
+      color: var(--ion-color-primary);
+    }
+  }
+}
+
+.add-player-screen {
+  background-image: url("../src/assets/imgGroup189.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 340px;
+  width: 100%;
+  border-radius: 10px;
+  backdrop-filter: opacity(20%);
+  padding: 30px 18px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  // flex-wrap: wrap;
+}
+
+.duel-title {
+  font-weight: 300;
+  font-size: 28px;
+  text-transform: capitalize;
+  color: var(--ion-color-secondary-contrast);
+  margin-top: 0;
+  margin-bottom: 10px;
+  span {
+    color: var(--ion-color-primary);
+    font-weight: 600;
+  }
+}
+
+.add-team-screen {
+  min-height: 22px !important;
+  .team-details {
+    margin-top: -60px;
+
+    .team-name {
+      margin: 0;
+      text-transform: capitalize;
+      color: var(--ion-color-secondary-contrast);
+      font-weight: 300;
+      font-size: 20px;
+    }
+    .team-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      border: 5px solid var(--ion-color-primary);
+      box-sizing: border-box;
+      background: var(--ion-color-secondary);
+    }
+  }
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-end {
+  align-items: end;
+}
+
+.team-player-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #707070;
+  margin-top: 25px;
+  padding-top: 10px;
+  gap: 10px;
+  h1 {
+    color: var(--ion-color-secondary-contrast);
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    span {
+      color: var(--ion-color-primary);
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
+}
+.team-profile-cover {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  .team-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent linear-gradient(285deg, #0f161d 0%, #18212b 100%) 0% 0% no-repeat padding-box;
+    border: 2px solid var(--ion-color-medium);
+    box-sizing: border-box;
+    margin-left: -30px;
+  }
+}
+
+.registered-teams {
+  background-color: #263341;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  gap: 10px;
+  .img {
+    min-width: 65px;
+    max-width: 65px;
+    height: 65px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid var(--ion-color-primary);
+    box-sizing: border-box;
+  }
+  h1,
+  p {
+    margin: 0;
+  }
+  h1 {
+    color: var(--ion-color-primary);
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 500px;
+  }
+  p {
+    margin-top: 5px;
+    color: var(--ion-color-869BAF);
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 300px;
+  }
+  .add-icon {
+    min-width: 25px;
+    max-width: 25px;
+    height: 25px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: var(--ion-color-primary);
+    color: var(--ion-color-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
