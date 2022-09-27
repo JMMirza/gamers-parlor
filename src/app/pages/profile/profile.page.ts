@@ -85,8 +85,20 @@ export class ProfilePage implements OnInit {
         (res) => {
           Filesystem.readFile({
             path: res,
-          }).then((file) => {
+          }).then(async (file) => {
             console.log(file.data);
+            await this.userProfile
+              .updateProfile({ avatar: 'data:image/jpeg;base64,' + file.data })
+              .subscribe(
+                (data: any) => {
+                  console.log(data);
+                  this.response = data;
+                  this.authService.setUserData(this.response);
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
             // this.formData.team_logo = 'data:image/jpeg;base64,' + file.data;
           });
         },

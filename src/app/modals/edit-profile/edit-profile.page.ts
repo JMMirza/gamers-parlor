@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/models/User';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -28,6 +29,7 @@ export class EditProfilePage implements OnInit {
 
   constructor(
     private userProfile: UserProfileService,
+    private authService: AuthService,
     private modalCtrl: ModalController,
     public formBuilder: FormBuilder,
     private toastService: ToastService
@@ -63,6 +65,7 @@ export class EditProfilePage implements OnInit {
           console.log(data);
           if (data) {
             this.toastService.presentToast('Success');
+            this.authService.setUserData(this.response);
             this.confirm(data);
           }
         },
