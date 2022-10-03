@@ -1,0 +1,58 @@
+<ion-header class="custom-footer" collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-inner-body">
+  <main class="ion-padding-horizontal" *ngFor="let item of wagerPostRequest">
+    <div class="tournament-card">
+      <div class="tournament-card-content">
+        <div class="game-img">
+          <ion-img src="{{item.wager_post.game.logo_url}}" class="img-fluid"></ion-img>
+        </div>
+        <div class="card-body">
+          <div class="game-info">
+            <h1 class="game-title">{{ item.wager_post.game.title }}</h1>
+            <div class="d-flex gap-5">
+              <button type="button" class="add-icon remove-icon" (click)="rejectRequest(item.id)">
+                <ion-icon name="close-outline" size="large"></ion-icon>
+              </button>
+              <button type="button" class="add-icon" (click)="acceptRequest(item.id)">
+                <ion-icon name="checkmark-outline" size="large"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <p class="tournament-timing">
+            <span>
+              <ion-icon name="time-sharp"></ion-icon>
+            </span>
+            {{ item.request_time }}
+          </p>
+
+          <div class="t-pricing">
+            <p class="tournament-price">
+              <span>
+                <ion-icon name="card"></ion-icon>
+              </span>
+              {{ item.user.name }}
+            </p>
+          </div>
+          <div class="t-pricing">
+            <p class="tournament-prize">
+              <span>
+                <ion-icon name="mail"></ion-icon>
+              </span>
+              {{ item.user.email }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</ion-content>

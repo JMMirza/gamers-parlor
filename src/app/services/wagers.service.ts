@@ -15,6 +15,10 @@ export class WagersService {
     return this.httpService.get('list-wager-matches', params);
   }
 
+  listWagerRequest(params) {
+    return this.httpService.get('list-wager-request', params);
+  }
+
   getWagersData(params?) {
     return this.httpService.get('get-wager-data', params);
   }
@@ -25,5 +29,13 @@ export class WagersService {
 
   createWagerRequestPost(params) {
     return this.httpService.post('create-wager-post-request', params);
+  }
+
+  acceptRequest(params) {
+    return this.httpService.get('accept-wager-request', params);
+  }
+
+  rejectRequest(params) {
+    return this.httpService.get('reject-wager-request', params);
   }
 }

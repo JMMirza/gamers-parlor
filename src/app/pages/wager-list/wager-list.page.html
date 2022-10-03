@@ -67,13 +67,21 @@
                       120$
                     </p>
 
-                    <button class="primary-btn get-center" *ngIf="segment==='wager_matches'"
+                    <button class="primary-btn get-center" *ngIf="segment==='wager_matches'; else wagerPostListRequests"
                       (click)="wagerPostRequest(item.id)">
                       REQUEST
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
                       </span>
                     </button>
+                    <ng-template #wagerPostListRequests>
+                      <button class="primary-btn get-center" (click)="wagerPostListRequest(item.id)">
+                        REQUEST
+                        <span class="get-center">
+                          <ion-icon name="caret-forward"></ion-icon>
+                        </span>
+                      </button>
+                    </ng-template>
                   </div>
                 </div>
               </div>

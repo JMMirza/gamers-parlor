@@ -11,8 +11,8 @@
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
     <ion-list-header class="team-title"> {{ team.name }} </ion-list-header>
-    <ion-list lines="none" class="tournament-card">
-      <div *ngFor="let item of team.team_members" class="tournament-card-content">
+    <ion-list lines="none" class="tournament-card" *ngFor="let item of team.team_members">
+      <div class="tournament-card-content">
         <div slot="start" class="game-img">
           <ion-img [src]="item.avatar_url" class="img-fluid"></ion-img>
         </div>

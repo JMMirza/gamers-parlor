@@ -86,6 +86,10 @@ const routes: Routes = [
     path: 'buy-credits',
     loadChildren: () => import('./pages/buy-credits/buy-credits.module').then( m => m.BuyCreditsPageModule)
   },
+  {
+    path: 'wager-requests',
+    loadChildren: () => import('./modals/wager-requests/wager-requests.module').then( m => m.WagerRequestsPageModule)
+  },
 
 ];
 

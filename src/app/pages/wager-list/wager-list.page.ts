@@ -6,6 +6,7 @@ import { ToastService } from 'src/app/services/toast.service';
 import { ModalController } from '@ionic/angular';
 import { CreateWagersPage } from '../../modals/create-wagers/create-wagers.page';
 import { WagerPostParticipatePage } from 'src/app/modals/wager-post-participate/wager-post-participate.page';
+import { WagerRequestsPage } from 'src/app/modals/wager-requests/wager-requests.page';
 
 @Component({
   selector: 'app-wager-list',
@@ -17,6 +18,7 @@ export class WagerListPage implements OnInit {
   pageNo = 1;
   response: any;
   platforms: any;
+  wagerPostRequestList: any;
   segment = 'wager_matches';
 
   filters = {
@@ -85,6 +87,28 @@ export class WagerListPage implements OnInit {
       console.log(data);
       this.listWagers();
     });
+  }
+
+  async wagerPostListRequest(id) {
+    await this.wagerService.listWagerRequest({ wager_post_id: id }).subscribe(
+      async (data: any) => {
+        console.log(data);
+        this.wagerPostRequestList = data;
+        // this.response = data.wagers;
+        const modal = await this.modalCtrl.create({
+          component: WagerRequestsPage,
+          componentProps: { wagerPostRequest: this.wagerPostRequestList },
+        });
+        modal.present();
+        await modal.onWillDismiss().then((data) => {
+          console.log(data);
+          this.listWagers();
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   async loadMore(event) {
