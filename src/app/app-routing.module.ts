@@ -82,13 +82,23 @@ const routes: Routes = [
       import(
         './modals/wager-post-participate/wager-post-participate.module'
       ).then((m) => m.WagerPostParticipatePageModule),
-  },  {
+  },
+  {
     path: 'buy-credits',
-    loadChildren: () => import('./pages/buy-credits/buy-credits.module').then( m => m.BuyCreditsPageModule)
+    loadChildren: () =>
+      import('./pages/buy-credits/buy-credits.module').then(
+        (m) => m.BuyCreditsPageModule
+      ),
   },
   {
     path: 'wager-requests',
-    loadChildren: () => import('./modals/wager-requests/wager-requests.module').then( m => m.WagerRequestsPageModule)
+    loadChildren: () =>
+      import('./modals/wager-requests/wager-requests.module').then(
+        (m) => m.WagerRequestsPageModule
+      ),
+  },  {
+    path: 'my-matches',
+    loadChildren: () => import('./modals/my-matches/my-matches.module').then( m => m.MyMatchesPageModule)
   },
 
 ];

@@ -5,6 +5,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 import { TeamListPage } from 'src/app/modals/team-list/team-list.page';
 import { TournamentService } from 'src/app/services/tournament.service';
+import { MyMatchesPage } from 'src/app/modals/my-matches/my-matches.page';
 
 @Component({
   selector: 'app-my-tournaments',
@@ -71,6 +72,18 @@ export class MyTournamentsPage implements OnInit {
 
     const modal = await this.modalCtrl.create({
       component: TeamListPage,
+      componentProps: { team: team },
+    });
+    modal.present();
+    // modal.componentInstance.user = this.response;
+    const { data, role } = await modal.onWillDismiss();
+  }
+
+  async viewMatchList(team) {
+    console.log(team);
+
+    const modal = await this.modalCtrl.create({
+      component: MyMatchesPage,
       componentProps: { team: team },
     });
     modal.present();
