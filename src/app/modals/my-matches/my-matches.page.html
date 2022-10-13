@@ -11,18 +11,44 @@
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
     <ion-list-header class="team-title"> My Matches </ion-list-header>
-    <ion-list lines="none" class="tournament-card" *ngFor="let item of team.team_members">
-      <div class="tournament-card-content">
-        <div slot="start" class="game-img">
-          <ion-img [src]="item.avatar_url" class="img-fluid"></ion-img>
-        </div>
-        <ion-label>
-          <h2>{{ item.name }}</h2>
-          <h3>I'm a big deal</h3>
-          <p>{{ item.email }}</p>
-        </ion-label>
 
+    <div class="col col-12 col-lg-6">
+      <div class="match-vs">
+        <div class="home">
+          <div class="d-flex ion-align-items-center gap-10">
+            <div class="get-center">
+              <img
+                src="https://raw.githubusercontent.com/RaulMaya/MiniProjects/master/premier_league_fixtures/assets/styles/PL%20Teams/Liverpool.png"
+                alt="Logo" width="25" height="20" class="img-fluid">
+            </div>
+            <span>
+              Liverpool
+            </span>
+          </div>
+          <div class="seed">
+            4
+          </div>
+        </div>
+        <center>
+          <strong>vs</strong>
+        </center>
+        <div class="visit">
+          <div class="d-flex ion-align-items-center gap-10">
+            <div class="get-center">
+              <img
+                src="https://raw.githubusercontent.com/RaulMaya/MiniProjects/master/premier_league_fixtures/assets/styles/PL%20Teams/Liverpool.png"
+                alt="Logo" width="25" height="20" class="img-fluid">
+            </div>
+            <span>
+              Liverpool
+            </span>
+          </div>
+          <div class="seed">
+            4
+          </div>
+        </div>
+        <button type="" class="primary-btn">upload</button>
       </div>
-    </ion-list>
+    </div>
   </main>
 </ion-content>

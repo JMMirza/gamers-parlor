@@ -157,16 +157,8 @@ ion-header.custom-footer {
   ion-toolbar {
     --color: var(--ion-color-danger-contrast);
     --background: rgb(121, 176, 30);
-    --background: linear-gradient(
-      180deg,
-      rgba(121, 176, 30, 1) 0%,
-      rgba(61, 88, 15, 1) 96%
-    );
-    background: linear-gradient(
-      180deg,
-      rgba(121, 176, 30, 1) 0%,
-      rgba(61, 88, 15, 1) 96%
-    );
+    --background: linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
+    background: linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
   }
 }
 
@@ -179,13 +171,7 @@ ion-title.header-text {
 
 .linear-wipe {
   text-align: center;
-  background: linear-gradient(
-    to right,
-    #fff 20%,
-    #7aac34 40%,
-    #425e1c 60%,
-    #fff 80%
-  );
+  background: linear-gradient(to right, #fff 20%, #7aac34 40%, #425e1c 60%, #fff 80%);
   background-size: 200% auto;
   color: #000;
   background-clip: text;
@@ -825,21 +811,9 @@ ion-segment {
             display: none;
           }
           background: rgb(121, 176, 30);
-          background: -moz-linear-gradient(
-            180deg,
-            rgba(121, 176, 30, 1) 0%,
-            rgba(61, 88, 15, 1) 96%
-          );
-          background: -webkit-linear-gradient(
-            180deg,
-            rgba(121, 176, 30, 1) 0%,
-            rgba(61, 88, 15, 1) 96%
-          );
-          background: linear-gradient(
-            180deg,
-            rgba(121, 176, 30, 1) 0%,
-            rgba(61, 88, 15, 1) 96%
-          );
+          background: -moz-linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
+          background: -webkit-linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
+          background: linear-gradient(180deg, rgba(121, 176, 30, 1) 0%, rgba(61, 88, 15, 1) 96%);
           h5 {
             color: var(--ion-color-secondary-contrast);
             font-size: 10px;
@@ -1502,8 +1476,7 @@ ion-back-button.back-btn {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: transparent linear-gradient(285deg, #0f161d 0%, #18212b 100%) 0%
-      0% no-repeat padding-box;
+    background: transparent linear-gradient(285deg, #0f161d 0%, #18212b 100%) 0% 0% no-repeat padding-box;
     border: 2px solid var(--ion-color-medium);
     box-sizing: border-box;
     margin-left: -30px;
@@ -1684,4 +1657,48 @@ ion-back-button.back-btn {
   .ladder-card .ladder-card-content {
     flex-direction: column;
   }
+}
+
+.match-vs {
+  text-decoration: none;
+  color: #fff;
+  flex-direction: column;
+  padding: 10px 15px;
+  margin: 1rem;
+  width: 90%;
+  background-color: #000;
+  display: flex;
+  font-size: 14px;
+  font-size: 600;
+  .home {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .visit {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .primary-btn {
+    height: 34px;
+    margin-top: 15px;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+  .seed{
+    color: var(--ion-color-primary);
+    font-weight: bold;
+  }
+}
+
+
+
+.gap-10{
+  gap: 10px;
 }
