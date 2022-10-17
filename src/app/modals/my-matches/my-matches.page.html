@@ -10,45 +10,32 @@
 </ion-header>
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <ion-list-header class="team-title"> My Matches </ion-list-header>
+    <ion-list-header class="team-title"> Tournament Match List </ion-list-header>
+    <ion-row>
+      <ion-col size="12" *ngFor="let input_team of team">
+        <div class=" match-vs" *ngFor="let tournament_level_match_id of input_team.tournament_level_matches">
+          <span *ngFor="let team_match of input_team.team_match">
+            <div class="home" *ngIf="team_match.tournament_level_match_id==tournament_level_match_id">
+              <div class=" d-flex ion-align-items-center gap-10">
+                <div class="get-center">
+                  <img src="{{team_match.team.team_logo_url}}" alt="Logo" width="25" height="20" class="img-fluid">
+                </div>
+                <span>
+                  {{team_match.team.name}}
+                </span>
+              </div>
+              <div class="seed">
+                4
+              </div>
+            </div>
+            <!-- <ng-template #feeChallanElse class="d-none">
+            </ng-template> -->
+          </span>
 
-    <div class="col col-12 col-lg-6" *ngFor="let inp_team of team">
-      <div class=" match-vs" *ngFor="let team_match of inp_team.team_match">
-        <div class="home">
-          <div class="d-flex ion-align-items-center gap-10">
-            <div class="get-center">
-              <img
-                src="https://raw.githubusercontent.com/RaulMaya/MiniProjects/master/premier_league_fixtures/assets/styles/PL%20Teams/Liverpool.png"
-                alt="Logo" width="25" height="20" class="img-fluid">
-            </div>
-            <span>
-              Liverpool
-            </span>
-          </div>
-          <div class="seed">
-            4
-          </div>
+
         </div>
-        <center>
-          <strong>vs</strong>
-        </center>
-        <div class="visit">
-          <div class="d-flex ion-align-items-center gap-10">
-            <div class="get-center">
-              <img
-                src="https://raw.githubusercontent.com/RaulMaya/MiniProjects/master/premier_league_fixtures/assets/styles/PL%20Teams/Liverpool.png"
-                alt="Logo" width="25" height="20" class="img-fluid">
-            </div>
-            <span>
-              Liverpool
-            </span>
-          </div>
-          <div class="seed">
-            4
-          </div>
-        </div>
-        <button type="" class="primary-btn">upload</button>
-      </div>
-    </div>
+      </ion-col>
+    </ion-row>
+
   </main>
 </ion-content>

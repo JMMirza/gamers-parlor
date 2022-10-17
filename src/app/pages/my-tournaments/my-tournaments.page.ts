@@ -85,20 +85,21 @@ export class MyTournamentsPage implements OnInit {
     await this.playerTournamentsService
       .listMyMatches({ tournament_id: tournamentID, team_id: teamID })
       .subscribe(
-        (data: any) => {
+        async (data: any) => {
           console.log(data);
           this.matches = data;
+          const modal = await this.modalCtrl.create({
+            component: MyMatchesPage,
+            componentProps: { team: this.matches, tournamentID: tournamentID },
+          });
+          modal.present();
         },
         (error) => {
           console.log(error);
         }
       );
-    const modal = await this.modalCtrl.create({
-      component: MyMatchesPage,
-      componentProps: { team: this.matches, tournamentID: tournamentID },
-    });
-    modal.present();
+
     // modal.componentInstance.user = this.response;
-    const { data, role } = await modal.onWillDismiss();
+    // const { data, role } = await modal.onWillDismiss();
   }
 }

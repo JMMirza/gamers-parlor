@@ -1727,3 +1727,12 @@ ion-back-button.back-btn {
 .gap-10 {
   gap: 10px;
 }
+.match-vs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.d-none {
+  display: none !important;
+}
