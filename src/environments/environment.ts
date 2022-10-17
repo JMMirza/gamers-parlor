@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://tournament.bt-ho.com/api/',
+  apiUrl: 'https://gamersparlor.pro/api/',
   // apiUrl: 'http://127.0.0.1:8000/api/',
 };
 

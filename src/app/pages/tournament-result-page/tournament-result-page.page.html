@@ -1,9 +1,162 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>TournamentResultPage</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="content-inner-body">
+  <ion-header>
+    <ion-toolbar class="ion-no-padding">
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe"> tournament results
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
 
+  <main class="ion-padding-horizontal">
+    <ion-segment class="match-filter" scrollable (ionChange)="platformFilter($event)">
+      <ion-segment-button [value]="platform.id" *ngFor="let platform of platforms">
+        <ion-label>{{platform.title}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <section class="tournament-list-section">
+      <h1 class="main-heading">My Tournaments</h1>
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <ion-row>
+        <ion-col size="12">
+          <div class="result-match-card">
+            <div class="img">
+              <img
+                src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1666020876~exp=1666021476~hmac=f00565c184d610b70d1b1d1ec6f357095d3f518e6399074598292d6aa398ef15"
+                alt="img">
+            </div>
+            <div class="card-body">
+              <div class="custom-flex">
+                <div class="pl-info">
+                  <div class="name">mack</div>
+                  <div class="p-id">
+                    id <span>324234</span>
+                  </div>
+                </div>
+                <div class="player-count">
+                  player
+                  <span>
+                    47
+                  </span>
+                </div>
+              </div>
+              <div class="custom-flex">
+                <div class="wins-trophy">
+                  <span>
+                    <img src="ios-trophy.svg" alt="">
+                  </span>
+                  $5
+                </div>
+                <div class="green-outline-btn">
+                  upload status
+                  <span>
+                    <img src="dd-btn.svg" alt="">
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+          <div class="result-match-card">
+            <div class="img">
+              <img
+                src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1666020876~exp=1666021476~hmac=f00565c184d610b70d1b1d1ec6f357095d3f518e6399074598292d6aa398ef15"
+                alt="img">
+            </div>
+            <div class="card-body">
+              <div class="custom-flex">
+                <div class="pl-info">
+                  <div class="name">mack</div>
+                  <div class="p-id">
+                    id <span>324234</span>
+                  </div>
+                </div>
+                <div class="player-count">
+                  player
+                  <span>
+                    47
+                  </span>
+                </div>
+              </div>
+              <div class="custom-flex">
+                <div class="wins-trophy">
+                  <span>
+                    <img src="ios-trophy.svg" alt="">
+                  </span>
+                  $5
+                </div>
+                <div class="win-avatar">
+                  <img src="win-avatar.svg" alt="">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+          <div class="result-match-card">
+            <div class="img">
+              <img
+                src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1666020876~exp=1666021476~hmac=f00565c184d610b70d1b1d1ec6f357095d3f518e6399074598292d6aa398ef15"
+                alt="img">
+            </div>
+            <div class="card-body">
+              <div class="custom-flex">
+                <div class="pl-info">
+                  <div class="name">mack</div>
+                  <div class="p-id">
+                    id <span>324234</span>
+                  </div>
+                </div>
+                <div class="player-count">
+                  player
+                  <span>
+                    47
+                  </span>
+                </div>
+              </div>
+              <div class="custom-flex">
+                <div class="wins-trophy">
+                  <span>
+                    <img src="ios-trophy.svg" alt="">
+                  </span>
+                  $5
+                </div>
+                <div class="game-loss">
+                  losses
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+    </section>
+
+
+
+  </main>
+
+  <div class="game-icon-top">
+    <ion-img src="../../../assets/greendot1.svg"></ion-img>
+  </div>
+
+  <div class="game-icon">
+    <ion-img src="../../../assets/greendot2.svg"></ion-img>
+  </div>
 </ion-content>
