@@ -8,6 +8,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class MyMatchesPage implements OnInit {
   @Input() team: any;
+  @Input() tournamentID: any;
 
   constructor(private modalCtrl: ModalController) {}
 

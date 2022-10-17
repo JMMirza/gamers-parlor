@@ -18,6 +18,7 @@ export class MyTournamentsPage implements OnInit {
   response: any = [];
   platforms: any;
   tournament_teams: any;
+  matches: any = [];
 
   constructor(
     private playerTournamentsService: PlayerTournamentsService,
@@ -79,12 +80,22 @@ export class MyTournamentsPage implements OnInit {
     const { data, role } = await modal.onWillDismiss();
   }
 
-  async viewMatchList(team) {
-    console.log(team);
-
+  async viewMatchList(tournamentID, teamID) {
+    console.log(teamID, tournamentID);
+    await this.playerTournamentsService
+      .listMyMatches({ tournament_id: tournamentID, team_id: teamID })
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.matches = data;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     const modal = await this.modalCtrl.create({
       component: MyMatchesPage,
-      componentProps: { team: team },
+      componentProps: { team: this.matches, tournamentID: tournamentID },
     });
     modal.present();
     // modal.componentInstance.user = this.response;

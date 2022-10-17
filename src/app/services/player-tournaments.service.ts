@@ -10,4 +10,8 @@ export class PlayerTournamentsService {
   listMyTournaments(params?) {
     return this.httpService.get('list-player-tournaments', params);
   }
+
+  listMyMatches(params?) {
+    return this.httpService.get('get-tournament-level-wise-matches', params);
+  }
 }
