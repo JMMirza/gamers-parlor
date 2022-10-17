@@ -19,6 +19,7 @@ export class ProfilePage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   pageNo = 1;
   response: User = new User();
+  credits: any;
 
   constructor(
     private userProfile: UserProfileService,
@@ -30,6 +31,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.getProfile();
+    this.getUserCredits();
   }
 
   async getProfile() {
@@ -49,6 +51,18 @@ export class ProfilePage implements OnInit {
       (error) => {
         console.log(error);
         loading.dismiss();
+      }
+    );
+  }
+
+  async getUserCredits() {
+    await this.userProfile.userCredits().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.credits = data;
+      },
+      (error) => {
+        console.log(error);
       }
     );
   }

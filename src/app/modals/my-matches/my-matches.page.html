@@ -12,8 +12,8 @@
   <main class="ion-padding-horizontal">
     <ion-list-header class="team-title"> My Matches </ion-list-header>
 
-    <div class="col col-12 col-lg-6">
-      <div class="match-vs">
+    <div class="col col-12 col-lg-6" *ngFor="let inp_team of team">
+      <div class=" match-vs" *ngFor="let team_match of inp_team.team_match">
         <div class="home">
           <div class="d-flex ion-align-items-center gap-10">
             <div class="get-center">

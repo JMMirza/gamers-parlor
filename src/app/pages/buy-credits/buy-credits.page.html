@@ -1,9 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>buy-credits</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="content-inner-body">
+  <ion-header>
+    <ion-toolbar class="ion-no-padding">
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe">Add Credits
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="ion-padding">
-  <div id="paypal-button-container"></div>
+  <main class="ion-padding-horizontal">
+
+    <section class="tournament-list-section">
+      <div *ngIf="paymentAmount <= 0">
+        <form [formGroup]="tournamentForm" (ngSubmit)="createTournament()" novalidate class="site-form"
+          style="margin: 0">
+          <div class="form-group">
+            <ion-input type="number" name="paymentAmount" placeholder="Payment Amount" class="form-control"
+              formControlName="paymentAmount">
+            </ion-input>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.paymentAmount">
+                <div class="error-message"
+                  *ngIf="tournamentForm.get('paymentAmount').hasError(validation.type) && (tournamentForm.get('paymentAmount').dirty || tournamentForm.get('paymentAmount').touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <button type="submit" class="secondary-btn">Add Credit</button>
+        </form>
+      </div>
+      <div id="paypal-button-container"></div>
+    </section>
+  </main>
 </ion-content>

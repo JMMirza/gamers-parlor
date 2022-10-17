@@ -12,7 +12,9 @@ export class MyMatchesPage implements OnInit {
 
   constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.team, this.tournamentID);
+  }
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }

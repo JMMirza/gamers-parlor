@@ -22,4 +22,8 @@ export class UserProfileService {
   updateProfile(params) {
     return this.httpService.post('update-profile', params);
   }
+
+  userCredits() {
+    return this.httpService.get('user-credits');
+  }
 }
