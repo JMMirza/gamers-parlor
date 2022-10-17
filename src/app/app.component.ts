@@ -14,6 +14,11 @@ export class AppComponent {
     { title: 'Home', url: 'home', icon: 'home' },
     // { title: 'signup', url: 'signup', icon: 'home' },
     { title: 'My Tournaments', url: 'my-tournaments', icon: 'trophy' },
+    {
+      title: 'Tournament Results',
+      url: 'tournament-result-page',
+      icon: 'trophy',
+    },
     { title: 'My Teams', url: 'my-teams', icon: 'people' },
     { title: 'Credits', url: 'buy-credits', icon: 'people' },
     { title: 'Logout', url: 'logout', icon: 'log-out' },

@@ -100,6 +100,10 @@ const routes: Routes = [
     path: 'my-matches',
     loadChildren: () => import('./modals/my-matches/my-matches.module').then( m => m.MyMatchesPageModule)
   },
+  {
+    path: 'tournament-result-page',
+    loadChildren: () => import('./pages/tournament-result-page/tournament-result-page.module').then( m => m.TournamentResultPagePageModule)
+  },
 
 ];
 
