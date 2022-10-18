@@ -11,9 +11,15 @@
 
 
   <main class="ion-padding-horizontal">
-    <ion-segment class="match-filter" scrollable (ionChange)="platformFilter($event)">
-      <ion-segment-button [value]="platform.id" *ngFor="let platform of platforms">
-        <ion-label>{{platform.title}}</ion-label>
+    <ion-segment class="match-filter" scrollable (ionChange)="segmentChanged($event)" [value]="filters.type">
+      <ion-segment-button value="PENDING">
+        <ion-label>PENDING</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="COMPLETE">
+        <ion-label>COMPLETE</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="REJECT">
+        <ion-label>REJECT</ion-label>
       </ion-segment-button>
     </ion-segment>
 
