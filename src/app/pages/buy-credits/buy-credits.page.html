@@ -13,24 +13,18 @@
 
     <section class="tournament-list-section">
       <div *ngIf="paymentAmount <= 0">
-        <form [formGroup]="tournamentForm" (ngSubmit)="createTournament()" novalidate class="site-form"
-          style="margin: 0">
-          <div class="form-group">
-            <ion-input type="number" name="paymentAmount" placeholder="Payment Amount" class="form-control"
-              formControlName="paymentAmount">
-            </ion-input>
-            <div class="validation-errors">
-              <ng-container *ngFor="let validation of validation_messages.paymentAmount">
-                <div class="error-message"
-                  *ngIf="tournamentForm.get('paymentAmount').hasError(validation.type) && (tournamentForm.get('paymentAmount').dirty || tournamentForm.get('paymentAmount').touched)">
-                  {{ validation.message }}
-                </div>
-              </ng-container>
+        <div *ngFor="let item of credits">
+          <div class="credits-wrapper">
+            <div class="img">
+              <img src="../../../assets/coins1.png" class="img-fluid" alt="">
             </div>
+            <h5>
+              {{item.credit}} credits
+            </h5>
+            <p>$ {{item.amount}}</p>
+            <button (click)="createCredit(item.amount)" type="submit" class="secondary-btn w-50">buy</button>
           </div>
-
-          <button type="submit" class="secondary-btn">Add Credit</button>
-        </form>
+        </div>
       </div>
       <div id="paypal-button-container"></div>
     </section>

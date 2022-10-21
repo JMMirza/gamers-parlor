@@ -10,4 +10,8 @@ export class CreditService {
   createCredit(params) {
     return this.httpService.post('create-credit', params);
   }
+
+  getCredits() {
+    return this.httpService.get('get-credits');
+  }
 }
