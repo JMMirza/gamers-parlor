@@ -10,26 +10,117 @@
 </ion-header>
 
 <ion-content class="content-inner-body">
-  <main class="ion-padding-horizontal">
+  <main class="mt-0">
+    <div class="participate-banner">
+      <ion-header>
+        <ion-toolbar class="ion-no-padding">
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-row class="w-100">
+        <ion-col size="12" class="pt-0 ion-padding-horizontal">
+          <section class="" *ngIf="segments[this.step].value === segments[0].value">
+            <div class="upload-sec d-flex align-items-center ion-justify-content-center add-player-screen">
+              <form class="w-100">
+                <h1 class="duel-title ion-text-center">create your <span>own team</span></h1>
+                <p class="small-text ion-text-center">create your own team by filling the following <br /> fields then
+                  next button</p>
+                <div class="form-group">
+                  <ion-input type="text" name="fullName" placeholder="Name" class="form-control"
+                    [(ngModel)]="formData.team_name">
+                  </ion-input>
+                </div>
+                <div class="qust-filed w-100">
+                  <div class="form-control py-2 d-flex align-items-center justify-content-center">
+                    <label for="choose-file" class="btn-tertiary js-labelFile d-flex align-items-center flex-column"
+                      (click)="uploadLogo()">
+                      <ion-icon name="image"></ion-icon>
+                      <span class="js-fileName heading Poppins-Regular">
+                        Drop your img <span>here...</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="img-img" *ngIf="formData.team_logo">
+                    <ion-img [src]="formData.team_logo" class="img-fluid"></ion-img>
+                    <div class="btn-close get-center" (click)="formData.team_logo = null">
+                      <ion-icon name="close-sharp"></ion-icon>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </section>
+          <section class="" *ngIf="segments[this.step].value === segments[1].value">
+            <div class="add-player-screen add-team-screen">
+              <div class="team-details d-flex justify-content-between w-100 align-items-end">
+                <h1 class="team-name">
+                  {{formData.team_name}}
+                </h1>
+                <div class="team-logo">
+                  <img [src]="formData.team_logo" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <ion-input type="text" name="fullName" placeholder="Search Player" class="form-control"
+                (ionChange)='searchPlayers($event)'>
+              </ion-input>
+            </div>
+            <div class="registered-team-cover">
+              <div class="registered-team-list">
+                <div class="registered-teams" *ngFor="let u of selectedUsers; let i = index">
+                  <div class="img">
+                    <img [src]="u.avatar_url" class="img-fluid" alt="">
+                  </div>
+                  <div class="w-100">
+                    <h1>
+                      {{ u.name }}
+                    </h1>
+                    <p>
+                      {{ u.email }}
+                    </p>
+                  </div>
+                  <div type="button" class="add-icon remove-icon" (click)="removeUser(u, i)">
+                    <!-- <ion-icon name="add-outline"></ion-icon> -->
+                    <ion-icon name="remove-outline"></ion-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="registered-team-list">
+                <div class="registered-teams" *ngFor="let u of users; let i = index">
+                  <div class="img">
+                    <img [src]="u.avatar_url" class="img-fluid" alt="">
+                  </div>
+                  <div class="w-100">
+                    <h1>
+                      {{ u.name }}
+                    </h1>
+                    <p>
+                      {{ u.email }}
+                    </p>
+                  </div>
+                  <div type="button" class="add-icon" (click)="selectUser(u,index)">
+                    <ion-icon name="add-outline"></ion-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    <section class="">
-      <form [formGroup]="teamForm" (ngSubmit)="createTournament()" novalidate class="site-form" style="margin: 0">
-        <div class="form-group">
-          <ion-input type="text" name="name" placeholder="Enter Name" class="form-control" formControlName="name">
-          </ion-input>
-        </div>
-        <div class="form-group">
-          <ion-input type="number" name="number_of_members" placeholder="Number of Members" class="form-control"
-            formControlName="name">
-          </ion-input>
-        </div>
-        <div class="form-group">
-          <ion-input type="text" name="user_id" placeholder="User" class="form-control" readonly>
-          </ion-input>
-        </div>
-        <button type="submit" class="secondary-btn">create</button>
-      </form>
-    </section>
+          </section>
+        </ion-col>
+      </ion-row>
+    </div>
   </main>
 </ion-content>
-
+<ion-footer class="app-footer" color="medium" collapse="fade">
+  <div class="btn-group w-100 gap-0" *ngIf="step == 0">
+    <button type="button" *ngIf="step > 0" class="secondary-btn-reverse mt-0" (click)="previous()">cancel</button>
+    <button type="button" (click)="next()" class="secondary-btn mt-0">next</button>
+  </div>
+  <div class="btn-group w-100 gap-0" *ngIf="step == 1">
+    <button type="button" *ngIf="step > 0" class="secondary-btn-reverse mt-0" (click)="previous()">back</button>
+    <button type="button" (click)="createTeam()" class="secondary-btn mt-0">submit</button>
+  </div>
+</ion-footer>

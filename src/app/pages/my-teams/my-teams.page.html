@@ -60,51 +60,42 @@
                 </div>
                 <div class="card-body">
                   <div class="game-info">
-                    <h1 class="game-title">{{item.role}}</h1>
+                    <h1 class="game-title">{{item.team.name}}</h1>
                   </div>
+                  <ion-label>
+                    <h2>Role: {{item.role}}</h2>
+                  </ion-label>
 
-                  <p class="tournament-timing">
-                    <span>
-                      <ion-icon name="time-sharp"></ion-icon>
-                    </span>
-                    mon at 2:00PM
-                  </p>
 
                   <div class="t-pricing">
-                    <p class="tournament-price">
+                    <p class="tournament-timing">
                       <span>
-                        <ion-icon name="card"></ion-icon>
+                        <ion-icon name="time-sharp"></ion-icon>
                       </span>
-                      Tournament fee: 20$
+                      Created At: {{item.created_at}}
                     </p>
-                    <p class="tournament-prize">
-                      <span>
-                        <ion-icon name="trophy-sharp"></ion-icon>
-                      </span>
-                      120$
-                    </p>
-                    <!-- <button class="primary-btn get-center" (click)="viewTeamList(item.team)">
-                      VIEW TEAM
+                    <button class="primary-btn get-center" (click)="viewTeamList(item.team.id,item.team.name)">
+                      View Team
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
                       </span>
-                    </button> -->
+                    </button>
                   </div>
 
-                  <div class="card-footer">
+                  <!-- <div class="card-footer">
                     <p class="tournament-prize">
                       <span>
                         <ion-icon name="people"></ion-icon>
                       </span>
                       Created At: 22 Jun, 2022
                     </p>
-                    <!-- <p class="vip-member">
+                    <p class="vip-member">
                       <span>
                         <ion-icon name="person-circle-sharp"></ion-icon>
                       </span>
                       {{item.tournament.enrollments.length}} /{{item.tournament.number_of_request}}
-                    </p> -->
-                  </div>
+                    </p>
+                  </div> -->
                 </div>
               </div>
             </div>

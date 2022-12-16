@@ -4,6 +4,8 @@ import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { CreateTeamPage } from '../../modals/create-team/create-team.page';
+import { TeamListPage } from 'src/app/modals/team-list/team-list.page';
+import { MembersListPage } from 'src/app/modals/members-list/members-list.page';
 
 @Component({
   selector: 'app-my-teams',
@@ -23,6 +25,16 @@ export class MyTeamsPage implements OnInit {
 
   ngOnInit() {
     this.listMyTeams();
+  }
+
+  async viewTeamList(team_id, team_name) {
+    const modal = await this.modalCtrl.create({
+      component: MembersListPage,
+      componentProps: { team_id: team_id, team_name: team_name },
+    });
+    modal.present();
+    // modal.componentInstance.user = this.response;
+    const { data, role } = await modal.onWillDismiss();
   }
 
   async listMyTeams() {
@@ -52,6 +64,9 @@ export class MyTeamsPage implements OnInit {
     });
     modal.present();
 
-    const { data, role } = await modal.onWillDismiss();
+    await modal.onWillDismiss().then((data) => {
+      console.log(data);
+      this.listMyTeams();
+    });
   }
 }

@@ -1,32 +1,32 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
-import { CreditService } from 'src/app/services/credit.service';
+import { SubscriptionServiceService } from 'src/app/services/subscription-service.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
-  selector: 'app-buy-credits',
-  templateUrl: './buy-credits.page.html',
-  styleUrls: ['./buy-credits.page.scss'],
+  selector: 'app-subscription-list',
+  templateUrl: './subscription-list.page.html',
+  styleUrls: ['./subscription-list.page.scss'],
 })
-export class BuyCreditsPage implements OnInit {
+export class SubscriptionListPage implements OnInit {
   paymentAmount: any = 0;
   currency: string = 'USD';
   currencyIcon: string = '$';
-  credits: [];
+  subs: [];
 
   constructor(
     private transactionService: TransactionService,
-    private creditService: CreditService,
+    private subscriptionService: SubscriptionServiceService,
     private locationStrategy: LocationStrategy,
     private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {
-    this.listCredits();
+    this.listSubs();
   }
 
-  async listCredits(params?) {
+  async listSubs(params?) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading..',
       // duration: 3000,
@@ -34,10 +34,10 @@ export class BuyCreditsPage implements OnInit {
 
     loading.present();
 
-    await this.creditService.getCredits().subscribe(
+    await this.subscriptionService.getSubs().subscribe(
       (data: any) => {
         console.log(data);
-        this.credits = data;
+        this.subs = data;
         loading.dismiss();
       },
       (error) => {
@@ -47,7 +47,7 @@ export class BuyCreditsPage implements OnInit {
     );
   }
 
-  public createCredit = async (amount, coin_id) => {
+  public createCredit = async (amount, sub_id) => {
     // if (!this.tournamentForm.valid) {
     //   console.log('Chuti kar mera puttar');
     // } else {
@@ -102,12 +102,12 @@ export class BuyCreditsPage implements OnInit {
                   country_code:
                     details.purchase_units[0].shipping.address.country_code,
                   payment_json: details,
-                  coin_id: coin_id,
+                  sub_id: sub_id,
                 };
                 console.log('request data: ', requestData);
 
-                await _this.transactionService
-                  .createTransaction(requestData)
+                await _this.subscriptionService
+                  .createSub(requestData)
                   .subscribe(
                     async (data: any) => {
                       console.log(data);
