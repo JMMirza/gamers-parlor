@@ -50,6 +50,7 @@ export class LadderPostParticipatePage implements OnInit {
       params.request_time = moment(params.request_time).format('YYYY-MM-DD');
       params.wager_post_id = this.ladderPostId;
       console.log(params);
+      
       await this.ladderService.createLadderRequestPost(params).subscribe(
         (data: any) => {
           console.log(data);
