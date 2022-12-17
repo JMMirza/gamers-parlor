@@ -4,6 +4,7 @@ import {
   LoadingController,
   ModalController,
   ToastController,
+  AlertController
 } from '@ionic/angular';
 import { CreateLaddersPage } from 'src/app/modals/create-ladders/create-ladders.page';
 import { LadderPostParticipatePage } from 'src/app/modals/ladder-post-participate/ladder-post-participate.page';
@@ -33,7 +34,8 @@ export class LadderListPage implements OnInit {
     private ladderService: LadderService,
     private loadingCtrl: LoadingController,
     private toastService: ToastService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -61,6 +63,7 @@ export class LadderListPage implements OnInit {
       }
     );
   }
+
   showGameRules(game) {
     // console.log(game);
     this.toastService.presentAlert(game.terms_and_condition);
@@ -77,6 +80,48 @@ export class LadderListPage implements OnInit {
       this.listLadders();
     });
   }
+
+  async presentAlert(item) {
+    const alert = await this.alertController.create({
+      header: 'Confirmation!',
+      message: `This match requires a payment of $${item.fee}`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+          },
+        },
+        {
+          text: 'Confirm',
+          role: 'confirm',
+          handler: async () => {
+            await this.ladderService.createLadderRequestPost({
+              ladder_post_id : item.id,
+              request_time: null
+            }).subscribe(
+              (data: any) => {
+                console.log(data);
+                if (data) {
+                  this.toastService.presentToast('Success');
+                }
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+  }
+
+
 
   async ladderPostRequest(id) {
     const modal = await this.modalCtrl.create({

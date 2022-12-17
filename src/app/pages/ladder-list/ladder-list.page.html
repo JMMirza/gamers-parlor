@@ -53,18 +53,18 @@
                       <span>
                         <ion-icon name="card"></ion-icon>
                       </span>
-                      50$
+                      {{ item.fee }}$
                     </p>
                     <p class="tournament-prize">
                       <span>
                         <ion-icon name="trophy-sharp"></ion-icon>
                       </span>
-                      120$
+                      120
                     </p>
 
                     <button class="primary-btn get-center"
                       *ngIf="segment==='ladder_matches'; else ladderPostListRequests"
-                      (click)="ladderPostRequest(item.id)">
+                      (click)="presentAlert(item)">
                       REQUEST
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
