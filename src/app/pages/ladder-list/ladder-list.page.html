@@ -12,7 +12,7 @@
 
   <main class="ion-padding-horizontal">
     <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="filters.type">
-      <ion-segment-button value="wager_matches">
+      <ion-segment-button value="ladder_matches">
         <ion-label>Match Finder</ion-label>
       </ion-segment-button>
       <ion-segment-button value="my_matches">
@@ -62,15 +62,16 @@
                       120$
                     </p>
 
-                    <button class="primary-btn get-center" *ngIf="segment==='wager_matches'; else wagerPostListRequests"
-                      (click)="wagerPostRequest(item.id)">
+                    <button class="primary-btn get-center"
+                      *ngIf="segment==='ladder_matches'; else ladderPostListRequests"
+                      (click)="ladderPostRequest(item.id)">
                       REQUEST
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
                       </span>
                     </button>
-                    <ng-template #wagerPostListRequests>
-                      <button class="primary-btn get-center" (click)="wagerPostListRequest(item.id)">
+                    <ng-template #ladderPostListRequests>
+                      <button class="primary-btn get-center" (click)="ladderPostListRequest(item.id)">
                         REQUEST
                         <span class="get-center">
                           <ion-icon name="caret-forward"></ion-icon>

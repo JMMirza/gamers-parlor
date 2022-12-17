@@ -27,7 +27,7 @@ export class LadderListPage implements OnInit {
 
   filters = {
     matchCategory: '',
-    type: 'requests',
+    type: 'ladder_matches',
   };
   constructor(
     private ladderService: LadderService,
@@ -36,7 +36,9 @@ export class LadderListPage implements OnInit {
     private modalCtrl: ModalController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.listLadders(this.filters);
+  }
 
   async listLadders(params?) {
     const loading = await this.loadingCtrl.create({

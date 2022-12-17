@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Preferences } from '@capacitor/preferences';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
 
@@ -21,9 +22,9 @@ export class AppComponent {
     },
     { title: 'My Teams', url: 'my-teams', icon: 'people' },
     { title: 'Credits', url: 'buy-credits', icon: 'people' },
-    // { title: 'Logout', url: 'logout', icon: 'log-out' },
     { title: 'Subscriptions', url: 'subscription-list', icon: 'settings' },
     { title: 'Ranking', url: 'ranking', icon: 'settings' },
+    // { title: 'Logout', url: 'logout', icon: 'log-out' },
   ];
   constructor(
     private router: Router,
@@ -40,5 +41,11 @@ export class AppComponent {
   async openModal() {
     this.router.navigateByUrl('/home/profile');
     this.menu.close();
+  }
+
+  async logout() {
+    console.log('logging out');
+    await Preferences.remove({ key: 'token' });
+    this.router.navigate(['/login']);
   }
 }
