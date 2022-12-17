@@ -11,7 +11,19 @@ export class MyTeamsService {
     return this.httpService.get('list-player-teams', params);
   }
 
+  listTeamMembers(params?) {
+    return this.httpService.get('list-team-members', params);
+  }
+
   createTeam(params) {
     return this.httpService.post('create-team', params);
+  }
+
+  createLadderTeam(params) {
+    return this.httpService.post('create-ladder-team', params);
+  }
+
+  listLadderTeam(params?) {
+    return this.httpService.get('get-ladder-teams', params);
   }
 }

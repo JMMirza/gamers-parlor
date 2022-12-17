@@ -1,0 +1,42 @@
+<ion-header class="custom-footer" collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-inner-body">
+  <main class="ion-padding-horizontal">
+    <form [formGroup]="ladderRequestForm" (ngSubmit)="createLadderRequest()" novalidate class="site-form"
+      style="margin: 0">
+
+      <div class="form-group">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label>Timing</ion-label>
+            <ion-input value="{{ ladderRequestForm.get('request_time').value | date: 'dd/MM/yyyy' }}" id="date"
+              class="ion-text-end"></ion-input>
+            <ion-popover trigger="date" size="cover">
+              <ng-template>
+                <ion-datetime presentation="date" formControlName="request_time"></ion-datetime>
+              </ng-template>
+            </ion-popover>
+          </ion-item>
+        </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.request_time">
+            <div class="error-message"
+              *ngIf="ladderRequestForm.get('request_time').hasError(validation.type) && (ladderRequestForm.get('request_time').dirty || ladderRequestForm.get('request_time').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <button type="submit" class="secondary-btn">Challenge</button>
+    </form>
+  </main>
+</ion-content>

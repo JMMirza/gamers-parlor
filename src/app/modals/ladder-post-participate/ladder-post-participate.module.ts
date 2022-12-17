@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CreateTeamPageRoutingModule } from './create-team-routing.module';
+import { LadderPostParticipatePageRoutingModule } from './ladder-post-participate-routing.module';
 
-import { CreateTeamPage } from './create-team.page';
+import { LadderPostParticipatePage } from './ladder-post-participate.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { CreateTeamPage } from './create-team.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    CreateTeamPageRoutingModule,
+    LadderPostParticipatePageRoutingModule,
   ],
-  declarations: [CreateTeamPage],
+  declarations: [LadderPostParticipatePage],
 })
-export class CreateTeamPageModule {}
+export class LadderPostParticipatePageModule {}

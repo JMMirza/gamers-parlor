@@ -96,13 +96,55 @@ const routes: Routes = [
       import('./modals/wager-requests/wager-requests.module').then(
         (m) => m.WagerRequestsPageModule
       ),
-  },  {
+  },
+  {
     path: 'my-matches',
-    loadChildren: () => import('./modals/my-matches/my-matches.module').then( m => m.MyMatchesPageModule)
+    loadChildren: () =>
+      import('./modals/my-matches/my-matches.module').then(
+        (m) => m.MyMatchesPageModule
+      ),
   },
   {
     path: 'tournament-result-page',
-    loadChildren: () => import('./pages/tournament-result-page/tournament-result-page.module').then( m => m.TournamentResultPagePageModule)
+    loadChildren: () =>
+      import(
+        './pages/tournament-result-page/tournament-result-page.module'
+      ).then((m) => m.TournamentResultPagePageModule),
+  },
+  {
+    path: 'subscription-list',
+    loadChildren: () =>
+      import('./pages/subscription-list/subscription-list.module').then(
+        (m) => m.SubscriptionListPageModule
+      ),
+  },
+  {
+    path: 'members-list',
+    loadChildren: () =>
+      import('./modals/members-list/members-list.module').then(
+        (m) => m.MembersListPageModule
+      ),
+  },
+  {
+    path: 'create-ladders',
+    loadChildren: () =>
+      import('./modals/create-ladders/create-ladders.module').then(
+        (m) => m.CreateLaddersPageModule
+      ),
+  },
+  {
+    path: 'ladder-post-participate',
+    loadChildren: () =>
+      import(
+        './modals/ladder-post-participate/ladder-post-participate.module'
+      ).then((m) => m.LadderPostParticipatePageModule),
+  },  {
+    path: 'ladder-request',
+    loadChildren: () => import('./modals/ladder-request/ladder-request.module').then( m => m.LadderRequestPageModule)
+  },
+  {
+    path: 'ranking',
+    loadChildren: () => import('./pages/ranking/ranking.module').then( m => m.RankingPageModule)
   },
 
 ];

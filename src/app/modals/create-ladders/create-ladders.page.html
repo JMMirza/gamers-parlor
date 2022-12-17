@@ -11,7 +11,7 @@
 
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <form [formGroup]="wagerForm" (ngSubmit)="createWager()" novalidate class="site-form" style="margin: 0">
+    <form [formGroup]="ladderForm" (ngSubmit)="createLadder()" novalidate class="site-form" style="margin: 0">
       <div class="form-group">
         <ion-list lines="none">
           <ion-item>
@@ -24,7 +24,7 @@
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.game_id">
             <div class="error-message"
-              *ngIf="wagerForm.get('game_id').hasError(validation.type) && (wagerForm.get('game_id').dirty || wagerForm.get('game_id').touched)">
+              *ngIf="ladderForm.get('game_id').hasError(validation.type) && (ladderForm.get('game_id').dirty || ladderForm.get('game_id').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
@@ -42,7 +42,7 @@
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.platform_id">
             <div class="error-message"
-              *ngIf="wagerForm.get('platform_id').hasError(validation.type) && (wagerForm.get('platform_id').dirty || wagerForm.get('platform_id').touched)">
+              *ngIf="ladderForm.get('platform_id').hasError(validation.type) && (ladderForm.get('platform_id').dirty || ladderForm.get('platform_id').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
@@ -52,7 +52,7 @@
         <ion-list lines="none">
           <ion-item>
             <ion-label>Timing</ion-label>
-            <ion-input value="{{ wagerForm.get('start_date').value | date: 'dd/MM/yyyy' }}" id="date"
+            <ion-input value="{{ ladderForm.get('start_date').value | date: 'dd/MM/yyyy' }}" id="date"
               class="ion-text-end"></ion-input>
             <ion-popover trigger="date" size="cover">
               <ng-template>
@@ -64,7 +64,7 @@
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.start_date">
             <div class="error-message"
-              *ngIf="wagerForm.get('start_date').hasError(validation.type) && (wagerForm.get('start_date').dirty || wagerForm.get('start_date').touched)">
+              *ngIf="ladderForm.get('start_date').hasError(validation.type) && (ladderForm.get('start_date').dirty || ladderForm.get('start_date').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
@@ -81,7 +81,7 @@
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.fee">
             <div class="error-message"
-              *ngIf="wagerForm.get('fee').hasError(validation.type) && (wagerForm.get('fee').dirty || wagerForm.get('fee').touched)">
+              *ngIf="ladderForm.get('fee').hasError(validation.type) && (ladderForm.get('fee').dirty || ladderForm.get('fee').touched)">
               {{ validation.message }}
             </div>
           </ng-container>

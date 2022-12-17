@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { LocationStrategy } from '@angular/common';
-
 import { UserProfileService } from 'src/app/services/user-profile.service';
-// import {
-//   Camera,
-//   CameraOptions,
-//   PictureSourceType,
-// } from '@awesome-cordova-plugins/camera/ngx';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { MyTeamsService } from 'src/app/services/my-teams.service';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';

@@ -22,7 +22,8 @@ export class AppComponent {
     { title: 'My Teams', url: 'my-teams', icon: 'people' },
     { title: 'Credits', url: 'buy-credits', icon: 'people' },
     // { title: 'Logout', url: 'logout', icon: 'log-out' },
-    // { title: 'Settings', url: 'settings', icon: 'settings' },
+    { title: 'Subscriptions', url: 'subscription-list', icon: 'settings' },
+    { title: 'Ranking', url: 'ranking', icon: 'settings' },
   ];
   constructor(
     private router: Router,

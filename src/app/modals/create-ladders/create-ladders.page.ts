@@ -1,22 +1,22 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { WagersService } from 'src/app/services/wagers.service';
+import { LadderService } from 'src/app/services/ladder.service';
 import { ToastService } from 'src/app/services/toast.service';
 import * as moment from 'moment';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-wagers',
-  templateUrl: './create-wagers.page.html',
-  styleUrls: ['./create-wagers.page.scss'],
+  selector: 'app-create-ladders',
+  templateUrl: './create-ladders.page.html',
+  styleUrls: ['./create-ladders.page.scss'],
 })
-export class CreateWagersPage implements OnInit {
-  segment = 'createWager';
+export class CreateLaddersPage implements OnInit {
+  segment = 'createLadder';
   response: any;
   games: any = [];
   platforms: any = [];
-  wagerForm: FormGroup;
+  ladderForm: FormGroup;
 
   fees: any = [
     { value: 5 },
@@ -51,7 +51,7 @@ export class CreateWagersPage implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private wagerService: WagersService,
+    private ladderService: LadderService,
     public formBuilder: FormBuilder,
     private toastService: ToastService
   ) {}
@@ -63,9 +63,8 @@ export class CreateWagersPage implements OnInit {
   confirm(data?) {
     return this.modalCtrl.dismiss(data, 'confirm');
   }
-
   ngOnInit() {
-    this.wagerForm = this.formBuilder.group({
+    this.ladderForm = this.formBuilder.group({
       start_date: ['', [Validators.required]],
       fee: ['', [Validators.required]],
       game_id: [0, [Validators.required]],
@@ -73,16 +72,15 @@ export class CreateWagersPage implements OnInit {
       terms_and_condition: ['N/A'],
     });
 
-    this.getWagersData();
+    this.getLaddersData();
   }
-
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
     this.segment = ev.detail.value;
   }
 
-  async getWagersData() {
-    await this.wagerService.getWagersData().subscribe(
+  async getLaddersData() {
+    await this.ladderService.getLaddersData().subscribe(
       (data: any) => {
         console.log(data);
         this.games = data.games;
@@ -94,17 +92,17 @@ export class CreateWagersPage implements OnInit {
     );
   }
 
-  public createWager = async () => {
-    console.log(this.wagerForm.value);
-    if (!this.wagerForm.valid) {
+  public createLadder = async () => {
+    console.log(this.ladderForm.value);
+    if (!this.ladderForm.valid) {
       console.log('Chuti kar mera puttar');
     } else {
-      console.log(this.wagerForm.value);
+      console.log(this.ladderForm.value);
 
-      let params = this.wagerForm.value;
+      let params = this.ladderForm.value;
       params.start_date = moment(params.start_date).format('YYYY-MM-DD');
 
-      await this.wagerService.createWagerPost(params).subscribe(
+      await this.ladderService.createLadderPost(params).subscribe(
         (data: any) => {
           console.log(data);
           if (data) {
@@ -118,7 +116,7 @@ export class CreateWagersPage implements OnInit {
             if (error.status == 400) {
               const validationErrors = error.error;
               Object.keys(validationErrors.errors).forEach((prop) => {
-                const formControl = this.wagerForm.get(prop);
+                const formControl = this.ladderForm.get(prop);
                 if (formControl) {
                   console.log(validationErrors.errors[prop]);
                   formControl.setErrors({
