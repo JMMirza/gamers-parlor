@@ -18,15 +18,6 @@ export class CreateWagersPage implements OnInit {
   platforms: any = [];
   wagerForm: FormGroup;
 
-  fees: any = [
-    { value: 5 },
-    { value: 10 },
-    { value: 20 },
-    { value: 50 },
-    { value: 100 },
-    { value: 500 },
-    { value: 1000 },
-  ];
   validation_messages = {
     // start_date: [{ type: 'required', message: 'Start Date is required.' }],
     fee: [{ type: 'required', message: 'Fee is required.' }],
@@ -41,11 +32,6 @@ export class CreateWagersPage implements OnInit {
 
   platformSelectOptions = {
     header: 'Platforms',
-    translucent: true,
-  };
-
-  feeSelectOptions = {
-    header: 'Reg Fee',
     translucent: true,
   };
 

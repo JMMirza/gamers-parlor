@@ -73,9 +73,8 @@
       <div class="form-group">
         <ion-list lines="none">
           <ion-item>
-            <ion-select formControlName="fee" name="fee" placeholder="Reg. Fee" [interfaceOptions]="feeSelectOptions">
-              <ion-select-option *ngFor="let item of fees" [value]="item.value">{{ item.value }}</ion-select-option>
-            </ion-select>
+            <ion-input type="number" formControlName="fee" name="fee" placeholder="Reg. Fee">
+            </ion-input>
           </ion-item>
         </ion-list>
         <div class="validation-errors">
