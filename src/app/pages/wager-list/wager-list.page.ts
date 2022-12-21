@@ -23,7 +23,7 @@ export class WagerListPage implements OnInit {
 
   filters = {
     matchCategory: '',
-    type: 'requests',
+    type: 'wager_matches',
   };
 
   constructor(

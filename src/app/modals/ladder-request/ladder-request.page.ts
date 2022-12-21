@@ -17,7 +17,7 @@ export class LadderRequestPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.ladderPostRequest[0].user.name);
+    // console.log(this.ladderPostRequest[0].user.name);
   }
 
   cancel() {

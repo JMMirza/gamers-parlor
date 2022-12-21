@@ -16,17 +16,9 @@ export class CreateLaddersPage implements OnInit {
   response: any;
   games: any = [];
   platforms: any = [];
+  teams: any = [];
   ladderForm: FormGroup;
 
-  fees: any = [
-    { value: 5 },
-    { value: 10 },
-    { value: 20 },
-    { value: 50 },
-    { value: 100 },
-    { value: 500 },
-    { value: 1000 },
-  ];
   validation_messages = {
     // start_date: [{ type: 'required', message: 'Start Date is required.' }],
     fee: [{ type: 'required', message: 'Fee is required.' }],
@@ -44,11 +36,10 @@ export class CreateLaddersPage implements OnInit {
     translucent: true,
   };
 
-  feeSelectOptions = {
-    header: 'Reg Fee',
+  teamsSelectOptions = {
+    header: 'Teams',
     translucent: true,
   };
-
   constructor(
     private modalCtrl: ModalController,
     private ladderService: LadderService,
@@ -69,6 +60,7 @@ export class CreateLaddersPage implements OnInit {
       fee: ['', [Validators.required]],
       game_id: [0, [Validators.required]],
       platform_id: [0, [Validators.required]],
+      team_id: [0, [Validators.required]],
       terms_and_condition: ['N/A'],
     });
 
@@ -85,6 +77,7 @@ export class CreateLaddersPage implements OnInit {
         console.log(data);
         this.games = data.games;
         this.platforms = data.platforms;
+        this.teams = data.teams;
       },
       (error) => {
         console.log(error);

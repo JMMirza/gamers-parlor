@@ -51,6 +51,24 @@
       <div class="form-group">
         <ion-list lines="none">
           <ion-item>
+            <ion-select formControlName="team_id" name="team_id" placeholder="Teams"
+              [interfaceOptions]="teamsSelectOptions">
+              <ion-select-option *ngFor="let item of teams" [value]="item.id">{{ item.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.team_id">
+            <div class="error-message"
+              *ngIf="ladderForm.get('team_id').hasError(validation.type) && (ladderForm.get('team_id').dirty || ladderForm.get('team_id').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="form-group">
+        <ion-list lines="none">
+          <ion-item>
             <ion-label>Timing</ion-label>
             <ion-input value="{{ ladderForm.get('start_date').value | date: 'dd/MM/yyyy' }}" id="date"
               class="ion-text-end"></ion-input>
@@ -73,9 +91,8 @@
       <div class="form-group">
         <ion-list lines="none">
           <ion-item>
-            <ion-select formControlName="fee" name="fee" placeholder="Reg. Fee" [interfaceOptions]="feeSelectOptions">
-              <ion-select-option *ngFor="let item of fees" [value]="item.value">{{ item.value }}</ion-select-option>
-            </ion-select>
+            <ion-input type="number" formControlName="fee" name="fee" placeholder="Reg. Fee">
+            </ion-input>
           </ion-item>
         </ion-list>
         <div class="validation-errors">

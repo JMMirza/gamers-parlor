@@ -95,22 +95,23 @@ export class LadderListPage implements OnInit {
           text: 'Confirm',
           role: 'confirm',
           handler: async () => {
-            await this.ladderService
-              .createLadderRequestPost({
-                ladder_post_id: item.id,
-                request_time: '2022-10-02',
-              })
-              .subscribe(
-                (data: any) => {
-                  console.log(data);
-                  if (data) {
-                    this.toastService.presentToast('Success');
-                  }
-                },
-                (error) => {
-                  console.log(error);
-                }
-              );
+            this.ladderPostRequest(item.id);
+            // await this.ladderService
+            //   .createLadderRequestPost({
+            //     ladder_post_id: item.id,
+            //     request_time: '2022-10-02',
+            //   })
+            //   .subscribe(
+            //     (data: any) => {
+            //       console.log(data);
+            //       if (data) {
+            //         this.toastService.presentToast('Success');
+            //       }
+            //     },
+            //     (error) => {
+            //       console.log(error);
+            //     }
+            //   );
           },
         },
       ],
@@ -134,26 +135,28 @@ export class LadderListPage implements OnInit {
     });
   }
 
-  async wagerPostListRequest(id) {
-    await this.ladderService.listLadderRequest({ wager_post_id: id }).subscribe(
-      async (data: any) => {
-        console.log(data);
-        this.ladderPostRequestList = data;
-        // this.response = data.wagers;
-        const modal = await this.modalCtrl.create({
-          component: LadderRequestPage,
-          componentProps: { ladderPostRequest: this.ladderPostRequestList },
-        });
-        modal.present();
-        await modal.onWillDismiss().then((data) => {
+  async ladderPostListRequest(id) {
+    await this.ladderService
+      .listLadderRequest({ ladder_post_id: id })
+      .subscribe(
+        async (data: any) => {
           console.log(data);
-          this.listLadders();
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+          this.ladderPostRequestList = data;
+          // this.response = data.wagers;
+          const modal = await this.modalCtrl.create({
+            component: LadderRequestPage,
+            componentProps: { ladderPostRequest: this.ladderPostRequestList },
+          });
+          modal.present();
+          await modal.onWillDismiss().then((data) => {
+            console.log(data);
+            this.listLadders();
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   async loadMore(event) {

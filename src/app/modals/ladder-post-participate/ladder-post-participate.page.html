@@ -36,6 +36,24 @@
           </ng-container>
         </div>
       </div>
+      <div class="form-group">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-select formControlName="team_id" name="team_id" placeholder="Teams"
+              [interfaceOptions]="teamsSelectOptions">
+              <ion-select-option *ngFor="let item of teams" [value]="item.id">{{ item.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.team_id">
+            <div class="error-message"
+              *ngIf="ladderRequestForm.get('team_id').hasError(validation.type) && (ladderRequestForm.get('team_id').dirty || ladderRequestForm.get('team_id').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
       <button type="submit" class="secondary-btn">Challenge</button>
     </form>
   </main>

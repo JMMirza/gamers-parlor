@@ -13,10 +13,16 @@ import { LadderService } from 'src/app/services/ladder.service';
 })
 export class LadderPostParticipatePage implements OnInit {
   ladderRequestForm: FormGroup;
+  teams: any = [];
   @Input() ladderPostId: any;
 
   validation_messages = {
     request_time: [{ type: 'required', message: 'Start Date is required.' }],
+  };
+
+  teamsSelectOptions = {
+    header: 'Teams',
+    translucent: true,
   };
 
   constructor(
@@ -37,10 +43,24 @@ export class LadderPostParticipatePage implements OnInit {
   ngOnInit() {
     this.ladderRequestForm = this.formBuilder.group({
       request_time: ['', [Validators.required]],
+      team_id: [0, [Validators.required]],
     });
+    this.getLaddersData();
   }
 
-  public createWagerRequest = async () => {
+  async getLaddersData() {
+    await this.ladderService.getLaddersData().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.teams = data.teams;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  public createLadderRequest = async () => {
     if (!this.ladderRequestForm.valid) {
       console.log('Chuti kar mera puttar');
     } else {
@@ -48,9 +68,8 @@ export class LadderPostParticipatePage implements OnInit {
 
       let params = this.ladderRequestForm.value;
       params.request_time = moment(params.request_time).format('YYYY-MM-DD');
-      params.wager_post_id = this.ladderPostId;
+      params.ladder_post_id = this.ladderPostId;
       console.log(params);
-      
       await this.ladderService.createLadderRequestPost(params).subscribe(
         (data: any) => {
           console.log(data);
