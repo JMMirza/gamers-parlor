@@ -68,8 +68,8 @@
                     </p>
 
                     <button class="primary-btn get-center" *ngIf="segment==='wager_matches'; else wagerPostListRequests"
-                      (click)="wagerPostRequest(item.id)">
-                      REQUEST
+                      (click)="presentAlert(item)">
+                      CHALLENGE
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
                       </span>

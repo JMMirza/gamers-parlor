@@ -17,7 +17,7 @@ export class WagerRequestsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.wagerPostRequest[0].user.name);
+    // console.log(this.wagerPostRequest[0].user.name);
   }
 
   cancel() {

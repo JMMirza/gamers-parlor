@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WagersService } from '../../services/wagers.service';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 import { ModalController } from '@ionic/angular';
@@ -30,7 +30,8 @@ export class WagerListPage implements OnInit {
     private wagerService: WagersService,
     private loadingCtrl: LoadingController,
     private toastService: ToastService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -62,6 +63,47 @@ export class WagerListPage implements OnInit {
   showGameRules(game) {
     // console.log(game);
     this.toastService.presentAlert(game.terms_and_condition);
+  }
+
+  async presentAlert(item) {
+    const alert = await this.alertController.create({
+      header: 'Confirmation!',
+      message: `This match requires a payment of $${item.fee}`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {},
+        },
+        {
+          text: 'Confirm',
+          role: 'confirm',
+          handler: async () => {
+            this.wagerPostRequest(item.id);
+            // await this.ladderService
+            //   .createLadderRequestPost({
+            //     ladder_post_id: item.id,
+            //     request_time: '2022-10-02',
+            //   })
+            //   .subscribe(
+            //     (data: any) => {
+            //       console.log(data);
+            //       if (data) {
+            //         this.toastService.presentToast('Success');
+            //       }
+            //     },
+            //     (error) => {
+            //       console.log(error);
+            //     }
+            //   );
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
   }
 
   async openModal() {
