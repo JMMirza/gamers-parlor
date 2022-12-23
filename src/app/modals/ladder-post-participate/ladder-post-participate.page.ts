@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
-import * as moment from 'moment';
-import { HttpErrorResponse } from '@angular/common/http';
 import { LadderService } from 'src/app/services/ladder.service';
 
 @Component({
@@ -12,23 +9,13 @@ import { LadderService } from 'src/app/services/ladder.service';
   styleUrls: ['./ladder-post-participate.page.scss'],
 })
 export class LadderPostParticipatePage implements OnInit {
-  ladderRequestForm: FormGroup;
   teams: any = [];
+  credits: number;
   @Input() ladderPostId: any;
-
-  validation_messages = {
-    request_time: [{ type: 'required', message: 'Start Date is required.' }],
-  };
-
-  teamsSelectOptions = {
-    header: 'Teams',
-    translucent: true,
-  };
 
   constructor(
     private modalCtrl: ModalController,
     private ladderService: LadderService,
-    public formBuilder: FormBuilder,
     private toastService: ToastService
   ) {}
 
@@ -41,18 +28,15 @@ export class LadderPostParticipatePage implements OnInit {
   }
 
   ngOnInit() {
-    this.ladderRequestForm = this.formBuilder.group({
-      request_time: ['', [Validators.required]],
-      team_id: [0, [Validators.required]],
-    });
     this.getLaddersData();
   }
 
   async getLaddersData() {
     await this.ladderService.getLaddersData().subscribe(
       (data: any) => {
-        console.log(data);
+        console.log(data.teams);
         this.teams = data.teams;
+        this.credits = data.credits;
       },
       (error) => {
         console.log(error);
@@ -60,17 +44,13 @@ export class LadderPostParticipatePage implements OnInit {
     );
   }
 
-  public createLadderRequest = async () => {
-    if (!this.ladderRequestForm.valid) {
-      console.log('Chuti kar mera puttar');
-    } else {
-      console.log(this.ladderRequestForm.value);
-
-      let params = this.ladderRequestForm.value;
-      params.request_time = moment(params.request_time).format('YYYY-MM-DD');
-      params.ladder_post_id = this.ladderPostId;
-      console.log(params);
-      await this.ladderService.createLadderRequestPost(params).subscribe(
+  public createLadderRequest = async (id) => {
+    await this.ladderService
+      .createLadderRequestPost({
+        team_id: id,
+        ladder_post_id: this.ladderPostId,
+      })
+      .subscribe(
         (data: any) => {
           console.log(data);
           if (data) {
@@ -80,24 +60,7 @@ export class LadderPostParticipatePage implements OnInit {
         },
         (error) => {
           console.log(error);
-          if (error instanceof HttpErrorResponse) {
-            if (error.status == 400) {
-              const validationErrors = error.error;
-              Object.keys(validationErrors.errors).forEach((prop) => {
-                const formControl = this.ladderRequestForm.get(prop);
-                if (formControl) {
-                  console.log(validationErrors.errors[prop]);
-                  formControl.setErrors({
-                    serverError: validationErrors.errors[prop],
-                  });
-                } else {
-                  // show other errors in list or some where
-                }
-              });
-            }
-          }
         }
       );
-    }
   };
 }
