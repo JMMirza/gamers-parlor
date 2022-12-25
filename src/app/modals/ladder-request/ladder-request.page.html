@@ -9,30 +9,23 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="content-inner-body">
-  <main class="ion-padding-horizontal" *ngFor="let item of ladderPostRequest">
+  <main class="ion-padding-horizontal">
+    <h2>Team Information</h2>
     <div class="tournament-card">
       <div class="tournament-card-content">
         <div class="game-img">
-          <ion-img src="{{item.ladder_post.game.logo_url}}" class="img-fluid"></ion-img>
+          <ion-img src="{{ladderPostRequest.team.team_logo_url}}" class="img-fluid"></ion-img>
         </div>
         <div class="card-body">
           <div class="game-info">
-            <h1 class="game-title">{{ item.ladder_post.game.title }}</h1>
-            <div class="d-flex gap-5">
-              <button type="button" class="add-icon remove-icon" (click)="rejectRequest(item.id)">
-                <ion-icon name="close-outline" size="large"></ion-icon>
-              </button>
-              <button type="button" class="add-icon" (click)="acceptRequest(item.id)">
-                <ion-icon name="checkmark-outline" size="large"></ion-icon>
-              </button>
-            </div>
+            <h1 class="game-title">{{ ladderPostRequest.team.name }}</h1>
           </div>
 
           <p class="tournament-timing">
             <span>
               <ion-icon name="time-sharp"></ion-icon>
             </span>
-            {{ item.request_time }}
+            {{ ladderPostRequest.request_time }}
           </p>
 
           <div class="t-pricing">
@@ -40,7 +33,7 @@
               <span>
                 <ion-icon name="card"></ion-icon>
               </span>
-              {{ item.ladder_post.host.name}}
+              {{ ladderPostRequest.ladder_post.host.name}}
             </p>
           </div>
           <div class="t-pricing">
@@ -48,9 +41,25 @@
               <span>
                 <ion-icon name="mail"></ion-icon>
               </span>
-              {{ item.ladder_post.host.email }}
+              {{ ladderPostRequest.ladder_post.host.email }}
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="registered-team-list">
+      <h4>Team Members</h4>
+      <div class="registered-teams" *ngFor="let u of ladderPostRequest.team.team_members">
+        <div class="img">
+          <img [src]="u.avatar_url" class="img-fluid" alt="">
+        </div>
+        <div class="w-100">
+          <h1>
+            {{ u.name }}
+          </h1>
+          <p>
+            {{ u.email }}
+          </p>
         </div>
       </div>
     </div>
