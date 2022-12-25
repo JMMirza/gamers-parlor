@@ -11,6 +11,9 @@
 
 
   <main class="ion-padding-horizontal">
+
+    
+
     <ion-segment class="match-filter" (ionChange)="segmentChanged($event)" [value]="filters.type">
       <ion-segment-button value="ladder_matches">
         <ion-label>Match Finder</ion-label>
@@ -18,8 +21,16 @@
       <ion-segment-button value="my_matches">
         <ion-label>My Matches</ion-label>
       </ion-segment-button>
+      <ion-segment-button value="my_challanges">
+        <ion-label>Challanges</ion-label>
+      </ion-segment-button>
     </ion-segment>
     <section class="tournament-list-section">
+      <ion-segment class="match-filter" scrollable (ionChange)="platformFilter($event)">
+        <ion-segment-button [value]="platform.id" *ngFor="let platform of platforms">
+          <ion-label>{{platform.title}}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
