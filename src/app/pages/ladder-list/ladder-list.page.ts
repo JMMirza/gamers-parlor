@@ -24,6 +24,7 @@ export class LadderListPage implements OnInit {
   response: any;
   platforms: any;
   ladderPostRequestList: any;
+  ladderPostEnrollments: any;
   segment = 'ladder_matches';
 
   filters = {
@@ -53,8 +54,11 @@ export class LadderListPage implements OnInit {
     await this.ladderService.listLadders(params).subscribe(
       (data: any) => {
         console.log(data);
-        this.response = data.ladders;
+        if (this.filters.matchCategory == 'challenges')
+          this.ladderPostEnrollments = data.ladders;
+        else this.response = data.ladders;
         this.platforms = data.platforms;
+        // console.log(this.ladderPostEnrollments);
         loading.dismiss();
       },
       (error) => {

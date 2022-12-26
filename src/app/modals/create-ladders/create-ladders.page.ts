@@ -56,7 +56,6 @@ export class CreateLaddersPage implements OnInit {
   }
   ngOnInit() {
     this.ladderForm = this.formBuilder.group({
-      start_date: ['', [Validators.required]],
       fee: ['', [Validators.required]],
       game_id: [0, [Validators.required]],
       platform_id: [0, [Validators.required]],

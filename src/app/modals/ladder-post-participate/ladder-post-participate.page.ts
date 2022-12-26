@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 import { LadderService } from 'src/app/services/ladder.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ladder-post-participate',
@@ -16,7 +17,9 @@ export class LadderPostParticipatePage implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private ladderService: LadderService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private alertController: AlertController,
+    private router: Router
   ) {}
 
   cancel() {
@@ -45,6 +48,31 @@ export class LadderPostParticipatePage implements OnInit {
   }
 
   public createLadderRequest = async (id) => {
+    if (this.credits <= 0) {
+      const alert = await this.alertController.create({
+        header: 'Confirmation!',
+        message: `Your credit balance is not enough. Please recharge and try again.`,
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {},
+          },
+          {
+            text: 'Buy Credits',
+            role: 'confirm',
+            handler: () => {
+              this.cancel();
+              // console.log('in handler');
+              this.router.navigate(['/buy-credits']);
+            },
+          },
+        ],
+      });
+
+      await alert.present();
+      return;
+    }
     await this.ladderService
       .createLadderRequestPost({
         team_id: id,

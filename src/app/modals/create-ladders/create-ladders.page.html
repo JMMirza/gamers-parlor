@@ -69,28 +69,6 @@
       <div class="form-group">
         <ion-list lines="none">
           <ion-item>
-            <ion-label>Timing</ion-label>
-            <ion-input value="{{ ladderForm.get('start_date').value | date: 'dd/MM/yyyy' }}" id="date"
-              class="ion-text-end"></ion-input>
-            <ion-popover trigger="date" size="cover">
-              <ng-template>
-                <ion-datetime presentation="date" formControlName="start_date"></ion-datetime>
-              </ng-template>
-            </ion-popover>
-          </ion-item>
-        </ion-list>
-        <div class="validation-errors">
-          <ng-container *ngFor="let validation of validation_messages.start_date">
-            <div class="error-message"
-              *ngIf="ladderForm.get('start_date').hasError(validation.type) && (ladderForm.get('start_date').dirty || ladderForm.get('start_date').touched)">
-              {{ validation.message }}
-            </div>
-          </ng-container>
-        </div>
-      </div>
-      <div class="form-group">
-        <ion-list lines="none">
-          <ion-item>
             <ion-input type="number" formControlName="fee" name="fee" placeholder="Reg. Fee">
             </ion-input>
           </ion-item>
