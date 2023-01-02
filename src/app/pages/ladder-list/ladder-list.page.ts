@@ -19,12 +19,12 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./ladder-list.page.scss'],
 })
 export class LadderListPage implements OnInit {
+
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   pageNo = 1;
   response: any;
   platforms: any;
   ladderPostRequestList: any;
-  ladderPostEnrollments: any;
   segment = 'ladder_matches';
 
   filters = {
@@ -49,16 +49,14 @@ export class LadderListPage implements OnInit {
       // duration: 3000,
     });
 
+    this.response = [];
     loading.present();
 
     await this.ladderService.listLadders(params).subscribe(
       (data: any) => {
         console.log(data);
-        if (this.filters.matchCategory == 'challenges')
-          this.ladderPostEnrollments = data.ladders;
-        else this.response = data.ladders;
+        this.response = data.ladders;
         this.platforms = data.platforms;
-        // console.log(this.ladderPostEnrollments);
         loading.dismiss();
       },
       (error) => {
