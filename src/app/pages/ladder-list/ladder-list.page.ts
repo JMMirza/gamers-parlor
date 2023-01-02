@@ -12,6 +12,9 @@ import { LadderRequestPage } from 'src/app/modals/ladder-request/ladder-request.
 import { LadderService } from 'src/app/services/ladder.service';
 import { MyTeamsService } from 'src/app/services/my-teams.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Crop } from '@ionic-native/crop/ngx';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 
 @Component({
   selector: 'app-ladder-list',
@@ -36,7 +39,8 @@ export class LadderListPage implements OnInit {
     private loadingCtrl: LoadingController,
     private toastService: ToastService,
     private modalCtrl: ModalController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private crop: Crop
   ) {}
 
   ngOnInit() {
@@ -209,5 +213,52 @@ export class LadderListPage implements OnInit {
     console.log(matchCategory);
     this.filters.matchCategory = matchCategory;
     // await this.listWagers(this.filters);
+  }
+  async getPhoto(ladder_post_id) {
+    try {
+      const profilePicture = await Camera.getPhoto({
+        quality: 50,
+        width: 400,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Prompt,
+      });
+
+      console.log(profilePicture.path);
+
+      // this.formData.team_logo =
+      //   'data:image/jpeg;base64,' + profilePicture.base64String;
+
+      await this.crop.crop(profilePicture.path).then(
+        (res) => {
+          Filesystem.readFile({
+            path: res,
+          }).then(async (file) => {
+            console.log(file.data);
+            await this.ladderService
+              .uploadLadderPostResult({
+                proof: 'data:image/jpeg;base64,' + file.data,
+                ladder_post_id: ladder_post_id,
+              })
+              .subscribe(
+                (data: any) => {
+                  console.log(data);
+                  this.response = data;
+                  // this.authService.setUserData(this.response);
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            // this.formData.team_logo = 'data:image/jpeg;base64,' + file.data;
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

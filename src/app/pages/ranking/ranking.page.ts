@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
+import {
+  LoadingController,
+  ModalController,
+  ToastController,
+} from '@ionic/angular';
+import { RankingTeamMatchesListPage } from 'src/app/modals/ranking-team-matches-list/ranking-team-matches-list.page';
 import { MyTeamsService } from 'src/app/services/my-teams.service';
 
 @Component({
@@ -12,7 +17,8 @@ export class RankingPage implements OnInit {
 
   constructor(
     private teamService: MyTeamsService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -38,5 +44,18 @@ export class RankingPage implements OnInit {
         loading.dismiss();
       }
     );
+  }
+
+  async openModal(team_id) {
+    const modal = await this.modalCtrl.create({
+      component: RankingTeamMatchesListPage,
+      componentProps: { team_id: team_id },
+    });
+    modal.present();
+
+    await modal.onWillDismiss().then((data) => {
+      console.log(data);
+      this.listTeams();
+    });
   }
 }

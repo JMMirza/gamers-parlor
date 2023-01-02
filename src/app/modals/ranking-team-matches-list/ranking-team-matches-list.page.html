@@ -1,0 +1,62 @@
+<ion-header class="custom-footer" collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-inner-body">
+  <main class="ion-padding-horizontal">
+    <section class="tournament-list-section">
+      <ion-row>
+        <p class="credits-class">
+          <span>
+            <h4>
+              <ion-icon name="card"></ion-icon>
+              Total Wins: {{ wins }}
+            </h4>
+          </span>
+          <span>
+            <h4>
+              <ion-icon name="card"></ion-icon>
+              Total Losses: {{ losses }}
+            </h4>
+          </span>
+        </p>
+        <ion-col size="12" *ngFor="let item of response">
+          <div class="ladder-card">
+            <div class="ladder-card-content">
+              <div class="ladder-img img-rounded">
+                <ion-img src="{{item.game.logo_url}}" class="img-fluid"></ion-img>
+              </div>
+              <div class="card-body">
+                <div class="flex-box">
+                  <div class="title">
+                    <h1>{{item.game.title}}</h1>
+                    <div class="pl-id">
+                      Platform:{{item.platform.title}}
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-box winnings">
+                  <div class="wins" *ngIf="team_id==item.winner_team_id">
+                    <span>win</span>
+                  </div>
+                  <div class="losses" *ngIf="team_id==item.losser_team_id">
+                    <span>losses</span> 25
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </section>
+
+
+  </main>
+</ion-content>

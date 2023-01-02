@@ -146,6 +146,10 @@ const routes: Routes = [
     path: 'ranking',
     loadChildren: () => import('./pages/ranking/ranking.module').then( m => m.RankingPageModule)
   },
+  {
+    path: 'ranking-team-matches-list',
+    loadChildren: () => import('./modals/ranking-team-matches-list/ranking-team-matches-list.module').then( m => m.RankingTeamMatchesListPageModule)
+  },
 
 ];
 

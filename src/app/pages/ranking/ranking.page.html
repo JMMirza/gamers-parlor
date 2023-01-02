@@ -24,25 +24,18 @@
                   <div class="title">
                     <h1>{{item.name}}</h1>
                     <div class="pl-id">
-                      player id:{{item.id}}
+                      team id:{{item.id}}
                     </div>
                   </div>
                   <div class="pl-points">
                     <p>points</p>
                     <div>{{item.score}}</div>
                   </div>
-                </div>
-                <div class="flex-box winnings">
-                  <div class="wins">
-                    <span>wins</span> 25
-                  </div>
-                  <div class="losses">
-                    <span>losses</span> 25
-                  </div>
-
-                  <div class="wins">
-                    <span>wins%</span> 25
-                  </div>
+                  <button class="primary-btn get-center" (click)="openModal(item.id)">
+                    <span class="get-center">
+                      <ion-icon name="caret-forward"></ion-icon>
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
