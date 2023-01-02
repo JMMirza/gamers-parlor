@@ -11,6 +11,10 @@ export class LadderService {
     return this.httpService.get('list-ladders', params);
   }
 
+  listTeamMatches(params?) {
+    return this.httpService.get('list-team-matches', params);
+  }
+
   listLadderMatches(params?) {
     return this.httpService.get('list-ladder-matches', params);
   }
@@ -25,6 +29,10 @@ export class LadderService {
 
   createLadderPost(params) {
     return this.httpService.post('create-ladder-post', params);
+  }
+
+  uploadLadderPostResult(params) {
+    return this.httpService.post('upload-ladder-request', params);
   }
 
   createLadderRequestPost(params) {

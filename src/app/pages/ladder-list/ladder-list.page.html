@@ -25,7 +25,7 @@
         <ion-label>Challanges</ion-label>
       </ion-segment-button>
     </ion-segment>
-    <section class="tournament-list-section">
+    <section class="tournament-list-section" *ngIf="filters.matchCategory != 'challenges'">
       <ion-segment class="match-filter" scrollable (ionChange)="platformFilter($event)">
         <ion-segment-button [value]="platform.id" *ngFor="let platform of platforms">
           <ion-label>{{platform.title}}</ion-label>
@@ -34,8 +34,7 @@
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-      <ion-virtual-scroll *ngIf="response&&response.length >=0; else ladderPostEnrollmentSegment" [items]="response"
-        approxItemHeight="170px">
+      <ion-virtual-scroll [items]="response" approxItemHeight="170px">
         <ion-row *virtualItem="let item; let itemBounds = bounds;">
           <ion-col size="12">
             <div class="tournament-card">
@@ -99,19 +98,30 @@
       <ion-infinite-scroll (ionInfinite)="loadMore($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>
-      <ng-template #ladderPostEnrollmentSegment>
-        <ion-row>
-          <ion-col size="12" *ngFor="let i of ladderPostEnrollments">
+
+    </section>
+    <section class="tournament-list-section" *ngIf="filters.matchCategory == 'challenges'">
+      <ion-segment class="match-filter" scrollable (ionChange)="platformFilter($event)">
+        <ion-segment-button [value]="platform.id" *ngFor="let platform of platforms">
+          <ion-label>{{platform.title}}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <ion-virtual-scroll [items]="ladderPostEnrollments" approxItemHeight="170px">
+        <ion-row *virtualItem="let item; let itemBounds = bounds;">
+          <ion-col size="12">
             <div class="tournament-card">
               <div class="tournament-card-content">
                 <div class="game-img">
-                  <ion-img src="{{i.ladder_post.game.logo_url}}" class="img-fluid"></ion-img>
+                  <ion-img src="{{item.game.logo_url}}" class="img-fluid"></ion-img>
                 </div>
                 <div class="card-body">
                   <div class="game-info">
 
-                    <h1 class="game-title">{{i.ladder_post.game.title}}</h1>
-                    <a (click)="showGameRules(i)">
+                    <h1 class="game-title">{{item.game.title}}</h1>
+                    <a (click)="showGameRules(item)">
                       <span>rules</span>
                       view all
                     </a>
@@ -129,7 +139,7 @@
                       <span>
                         <ion-icon name="card"></ion-icon>
                       </span>
-                      {{ i.ladder_post.fee }}$
+                      {{ item.fee }}$
                     </p>
                     <p class="tournament-prize">
                       <span>
@@ -138,20 +148,32 @@
                       120
                     </p>
 
-                    <button class="primary-btn get-center" (click)="presentAlert(i)">
-                      Upload Result
+                    <button class="primary-btn get-center" *ngIf="item.result_status==null; else resultTemplate"
+                      (click)="getPhoto(item.id)">
+                      Upload Results
                       <span class="get-center">
                         <ion-icon name="caret-forward"></ion-icon>
                       </span>
                     </button>
-
+                    <ng-template #resultTemplate>
+                      <button class="primary-btn get-center">
+                        {{item.result_status}}
+                        <span class="get-center">
+                          <ion-icon name="caret-forward"></ion-icon>
+                        </span>
+                      </button>
+                    </ng-template>
                   </div>
                 </div>
               </div>
             </div>
           </ion-col>
         </ion-row>
-      </ng-template>
+      </ion-virtual-scroll>
+      <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
     </section>
   </main>
 
