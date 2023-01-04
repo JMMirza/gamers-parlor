@@ -47,6 +47,10 @@ export class LadderPostParticipatePage implements OnInit {
     );
   }
 
+  public createTeam() {
+    this.modalCtrl.dismiss(null, 'cancel');
+    this.router.navigate(['/create-team']);
+  }
   public createLadderRequest = async (id) => {
     if (this.credits <= 0) {
       const alert = await this.alertController.create({

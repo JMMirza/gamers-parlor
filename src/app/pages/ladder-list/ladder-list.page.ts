@@ -47,6 +47,15 @@ export class LadderListPage implements OnInit {
     this.listLadders(this.filters);
   }
 
+  platformFilter(e) {
+    console.log('platform id', e.detail.value);
+
+    this.listLadders({
+      pageNo: this.pageNo,
+      platform_id: e.detail.value,
+    });
+  }
+
   async listLadders(params?) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading..',

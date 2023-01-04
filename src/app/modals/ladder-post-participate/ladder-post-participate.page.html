@@ -1,10 +1,10 @@
 <ion-header class="custom-footer" collapse="fade">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()">Confirm</ion-button>
+      <ion-button (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -19,6 +19,12 @@
         </h4>
       </span>
     </p>
+    <button class="secondary-btn get-center" *ngIf="teams.length == 0" (click)="createTeam()">
+      <span class="get-center">
+        Create New Team
+        <!-- <ion-icon name="caret-forward"></ion-icon> -->
+      </span>
+    </button>
     <ion-list lines="none" class="tournament-card" *ngFor="let item of teams">
       <!-- <div class="tournament-card"> -->
       <div class="tournament-card-content">
