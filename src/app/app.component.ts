@@ -32,7 +32,7 @@ export class AppComponent {
     private router: Router,
     private menu: MenuController,
     private authService: AuthService,
-        private fcmService: FcmService
+    private fcmService: FcmService
 
   ) {}
 

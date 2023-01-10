@@ -22,7 +22,7 @@ export class FcmService {
   }
 
   private registerPush() {
-
+    console.log('registerPush')
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
     // Android will just grant without prompting
@@ -39,6 +39,7 @@ export class FcmService {
     PushNotifications.addListener('registration',
       (token: Token) => {
         alert('Push registration success, token: ' + token.value);
+        // make a api call and send the token;
       }
     );
 
