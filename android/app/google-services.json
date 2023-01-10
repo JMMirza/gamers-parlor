@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "600389676132",
+    "project_id": "gamers-parlor",
+    "storage_bucket": "gamers-parlor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600389676132:android:2fc4e53c82cbf88aa50371",
+        "android_client_info": {
+          "package_name": "com.tournament.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600389676132-ktmsg1pa3n6v21qg0rdmbdt4jdvifc3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBswl42-6ULUCcV27b1eU7ZY-6bTyOu56Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600389676132-ktmsg1pa3n6v21qg0rdmbdt4jdvifc3f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "600389676132-lsit0k973a2a9rm0d2rhvjo7eho4vtbj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tournament.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

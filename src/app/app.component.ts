@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
+import { FcmService } from './services/fcm.service';
+
 
 @Component({
   selector: 'app-root',
@@ -29,10 +31,13 @@ export class AppComponent {
   constructor(
     private router: Router,
     private menu: MenuController,
-    private authService: AuthService
+    private authService: AuthService,
+        private fcmService: FcmService
+
   ) {}
 
   async ngOnInit() {
+    this.fcmService.initPush();
     this.authService.userData$.subscribe((user) => {
       this.response = user;
     });
@@ -48,4 +53,6 @@ export class AppComponent {
     await Preferences.remove({ key: 'token' });
     this.router.navigate(['/login']);
   }
+
+
 }
