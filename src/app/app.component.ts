@@ -4,7 +4,7 @@ import { Preferences } from '@capacitor/preferences';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
 import { FcmService } from './services/fcm.service';
-
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,11 @@ export class AppComponent {
     private authService: AuthService,
     private fcmService: FcmService
 
-  ) {}
+  ) {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 2000);
+  }
 
   async ngOnInit() {
     this.fcmService.initPush();

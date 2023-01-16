@@ -2,5 +2,11 @@
 	"appId": "io.ionic.starter",
 	"appName": "Gamer parlor",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 20000,
+      "launchAutoHide": false
+    }
+  }
 }
