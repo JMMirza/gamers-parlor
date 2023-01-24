@@ -41,10 +41,10 @@
                   
                 </div>
                 <div class="d-flex gap-10" *ngIf="item.status_id == 5 || item.status_id == null">
-                  <button type="button" class="add-icon remove-icon" (click)="rejectRequest(item.id)">
+                  <button type="button" class="add-icon remove-icon" (click)="rejectTeamInvite(item.id)">
                     <ion-icon name="close-outline" size="large"></ion-icon>
                   </button>
-                  <button type="button" class="add-icon" (click)="acceptRequest(item.id)">
+                  <button type="button" class="add-icon" (click)="acceptTeamInvite(item.id)">
                     <ion-icon name="checkmark-outline" size="large"></ion-icon>
                   </button>
                 </div>
