@@ -27,23 +27,24 @@ export class FcmService {
     PushNotifications.requestPermissions().then(async (result) => {
       if (result.receive === 'granted') {
         // Register with Apple / Google to receive push via APNS/FCM
-        await this.fcTokenService.saveFCMToken(result).subscribe(
-          (data: any) => {
-            console.log(data);
-            PushNotifications.register();
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
+        PushNotifications.register();
       } else {
         // Show some error
       }
     });
 
     // On success, we should be able to receive notifications
-    PushNotifications.addListener('registration', (token: Token) => {
-      alert('Push registration success, token: ' + token.value);
+    PushNotifications.addListener('registration', async (token: Token) => {
+
+      await this.fcTokenService.saveFCMToken({token: token.value}).subscribe(
+        (data: any) => {
+          console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      // alert('Push registration success, token: ' + token.value);
       // make a api call and send the token;
     });
 
