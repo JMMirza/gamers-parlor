@@ -150,6 +150,10 @@ const routes: Routes = [
     path: 'ranking-team-matches-list',
     loadChildren: () => import('./modals/ranking-team-matches-list/ranking-team-matches-list.module').then( m => m.RankingTeamMatchesListPageModule)
   },
+  {
+    path: 'invitation-list',
+    loadChildren: () => import('./pages/invitation-list/invitation-list.module').then( m => m.InvitationListPageModule)
+  },
 
 ];
 

@@ -20,13 +20,14 @@ export class AppComponent {
     {
       title: 'Tournament Results',
       url: 'tournament-result-page',
-      icon: 'trophy',
+      icon: 'podium',
     },
     { title: 'My Teams', url: 'my-teams', icon: 'people' },
-    { title: 'Credits', url: 'buy-credits', icon: 'people' },
-    { title: 'Subscriptions', url: 'subscription-list', icon: 'settings' },
-    { title: 'Ranking', url: 'ranking', icon: 'settings' },
-    // { title: 'Logout', url: 'logout', icon: 'log-out' },
+    { title: 'Credits', url: 'buy-credits', icon: 'card' },
+    { title: 'Subscriptions', url: 'subscription-list', icon: 'cash' },
+    { title: 'Ranking', url: 'ranking', icon: 'analytics' },
+    { title: 'Invitations', url: 'invitation-list', icon: 'add' },
+    // { title: 'Logout', url: 'logout', icon: 'log-out' icon: 'settings' },
   ];
   constructor(
     private router: Router,
@@ -57,6 +58,4 @@ export class AppComponent {
     await Preferences.remove({ key: 'token' });
     this.router.navigate(['/login']);
   }
-
-
 }
