@@ -25,8 +25,8 @@ export class AppComponent {
     { title: 'Credits', url: 'buy-credits', icon: 'card' },
     { title: 'Subscriptions', url: 'subscription-list', icon: 'cash' },
     { title: 'Ranking', url: 'ranking', icon: 'analytics' },
-    { title: 'Invites', url: 'invitation-list', icon: 'settings' },
-    // { title: 'Logout', url: 'logout', icon: 'log-out' },
+    { title: 'Invitations', url: 'invitation-list', icon: 'add' },
+    // { title: 'Logout', url: 'logout', icon: 'log-out' icon: 'settings' },
   ];
   constructor(
     private router: Router,
