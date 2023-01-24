@@ -5,7 +5,6 @@ import { MenuController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
 import { FcmService } from './services/fcm.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -20,20 +19,20 @@ export class AppComponent {
     {
       title: 'Tournament Results',
       url: 'tournament-result-page',
-      icon: 'trophy',
+      icon: 'podium',
     },
     { title: 'My Teams', url: 'my-teams', icon: 'people' },
-    { title: 'Credits', url: 'buy-credits', icon: 'people' },
-    { title: 'Subscriptions', url: 'subscription-list', icon: 'settings' },
-    { title: 'Ranking', url: 'ranking', icon: 'settings' },
+    { title: 'Credits', url: 'buy-credits', icon: 'card' },
+    { title: 'Subscriptions', url: 'subscription-list', icon: 'cash' },
+    { title: 'Ranking', url: 'ranking', icon: 'analytics' },
+    { title: 'Invites', url: 'invitation-list', icon: 'settings' },
     // { title: 'Logout', url: 'logout', icon: 'log-out' },
   ];
   constructor(
     private router: Router,
     private menu: MenuController,
     private authService: AuthService,
-        private fcmService: FcmService
-
+    private fcmService: FcmService
   ) {}
 
   async ngOnInit() {
@@ -53,6 +52,4 @@ export class AppComponent {
     await Preferences.remove({ key: 'token' });
     this.router.navigate(['/login']);
   }
-
-
 }

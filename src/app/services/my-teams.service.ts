@@ -26,4 +26,16 @@ export class MyTeamsService {
   listLadderTeam(params?) {
     return this.httpService.get('get-ladder-teams', params);
   }
+
+  listTeamInvite(params?) {
+    return this.httpService.get('get-team-invites', params);
+  }
+
+  acceptTeamInvite(params) {
+    return this.httpService.get('accept-team-invites', params);
+  }
+
+  rejectTeamInvite(params) {
+    return this.httpService.get('reject-team-invites', params);
+  }
 }
