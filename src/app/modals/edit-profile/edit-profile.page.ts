@@ -35,8 +35,8 @@ export class EditProfilePage implements OnInit {
     private toastService: ToastService
   ) {}
 
-  cancel() {
-    return this.modalCtrl.dismiss(null, 'cancel');
+  cancel(data?) {
+    return this.modalCtrl.dismiss(data, 'cancel');
   }
 
   confirm(data?) {
