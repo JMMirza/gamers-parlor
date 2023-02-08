@@ -50,10 +50,10 @@
                 </div>
                 <div class="flex-flex" *ngIf="item.status_id == 3 || item.status_id == 4">
                   <div class="wins" *ngIf="item.status_id==3">
-                    <span>Accepted</span>
+                    <ion-badge color="success">Accepted</ion-badge>
                   </div>
                   <div class="losses" *ngIf="item.status_id==4">
-                    <span>Rejected</span>
+                    <ion-badge color="danger">Rejected</ion-badge>
                   </div>
                 </div>
               </div>

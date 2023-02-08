@@ -42,9 +42,9 @@ export class AppComponent {
   }
 
   async ngOnInit() {
-    this.fcmService.initPush();
     this.authService.userData$.subscribe((user) => {
       this.response = user;
+      this.fcmService.initPush();
     });
   }
 

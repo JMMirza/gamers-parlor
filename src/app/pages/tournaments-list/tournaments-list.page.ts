@@ -7,6 +7,7 @@ import { ToastService } from '../../services/toast.service';
 import { ModalController } from '@ionic/angular';
 import { CreateTournamentPage } from '../../modals/create-tournament/create-tournament.page';
 import { CreateTeamPage } from '../../modals/create-team/create-team.page';
+import { FcmService } from '../../services/fcm.service';
 
 @Component({
   selector: 'app-tournaments-list',
@@ -26,12 +27,14 @@ export class TournamentsListPage implements OnInit {
     private tournamentService: TournamentService,
     private loadingCtrl: LoadingController,
     private toastService: ToastService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private fcmService: FcmService
   ) {}
 
   ngOnInit() {
     this.listTournaments({ pageNo: this.pageNo });
     // this.listVipTournaments();
+    this.fcmService.initPush();
   }
 
   platformFilter(e) {
