@@ -4,7 +4,7 @@
       <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
     </ion-buttons> -->
     <ion-buttons slot="end">
-      <ion-button (click)="cancel()">Cancel</ion-button>
+      <ion-button (click)="cancel(user)">Cancel</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -12,7 +12,8 @@
   <main class="ion-padding-horizontal">
     <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" novalidate class="site-form" style="margin:0">
       <div class="form-group">
-        <ion-input type="text" formControlName="name" name="name" placeholder="Name" class="form-control">
+        <ion-input type="text" value="{{user.name}}" formControlName="name" name="name" placeholder="Name"
+          class="form-control">
         </ion-input>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.name">

@@ -36,9 +36,9 @@
                       </span>
                       {{item.created_at}}
                     </p>
-                    
+
                   </div>
-                  
+
                 </div>
                 <div class="d-flex gap-10" *ngIf="item.status_id == 5 || item.status_id == null">
                   <button type="button" class="add-icon remove-icon" (click)="rejectTeamInvite(item.id)">
