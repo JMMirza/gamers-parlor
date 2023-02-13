@@ -75,12 +75,8 @@
                     <img [src]="u.avatar_url" class="img-fluid" alt="">
                   </div>
                   <div class="w-100">
-                    <h1>
-                      {{ u.name }}
-                    </h1>
-                    <p>
-                      {{ u.email }}
-                    </p>
+                    <h1>{{ u.name }}</h1>
+                    <p>{{ u.email }}</p>
                   </div>
                   <div type="button" class="add-icon remove-icon" (click)="removeUser(u, i)">
                     <!-- <ion-icon name="add-outline"></ion-icon> -->

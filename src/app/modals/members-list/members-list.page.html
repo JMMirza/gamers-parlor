@@ -10,19 +10,22 @@
 </ion-header>
 <ion-content class="content-inner-body">
   <main class="ion-padding-horizontal">
-    <ion-list-header class="team-title"> {{ team_name }} </ion-list-header>
-    <ion-list lines="none" class="tournament-card" *ngFor="let item of team">
-      <div class="tournament-card-content">
-        <div slot="start" class="game-img">
-          <ion-img [src]="item.user.avatar_url" class="img-fluid"></ion-img>
+    <div class="registered-team-list">
+      <div class="registered-teams" *ngFor="let item of team">
+        <div class="img">
+          <img [src]="item.user.avatar_url" class="img-fluid" alt="">
         </div>
-        <ion-label>
-          <h2>{{item.role}}</h2>
-          <h3>{{ item.user.name }}</h3>
+        <div class="w-100">
+          <h1>{{ item.user.name }}</h1>
           <p>{{ item.user.email }}</p>
-        </ion-label>
-
+        </div>
+        <div type="button" class="add-icon remove-icon" (click)="removeUser(u, i)">
+          <ion-icon name="remove-outline"></ion-icon>
+        </div>
       </div>
-    </ion-list>
+    </div>
+
+
+    
   </main>
 </ion-content>

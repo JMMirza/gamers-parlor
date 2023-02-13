@@ -4,7 +4,7 @@
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe">Subscription List
+      <ion-title class="header-text ion-text-start ion-no-padding ion-padding-start linear-wipe">Choose your plan
       </ion-title>
     </ion-toolbar>
   </ion-header>
@@ -12,11 +12,12 @@
   <main class="ion-padding-horizontal">
 
     <section class="tournament-list-section">
-      <ion-grid>
-        <ion-row *ngIf="paymentAmount <= 0">
-          <ion-title class="header-text ion-text-center ion-no-padding ion-padding-start" color="secondary-contrast">
+      <ion-grid *ngIf="paymentAmount <= 0">
+        <ion-row>
+          <!-- <ion-title class="header-text ion-text-center ion-no-padding ion-padding-start" color="secondary-contrast">
             choose your plan
           </ion-title>
+          <p></p> -->
           <ion-col size="6" *ngFor="let item of subs">
             <button class="plan-btn" (click)="createCredit(item.credit,item.id)">
               <h1>
@@ -31,10 +32,19 @@
             </button>
           </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <p class="text-white">Free Credits (depends on which membership)</p>
+            <p class="text-white">Access to exclusive Parlor Member tournaments</p>
+            <p class="text-white">Subscriptions will renew automatically at the end of each term. Payments will continue until you
+              cancel your subscription.</p>
+          </ion-col>
+        </ion-row>
       </ion-grid>
-      <div id="paypal-button-container"></div>
-      <!-- <button type="submit" class="secondary-btn">Pay Now</button>
-      <button type="submit" class="btn-link"> Do it Later</button> -->
+      
+      <div *ngIf="paymentAmount > 0" id="paypal-button-container"></div>
+
+      <button *ngIf="paymentAmount > 0" (click)="paymentAmount = 0" class="secondary-btn">Back</button>
     </section>
   </main>
 </ion-content>

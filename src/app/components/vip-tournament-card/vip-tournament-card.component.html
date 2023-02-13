@@ -3,9 +3,7 @@
     <ion-img src="{{gameData.game.vip_logo_url}}" class="img-fluid"></ion-img>
   </div>
   <ion-card-content>
-    <p>
-      SEP 02 . STARTING AT 06:00 PM
-    </p>
+    <p>{{ gameData.tournament_date | date:'medium' }}</p>
     <div class="match-title">
       <div class="game-play-icon">
         <img src="../../../assets/imgi.png" class="img-fluid" alt="">
@@ -21,7 +19,7 @@
           <span class="get-center icon-img">
             <img src="../../../assets/matchprice.png" alt="">
           </span>
-          $ 200
+          {{ gameData.prize_amount }}$
         </p>
       </div>
       <div>
@@ -30,11 +28,11 @@
           <span class="get-center icon-img">
             <img src="../../../assets/coin.png" alt="">
           </span>
-          $ 5
+          {{ gameData.registration_fee }}$
         </p>
       </div>
       <div>
-        <h2>rules</h2>
+        <h2>Rules</h2>
         <a (click)="showGameRules(gameData)">
           view all
           <span class="get-center icon-img">

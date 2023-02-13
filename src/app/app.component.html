@@ -27,13 +27,10 @@
             </div>
             <div class="user-assets get-corner w-100">
               <div class="user-rank get-center flex-column">
-                <h4>vip</h4>
-                <p *ngIf="response.is_vip==0">No</p>
-                <p *ngIf="response.is_vip==1">Yes</p>
+                <h4>vip: <span class="text-white">{{ response.is_vip ? 'Yes' : 'No' }}</span></h4>
               </div>
               <div class="user-winning get-center flex-column">
-                <h4>credits</h4>
-                <p>$ {{response.balance}}</p>
+                <h4>credits: <span class="text-white">$ {{ response.balance }}</span></h4>
               </div>
             </div>
           </div>

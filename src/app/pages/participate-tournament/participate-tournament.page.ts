@@ -7,6 +7,7 @@ import { MyTeamsService } from 'src/app/services/my-teams.service';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Crop, CropOptions } from '@ionic-native/crop/ngx';
 import { ActivatedRoute } from '@angular/router';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-participate-tournament',
@@ -44,7 +45,8 @@ export class ParticipateTournamentPage implements OnInit {
     private loadingCtrl: LoadingController,
     private activatedRoute: ActivatedRoute,
     private locationStrategy: LocationStrategy,
-    private crop: Crop
+    private crop: Crop,
+    private toastService: ToastService,
   ) {}
 
   ngOnInit() {
@@ -150,8 +152,13 @@ export class ParticipateTournamentPage implements OnInit {
     await this.teamService.createTeam(this.formData).subscribe(
       (data: any) => {
         console.log(data);
-        this.users = data;
-        this.locationStrategy.back();
+        if(data.success == 1){
+          this.users = data;
+          this.locationStrategy.back();
+        }else{
+          // alert(data.msg);
+          this.toastService.presentAlert(data.msg);
+        }
       },
       (error) => {
         console.log(error);

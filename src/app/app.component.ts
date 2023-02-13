@@ -27,6 +27,7 @@ export class AppComponent {
     { title: 'Subscriptions', url: 'subscription-list', icon: 'cash' },
     { title: 'Ranking', url: 'ranking', icon: 'analytics' },
     { title: 'Invitations', url: 'invitation-list', icon: 'add' },
+    { title: 'Official Rules', url: 'games-rules', icon: 'add' },
     // { title: 'Logout', url: 'logout', icon: 'log-out' icon: 'settings' },
   ];
   constructor(

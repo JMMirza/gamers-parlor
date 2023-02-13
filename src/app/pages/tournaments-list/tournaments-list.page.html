@@ -48,7 +48,7 @@
                   <div class="game-info">
                     <h1 class="game-title">{{item.name}}</h1>
                     <a (click)="showGameRules(item)">
-                      <span>rules</span>
+                      <span>Rules</span>
                       view all
                     </a>
                   </div>
@@ -57,7 +57,7 @@
                     <span>
                       <ion-icon name="time-sharp"></ion-icon>
                     </span>
-                    mon at 2:00PM
+                    {{ item.tournament_date | date:'medium' }}
                   </p>
 
                   <div class="t-pricing">
@@ -65,13 +65,13 @@
                       <span>
                         <ion-icon name="card"></ion-icon>
                       </span>
-                      50$
+                      {{ item.registration_fee }}$
                     </p>
                     <p class="tournament-prize">
                       <span>
                         <ion-icon name="trophy-sharp"></ion-icon>
                       </span>
-                      120$
+                      {{ item.prize_amount }}$
                     </p>
                     <button class="primary-btn get-center" [routerLink]="['/participate-tournament', item.id]">
                       PARTICIPATE

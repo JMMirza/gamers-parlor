@@ -154,6 +154,10 @@ const routes: Routes = [
     path: 'invitation-list',
     loadChildren: () => import('./pages/invitation-list/invitation-list.module').then( m => m.InvitationListPageModule)
   },
+  {
+    path: 'games-rules',
+    loadChildren: () => import('./pages/games-rules/games-rules.module').then( m => m.GamesRulesPageModule)
+  },
 
 ];
 

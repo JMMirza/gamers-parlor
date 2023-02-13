@@ -30,4 +30,8 @@ export class TournamentService {
   listTournamentTeams(params) {
     return this.httpService.get('list-tournament-teams', params);
   }
+
+  listGames(params) {
+    return this.httpService.get('platform-games', params);
+  }
 }

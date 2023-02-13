@@ -2110,7 +2110,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 10rem;
+  width: 9rem;
+  // width: auto;
   min-height: 10rem;
   border-radius: 20px;
   background-color: #2b3240;
@@ -2148,4 +2149,8 @@ body {
     color: #fff;
     text-align: center;
   }
+}
+
+.text-white{
+  color: #fff;
 }

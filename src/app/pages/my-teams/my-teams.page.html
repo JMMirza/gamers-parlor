@@ -63,16 +63,14 @@
                     <h1 class="game-title">{{item.team.name}}</h1>
                   </div>
                   <ion-label>
-                    <h2>Role: {{item.role}}</h2>
+                    <h2>{{item.role}}</h2>
                   </ion-label>
-
-
                   <div class="t-pricing">
                     <p class="tournament-timing">
                       <span>
                         <ion-icon name="time-sharp"></ion-icon>
                       </span>
-                      Created At: {{item.created_at}}
+                      {{item.created_at}}
                     </p>
                     <button class="primary-btn get-center" (click)="viewTeamList(item.team.id,item.team.name)">
                       View Team

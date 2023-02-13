@@ -42,7 +42,7 @@ export class MyTournamentsPage implements OnInit {
 
     await this.playerTournamentsService.listMyTournaments(params).subscribe(
       (data: any) => {
-        console.log(data);
+        console.log(data.tournaments);
         this.response = data.tournaments;
         this.platforms = data.platforms;
         loading.dismiss();
